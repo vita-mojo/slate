@@ -127,7 +127,7 @@ p JSON.parse(result)
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
 
-<h3 id="get_healthcheck-responseschema">Response Schema</h3>
+<h4 id="get_healthcheck-responseschema">Response Schema</h4>
 
 <aside class="success">
 This operation does not require authentication
@@ -2317,7 +2317,7 @@ Get Orders by Statuses
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not found|[NotFound](#schemanotfound)|
 |503|[Service Unavailable](https://tools.ietf.org/html/rfc7231#section-6.6.4)|Service unavailable|[ServiceUnavailable](#schemaserviceunavailable)|
 
-<h3 id="queriesgetordersbystatuses-responseschema">Response Schema</h3>
+<h4 id="queriesgetordersbystatuses-responseschema">Response Schema</h4>
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
