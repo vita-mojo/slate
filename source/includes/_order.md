@@ -1,6 +1,7 @@
 ---
 title: Order service
 language_tabs:
+  - shell: curl
   - javascript: JavaScript
   - javascript--nodejs: Node.JS
   - python: Python
@@ -13,7 +14,7 @@ headingLevel: 2
 
 ---
 
-<h1 id="order-service">Order service v0.0.1</h1>
+<h1 id="order-service">Order service</h1>
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
@@ -23,18 +24,20 @@ Base URLs:
 
  License: MIT
 
-# Authentication
+<h2 id="order-service-healthcheck">Healthcheck</h2>
 
-* API Key (api_key)
-    - Parameter Name: **authorization**, in: header. 
-
-<h1 id="order-service-healthcheck">Healthcheck</h1>
-
-## GET_healthcheck
+### GET_healthcheck
 
 <a id="opIdGET_healthcheck"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X GET /healthcheck \
+  -H 'Accept: application/json; charset=utf-8'
+
+```
 
 ```javascript
 var headers = {
@@ -118,7 +121,7 @@ p JSON.parse(result)
 {}
 ```
 
-<h3 id="get_healthcheck-responses">Responses</h3>
+<h4 id="get_healthcheck-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -130,13 +133,24 @@ p JSON.parse(result)
 This operation does not require authentication
 </aside>
 
-<h1 id="order-service-order">Order</h1>
+<h2 id="order-service-commands">commands</h2>
 
-## CommandsPlaceOrder
+### CommandsPlaceOrder
 
 <a id="opIdCommandsPlaceOrder"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X POST /v1/commands/create \
+  -H 'Content-Type: application/json; charset=utf-8' \
+  -H 'Accept: application/json; charset=utf-8' \
+  -H 'x-requested-from: string' \
+  -H 'store: string' \
+  -H 'authorization: API_KEY'
+
+```
 
 ```javascript
 var headers = {
@@ -746,7 +760,7 @@ p JSON.parse(result)
 }
 ```
 
-<h3 id="commandsplaceorder-parameters">Parameters</h3>
+<h4 id="commandsplaceorder-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1068,7 +1082,7 @@ p JSON.parse(result)
 }
 ```
 
-<h3 id="commandsplaceorder-responses">Responses</h3>
+<h4 id="commandsplaceorder-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1083,11 +1097,22 @@ To perform this operation, you must be authenticated by means of one of the foll
 api_key
 </aside>
 
-## CommandsSendEmailReceipt
+### CommandsSendEmailReceipt
 
 <a id="opIdCommandsSendEmailReceipt"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X POST /v1/commands/email-receipt \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -H 'x-requested-from: string' \
+  -H 'store: string' \
+  -H 'authorization: API_KEY'
+
+```
 
 ```javascript
 var headers = {
@@ -1191,7 +1216,7 @@ p JSON.parse(result)
 }
 ```
 
-<h3 id="commandssendemailreceipt-parameters">Parameters</h3>
+<h4 id="commandssendemailreceipt-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1210,7 +1235,7 @@ p JSON.parse(result)
 }
 ```
 
-<h3 id="commandssendemailreceipt-responses">Responses</h3>
+<h4 id="commandssendemailreceipt-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1225,11 +1250,19 @@ To perform this operation, you must be authenticated by means of one of the foll
 api_key
 </aside>
 
-## CommandsCancelOrder
+### CommandsCancelOrder
 
 <a id="opIdCommandsCancelOrder"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X PUT /v1/commands/cancel/{entityUUID} \
+  -H 'Accept: application/json' \
+  -H 'authorization: API_KEY'
+
+```
 
 ```javascript
 var headers = {
@@ -1307,7 +1340,7 @@ p JSON.parse(result)
 
 `PUT /v1/commands/cancel/{entityUUID}`
 
-<h3 id="commandscancelorder-parameters">Parameters</h3>
+<h4 id="commandscancelorder-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1323,7 +1356,7 @@ p JSON.parse(result)
 }
 ```
 
-<h3 id="commandscancelorder-responses">Responses</h3>
+<h4 id="commandscancelorder-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1338,11 +1371,20 @@ To perform this operation, you must be authenticated by means of one of the foll
 api_key
 </aside>
 
-## CommandsUpdateOrderStatus
+### CommandsUpdateOrderStatus
 
 <a id="opIdCommandsUpdateOrderStatus"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X PUT /v1/commands/change-status/{entityUUID} \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -H 'authorization: API_KEY'
+
+```
 
 ```javascript
 var headers = {
@@ -1436,7 +1478,7 @@ p JSON.parse(result)
 }
 ```
 
-<h3 id="commandsupdateorderstatus-parameters">Parameters</h3>
+<h4 id="commandsupdateorderstatus-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1453,7 +1495,7 @@ p JSON.parse(result)
 }
 ```
 
-<h3 id="commandsupdateorderstatus-responses">Responses</h3>
+<h4 id="commandsupdateorderstatus-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1468,11 +1510,20 @@ To perform this operation, you must be authenticated by means of one of the foll
 api_key
 </aside>
 
-## CommandsOrderPaymentStatus
+### CommandsOrderPaymentStatus
 
 <a id="opIdCommandsOrderPaymentStatus"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X PUT /v1/commands/payment-status/{orderUUID} \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json; charset=utf-8' \
+  -H 'authorization: API_KEY'
+
+```
 
 ```javascript
 var headers = {
@@ -1572,7 +1623,7 @@ p JSON.parse(result)
 }
 ```
 
-<h3 id="commandsorderpaymentstatus-parameters">Parameters</h3>
+<h4 id="commandsorderpaymentstatus-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1602,7 +1653,7 @@ p JSON.parse(result)
 }
 ```
 
-<h3 id="commandsorderpaymentstatus-responses">Responses</h3>
+<h4 id="commandsorderpaymentstatus-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1617,11 +1668,21 @@ To perform this operation, you must be authenticated by means of one of the foll
 api_key
 </aside>
 
-## CommandsOrderPromotUpdate
+### CommandsOrderPromotUpdate
 
 <a id="opIdCommandsOrderPromotUpdate"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X PUT /v1/commands/change-promo/{entityUUID} \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -H 'store: string' \
+  -H 'authorization: API_KEY'
+
+```
 
 ```javascript
 var headers = {
@@ -1763,7 +1824,7 @@ p JSON.parse(result)
 }
 ```
 
-<h3 id="commandsorderpromotupdate-parameters">Parameters</h3>
+<h4 id="commandsorderpromotupdate-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1781,7 +1842,7 @@ p JSON.parse(result)
 }
 ```
 
-<h3 id="commandsorderpromotupdate-responses">Responses</h3>
+<h4 id="commandsorderpromotupdate-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1796,11 +1857,20 @@ To perform this operation, you must be authenticated by means of one of the foll
 api_key
 </aside>
 
-## CommandsOrderTakeawayStatusChanged
+### CommandsOrderTakeawayStatusChanged
 
 <a id="opIdCommandsOrderTakeawayStatusChanged"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X PUT /v1/commands/takeaway-status/{entityUUID} \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -H 'authorization: API_KEY'
+
+```
 
 ```javascript
 var headers = {
@@ -1892,7 +1962,7 @@ p JSON.parse(result)
 }
 ```
 
-<h3 id="commandsordertakeawaystatuschanged-parameters">Parameters</h3>
+<h4 id="commandsordertakeawaystatuschanged-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1909,7 +1979,7 @@ p JSON.parse(result)
 }
 ```
 
-<h3 id="commandsordertakeawaystatuschanged-responses">Responses</h3>
+<h4 id="commandsordertakeawaystatuschanged-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1925,11 +1995,20 @@ To perform this operation, you must be authenticated by means of one of the foll
 api_key
 </aside>
 
-## CommandsOrderRemoveBundles
+### CommandsOrderRemoveBundles
 
 <a id="opIdCommandsOrderRemoveBundles"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X PUT /v1/commands/remove-bundles/{orderUUID} \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -H 'authorization: API_KEY'
+
+```
 
 ```javascript
 var headers = {
@@ -2035,7 +2114,7 @@ p JSON.parse(result)
 }
 ```
 
-<h3 id="commandsorderremovebundles-parameters">Parameters</h3>
+<h4 id="commandsorderremovebundles-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2093,7 +2172,7 @@ p JSON.parse(result)
 }
 ```
 
-<h3 id="commandsorderremovebundles-responses">Responses</h3>
+<h4 id="commandsorderremovebundles-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2108,11 +2187,22 @@ To perform this operation, you must be authenticated by means of one of the foll
 api_key
 </aside>
 
-## QueriesGetOrdersByStatuses
+<h2 id="order-service-queries">queries</h2>
+
+### QueriesGetOrdersByStatuses
 
 <a id="opIdQueriesGetOrdersByStatuses"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X GET /v1/queries/orders?statuses%5B%5D=string \
+  -H 'Accept: application/json' \
+  -H 'store: string' \
+  -H 'authorization: API_KEY'
+
+```
 
 ```javascript
 var headers = {
@@ -2199,7 +2289,7 @@ p JSON.parse(result)
 
 Get Orders by Statuses
 
-<h3 id="queriesgetordersbystatuses-parameters">Parameters</h3>
+<h4 id="queriesgetordersbystatuses-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2217,7 +2307,7 @@ Get Orders by Statuses
 }
 ```
 
-<h3 id="queriesgetordersbystatuses-responses">Responses</h3>
+<h4 id="queriesgetordersbystatuses-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2234,11 +2324,20 @@ To perform this operation, you must be authenticated by means of one of the foll
 api_key
 </aside>
 
-## QueriesGetHistoryOrders
+### QueriesGetHistoryOrders
 
 <a id="opIdQueriesGetHistoryOrders"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X GET /v1/queries/orders/history \
+  -H 'Accept: application/json' \
+  -H 'store: string' \
+  -H 'authorization: API_KEY'
+
+```
 
 ```javascript
 var headers = {
@@ -2322,7 +2421,7 @@ p JSON.parse(result)
 
 Get all orders in a time range
 
-<h3 id="queriesgethistoryorders-parameters">Parameters</h3>
+<h4 id="queriesgethistoryorders-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2370,7 +2469,7 @@ Get all orders in a time range
 }
 ```
 
-<h3 id="queriesgethistoryorders-responses">Responses</h3>
+<h4 id="queriesgethistoryorders-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2385,11 +2484,19 @@ To perform this operation, you must be authenticated by means of one of the foll
 api_key
 </aside>
 
-## QueriesGetUserOrderHistory
+### QueriesGetUserOrderHistory
 
 <a id="opIdQueriesGetUserOrderHistory"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X GET /v1/queries/orders/user-history \
+  -H 'Accept: application/json' \
+  -H 'authorization: API_KEY'
+
+```
 
 ```javascript
 var headers = {
@@ -2469,7 +2576,7 @@ p JSON.parse(result)
 
 Get User order history by range of date or filtered by serialNumber
 
-<h3 id="queriesgetuserorderhistory-parameters">Parameters</h3>
+<h4 id="queriesgetuserorderhistory-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2541,7 +2648,7 @@ Get User order history by range of date or filtered by serialNumber
 }
 ```
 
-<h3 id="queriesgetuserorderhistory-responses">Responses</h3>
+<h4 id="queriesgetuserorderhistory-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2556,11 +2663,19 @@ To perform this operation, you must be authenticated by means of one of the foll
 api_key
 </aside>
 
-## QueriesGetOrder
+### QueriesGetOrder
 
 <a id="opIdQueriesGetOrder"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X GET /v1/queries/find/{uuid} \
+  -H 'Accept: application/json; charset=utf-8' \
+  -H 'authorization: API_KEY'
+
+```
 
 ```javascript
 var headers = {
@@ -2638,7 +2753,7 @@ p JSON.parse(result)
 
 `GET /v1/queries/find/{uuid}`
 
-<h3 id="queriesgetorder-parameters">Parameters</h3>
+<h4 id="queriesgetorder-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2960,7 +3075,7 @@ p JSON.parse(result)
 }
 ```
 
-<h3 id="queriesgetorder-responses">Responses</h3>
+<h4 id="queriesgetorder-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2975,11 +3090,22 @@ To perform this operation, you must be authenticated by means of one of the foll
 api_key
 </aside>
 
-## GetReportsByStore
+<h2 id="order-service-reports">reports</h2>
+
+### GetReportsByStore
 
 <a id="opIdGetReportsByStore"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X GET /v1/reports \
+  -H 'Accept: application/json' \
+  -H 'store: string' \
+  -H 'authorization: API_KEY'
+
+```
 
 ```javascript
 var headers = {
@@ -3063,7 +3189,7 @@ p JSON.parse(result)
 
 Get Reports by Store
 
-<h3 id="getreportsbystore-parameters">Parameters</h3>
+<h4 id="getreportsbystore-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -3113,7 +3239,7 @@ Get Reports by Store
 }
 ```
 
-<h3 id="getreportsbystore-responses">Responses</h3>
+<h4 id="getreportsbystore-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -3128,11 +3254,19 @@ To perform this operation, you must be authenticated by means of one of the foll
 api_key
 </aside>
 
-## GetReportByUUID
+### GetReportByUUID
 
 <a id="opIdGetReportByUUID"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X GET /v1/reports/{uuid} \
+  -H 'Accept: application/json' \
+  -H 'authorization: API_KEY'
+
+```
 
 ```javascript
 var headers = {
@@ -3212,7 +3346,7 @@ p JSON.parse(result)
 
 Get Report by UUID
 
-<h3 id="getreportbyuuid-parameters">Parameters</h3>
+<h4 id="getreportbyuuid-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -3269,7 +3403,7 @@ Get Report by UUID
 }
 ```
 
-<h3 id="getreportbyuuid-responses">Responses</h3>
+<h4 id="getreportbyuuid-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -3284,11 +3418,21 @@ To perform this operation, you must be authenticated by means of one of the foll
 api_key
 </aside>
 
-## CreateReport
+### CreateReport
 
 <a id="opIdCreateReport"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X POST /v1/reports/generate-report \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -H 'store: string' \
+  -H 'authorization: API_KEY'
+
+```
 
 ```javascript
 var headers = {
@@ -3386,7 +3530,7 @@ create report
 }
 ```
 
-<h3 id="createreport-parameters">Parameters</h3>
+<h4 id="createreport-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -3444,7 +3588,7 @@ create report
 }
 ```
 
-<h3 id="createreport-responses">Responses</h3>
+<h4 id="createreport-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -3459,11 +3603,22 @@ To perform this operation, you must be authenticated by means of one of the foll
 api_key
 </aside>
 
-## Get Authorized
+<h2 id="order-service-pusher">pusher</h2>
+
+### Get Authorized
 
 <a id="opIdGet Authorized"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X POST /v1/pusher/auth \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -H 'authorization: API_KEY'
+
+```
 
 ```javascript
 var headers = {
@@ -3559,7 +3714,7 @@ Pusher authorisation
 }
 ```
 
-<h3 id="get-authorized-parameters">Parameters</h3>
+<h4 id="get-authorized-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -3576,7 +3731,7 @@ Pusher authorisation
 }
 ```
 
-<h3 id="get-authorized-responses">Responses</h3>
+<h4 id="get-authorized-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -3591,9 +3746,9 @@ To perform this operation, you must be authenticated by means of one of the foll
 api_key
 </aside>
 
-# Order Schemas
+## Schemas
 
-<h2 id="tocSunautorizedexception">UnautorizedException</h2>
+<h3 id="tocSunautorizedexception">UnautorizedException</h3>
 
 <a id="schemaunautorizedexception"></a>
 
@@ -3612,7 +3767,7 @@ api_key
 |status|number(double)|true|none|none|
 |message|string|true|none|none|
 
-<h2 id="tocSbadrequest">BadRequest</h2>
+<h3 id="tocSbadrequest">BadRequest</h3>
 
 <a id="schemabadrequest"></a>
 
@@ -3631,7 +3786,7 @@ api_key
 |status|number(double)|true|none|none|
 |message|string|true|none|none|
 
-<h2 id="tocSnotfound">NotFound</h2>
+<h3 id="tocSnotfound">NotFound</h3>
 
 <a id="schemanotfound"></a>
 
@@ -3650,7 +3805,7 @@ api_key
 |status|number(double)|true|none|none|
 |message|string|true|none|none|
 
-<h2 id="tocSserviceunavailable">ServiceUnavailable</h2>
+<h3 id="tocSserviceunavailable">ServiceUnavailable</h3>
 
 <a id="schemaserviceunavailable"></a>
 
@@ -3669,7 +3824,7 @@ api_key
 |status|number(double)|true|none|none|
 |message|string|true|none|none|
 
-<h2 id="tocSentityuuid">EntityUUID</h2>
+<h3 id="tocSentityuuid">EntityUUID</h3>
 
 <a id="schemaentityuuid"></a>
 
@@ -3686,7 +3841,7 @@ api_key
 |---|---|---|---|---|
 |entityUUID|string|true|none|none|
 
-<h2 id="tocSorderuuid">OrderUUID</h2>
+<h3 id="tocSorderuuid">OrderUUID</h3>
 
 <a id="schemaorderuuid"></a>
 
@@ -3703,7 +3858,7 @@ api_key
 |---|---|---|---|---|
 |orderUUID|string|true|none|none|
 
-<h2 id="tocSorderstatus">OrderStatus</h2>
+<h3 id="tocSorderstatus">OrderStatus</h3>
 
 <a id="schemaorderstatus"></a>
 
@@ -3724,7 +3879,7 @@ api_key
 |transitionAlias|string|true|none|none|
 |orderStatus|string|true|none|none|
 
-<h2 id="tocSgeneratereport">GenerateReport</h2>
+<h3 id="tocSgeneratereport">GenerateReport</h3>
 
 <a id="schemageneratereport"></a>
 
@@ -3741,7 +3896,7 @@ api_key
 |---|---|---|---|---|
 |type|string|true|none|none|
 
-<h2 id="tocSorderpayment">OrderPayment</h2>
+<h3 id="tocSorderpayment">OrderPayment</h3>
 
 <a id="schemaorderpayment"></a>
 
@@ -3764,7 +3919,7 @@ api_key
 |status|string|true|none|none|
 |meta|string|false|none|none|
 
-<h2 id="tocSpaymentstatus">PaymentStatus</h2>
+<h3 id="tocSpaymentstatus">PaymentStatus</h3>
 
 <a id="schemapaymentstatus"></a>
 
@@ -3789,7 +3944,7 @@ api_key
 |till|string|false|none|none|
 |meta|string|false|none|none|
 
-<h2 id="tocSordertakeawayflag">OrderTakeawayFlag</h2>
+<h3 id="tocSordertakeawayflag">OrderTakeawayFlag</h3>
 
 <a id="schemaordertakeawayflag"></a>
 
@@ -3806,7 +3961,7 @@ api_key
 |---|---|---|---|---|
 |status|boolean|true|none|none|
 
-<h2 id="tocSordersendemail">OrderSendEmail</h2>
+<h3 id="tocSordersendemail">OrderSendEmail</h3>
 
 <a id="schemaordersendemail"></a>
 
@@ -3827,7 +3982,7 @@ api_key
 |email|string|false|none|none|
 |optIn|boolean|false|none|none|
 
-<h2 id="tocSordershistorybody">OrdersHistoryBody</h2>
+<h3 id="tocSordershistorybody">OrdersHistoryBody</h3>
 
 <a id="schemaordershistorybody"></a>
 
@@ -3892,7 +4047,7 @@ api_key
 |» updatedAt|string|true|none|none|
 |» orderNumber|string|true|none|none|
 
-<h2 id="tocSuserordershistorybody">UserOrdersHistoryBody</h2>
+<h3 id="tocSuserordershistorybody">UserOrdersHistoryBody</h3>
 
 <a id="schemauserordershistorybody"></a>
 
@@ -4012,7 +4167,7 @@ api_key
 |»»»» type|string|true|none|none|
 |»»»» uuid|string|true|none|none|
 
-<h2 id="tocSorder">Order</h2>
+<h3 id="tocSorder">Order</h3>
 
 <a id="schemaorder"></a>
 
@@ -4336,7 +4491,7 @@ api_key
 |»»»»» itemUUID|string|true|none|none|
 |»»»»» uuid|string|true|none|none|
 
-<h2 id="tocSordercreation">OrderCreation</h2>
+<h3 id="tocSordercreation">OrderCreation</h3>
 
 <a id="schemaordercreation"></a>
 
@@ -4721,7 +4876,7 @@ api_key
 |»»»» itemUUID|string|true|none|none|
 |»»»» uuid|string|true|none|none|
 
-<h2 id="tocSorderreport">OrderReport</h2>
+<h3 id="tocSorderreport">OrderReport</h3>
 
 <a id="schemaorderreport"></a>
 
@@ -4798,7 +4953,7 @@ api_key
 |»»» izettle|number|true|none|none|
 |»» type|string|true|none|none|
 
-<h2 id="tocSorderreports">OrderReports</h2>
+<h3 id="tocSorderreports">OrderReports</h3>
 
 <a id="schemaorderreports"></a>
 
@@ -4838,7 +4993,7 @@ api_key
 |»» startDate|string|true|none|none|
 |»» endDate|string|true|none|none|
 
-<h2 id="tocSorderbundlespromo">OrderBundlesPromo</h2>
+<h3 id="tocSorderbundlespromo">OrderBundlesPromo</h3>
 
 <a id="schemaorderbundlespromo"></a>
 
@@ -4891,7 +5046,7 @@ api_key
 |»»» finalPrice|number|true|none|none|
 |»»» subtotalAmount|number|true|none|none|
 
-<h2 id="tocSorderremovebundle">OrderRemoveBundle</h2>
+<h3 id="tocSorderremovebundle">OrderRemoveBundle</h3>
 
 <a id="schemaorderremovebundle"></a>
 
@@ -4919,7 +5074,7 @@ api_key
 |» totalAmount|number|true|none|none|
 |» subtotalAmount|number|true|none|none|
 
-<h2 id="tocSpusherauthrequest">PusherAuthRequest</h2>
+<h3 id="tocSpusherauthrequest">PusherAuthRequest</h3>
 
 <a id="schemapusherauthrequest"></a>
 
@@ -4938,7 +5093,7 @@ api_key
 |socket_id|string|true|none|none|
 |channel_name|string|true|none|none|
 
-<h2 id="tocSpusherauthresponse">PusherAuthResponse</h2>
+<h3 id="tocSpusherauthresponse">PusherAuthResponse</h3>
 
 <a id="schemapusherauthresponse"></a>
 
