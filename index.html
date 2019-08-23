@@ -232,12 +232,36 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#http-request" class="toc-h3 toc-link" data-title="HTTP Request">HTTP Request</a>
+                          </li>
+                          <li>
+                            <a href="#query-parameters" class="toc-h3 toc-link" data-title="Query Parameters">Query Parameters</a>
+                          </li>
+                      </ul>
                   </li>
                   <li>
                     <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#http-request-2" class="toc-h3 toc-link" data-title="HTTP Request">HTTP Request</a>
+                          </li>
+                          <li>
+                            <a href="#url-parameters" class="toc-h3 toc-link" data-title="URL Parameters">URL Parameters</a>
+                          </li>
+                      </ul>
                   </li>
                   <li>
                     <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#http-request-3" class="toc-h3 toc-link" data-title="HTTP Request">HTTP Request</a>
+                          </li>
+                          <li>
+                            <a href="#url-parameters-2" class="toc-h3 toc-link" data-title="URL Parameters">URL Parameters</a>
+                          </li>
+                      </ul>
                   </li>
               </ul>
           </li>
@@ -245,140 +269,359 @@
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
           <li>
-            <a href="#order-service" class="toc-h1 toc-link" data-title="Order service v0.0.1">Order service v0.0.1</a>
-          </li>
-          <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
-          </li>
-          <li>
-            <a href="#order-service-healthcheck" class="toc-h1 toc-link" data-title="Healthcheck">Healthcheck</a>
+            <a href="#order-service" class="toc-h1 toc-link" data-title="Order service">Order service</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get_healthcheck" class="toc-h2 toc-link" data-title="GET_healthcheck">GET_healthcheck</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#order-service-order" class="toc-h1 toc-link" data-title="Order">Order</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#commandsplaceorder" class="toc-h2 toc-link" data-title="CommandsPlaceOrder">CommandsPlaceOrder</a>
-                  </li>
-                  <li>
-                    <a href="#commandssendemailreceipt" class="toc-h2 toc-link" data-title="CommandsSendEmailReceipt">CommandsSendEmailReceipt</a>
-                  </li>
-                  <li>
-                    <a href="#commandscancelorder" class="toc-h2 toc-link" data-title="CommandsCancelOrder">CommandsCancelOrder</a>
-                  </li>
-                  <li>
-                    <a href="#commandsupdateorderstatus" class="toc-h2 toc-link" data-title="CommandsUpdateOrderStatus">CommandsUpdateOrderStatus</a>
+                    <a href="#order-service-healthcheck" class="toc-h2 toc-link" data-title="Healthcheck">Healthcheck</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#get_healthcheck" class="toc-h3 toc-link" data-title="GET_healthcheck">GET_healthcheck</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#get_healthcheck-responses" class="toc-h4 toc-link" data-title="Responses">Responses</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                            <a href="#get_healthcheck-responseschema" class="toc-h3 toc-link" data-title="Response Schema">Response Schema</a>
+                          </li>
+                      </ul>
                   </li>
                   <li>
-                    <a href="#commandsorderpaymentstatus" class="toc-h2 toc-link" data-title="CommandsOrderPaymentStatus">CommandsOrderPaymentStatus</a>
+                    <a href="#order-service-commands" class="toc-h2 toc-link" data-title="commands">commands</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#commandsplaceorder" class="toc-h3 toc-link" data-title="CommandsPlaceOrder">CommandsPlaceOrder</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#commandsplaceorder-parameters" class="toc-h4 toc-link" data-title="Parameters">Parameters</a>
+                                  </li>
+                                  <li>
+                                    <a href="#commandsplaceorder-responses" class="toc-h4 toc-link" data-title="Responses">Responses</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                            <a href="#commandssendemailreceipt" class="toc-h3 toc-link" data-title="CommandsSendEmailReceipt">CommandsSendEmailReceipt</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#commandssendemailreceipt-parameters" class="toc-h4 toc-link" data-title="Parameters">Parameters</a>
+                                  </li>
+                                  <li>
+                                    <a href="#commandssendemailreceipt-responses" class="toc-h4 toc-link" data-title="Responses">Responses</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                            <a href="#commandscancelorder" class="toc-h3 toc-link" data-title="CommandsCancelOrder">CommandsCancelOrder</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#commandscancelorder-parameters" class="toc-h4 toc-link" data-title="Parameters">Parameters</a>
+                                  </li>
+                                  <li>
+                                    <a href="#commandscancelorder-responses" class="toc-h4 toc-link" data-title="Responses">Responses</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                            <a href="#commandsupdateorderstatus" class="toc-h3 toc-link" data-title="CommandsUpdateOrderStatus">CommandsUpdateOrderStatus</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#commandsupdateorderstatus-parameters" class="toc-h4 toc-link" data-title="Parameters">Parameters</a>
+                                  </li>
+                                  <li>
+                                    <a href="#commandsupdateorderstatus-responses" class="toc-h4 toc-link" data-title="Responses">Responses</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                            <a href="#commandsorderpaymentstatus" class="toc-h3 toc-link" data-title="CommandsOrderPaymentStatus">CommandsOrderPaymentStatus</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#commandsorderpaymentstatus-parameters" class="toc-h4 toc-link" data-title="Parameters">Parameters</a>
+                                  </li>
+                                  <li>
+                                    <a href="#commandsorderpaymentstatus-responses" class="toc-h4 toc-link" data-title="Responses">Responses</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                            <a href="#commandsorderpromotupdate" class="toc-h3 toc-link" data-title="CommandsOrderPromotUpdate">CommandsOrderPromotUpdate</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#commandsorderpromotupdate-parameters" class="toc-h4 toc-link" data-title="Parameters">Parameters</a>
+                                  </li>
+                                  <li>
+                                    <a href="#commandsorderpromotupdate-responses" class="toc-h4 toc-link" data-title="Responses">Responses</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                            <a href="#commandsordertakeawaystatuschanged" class="toc-h3 toc-link" data-title="CommandsOrderTakeawayStatusChanged">CommandsOrderTakeawayStatusChanged</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#commandsordertakeawaystatuschanged-parameters" class="toc-h4 toc-link" data-title="Parameters">Parameters</a>
+                                  </li>
+                                  <li>
+                                    <a href="#commandsordertakeawaystatuschanged-responses" class="toc-h4 toc-link" data-title="Responses">Responses</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                            <a href="#commandsorderremovebundles" class="toc-h3 toc-link" data-title="CommandsOrderRemoveBundles">CommandsOrderRemoveBundles</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#commandsorderremovebundles-parameters" class="toc-h4 toc-link" data-title="Parameters">Parameters</a>
+                                  </li>
+                                  <li>
+                                    <a href="#commandsorderremovebundles-responses" class="toc-h4 toc-link" data-title="Responses">Responses</a>
+                                  </li>
+                              </ul>
+                          </li>
+                      </ul>
                   </li>
                   <li>
-                    <a href="#commandsorderpromotupdate" class="toc-h2 toc-link" data-title="CommandsOrderPromotUpdate">CommandsOrderPromotUpdate</a>
+                    <a href="#order-service-queries" class="toc-h2 toc-link" data-title="queries">queries</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#queriesgetordersbystatuses" class="toc-h3 toc-link" data-title="QueriesGetOrdersByStatuses">QueriesGetOrdersByStatuses</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#queriesgetordersbystatuses-parameters" class="toc-h4 toc-link" data-title="Parameters">Parameters</a>
+                                  </li>
+                                  <li>
+                                    <a href="#queriesgetordersbystatuses-responses" class="toc-h4 toc-link" data-title="Responses">Responses</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                            <a href="#queriesgetordersbystatuses-responseschema" class="toc-h3 toc-link" data-title="Response Schema">Response Schema</a>
+                          </li>
+                          <li>
+                            <a href="#queriesgethistoryorders" class="toc-h3 toc-link" data-title="QueriesGetHistoryOrders">QueriesGetHistoryOrders</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#queriesgethistoryorders-parameters" class="toc-h4 toc-link" data-title="Parameters">Parameters</a>
+                                  </li>
+                                  <li>
+                                    <a href="#queriesgethistoryorders-responses" class="toc-h4 toc-link" data-title="Responses">Responses</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                            <a href="#queriesgetuserorderhistory" class="toc-h3 toc-link" data-title="QueriesGetUserOrderHistory">QueriesGetUserOrderHistory</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#queriesgetuserorderhistory-parameters" class="toc-h4 toc-link" data-title="Parameters">Parameters</a>
+                                  </li>
+                                  <li>
+                                    <a href="#queriesgetuserorderhistory-responses" class="toc-h4 toc-link" data-title="Responses">Responses</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                            <a href="#queriesgetorder" class="toc-h3 toc-link" data-title="QueriesGetOrder">QueriesGetOrder</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#queriesgetorder-parameters" class="toc-h4 toc-link" data-title="Parameters">Parameters</a>
+                                  </li>
+                                  <li>
+                                    <a href="#queriesgetorder-responses" class="toc-h4 toc-link" data-title="Responses">Responses</a>
+                                  </li>
+                              </ul>
+                          </li>
+                      </ul>
                   </li>
                   <li>
-                    <a href="#commandsordertakeawaystatuschanged" class="toc-h2 toc-link" data-title="CommandsOrderTakeawayStatusChanged">CommandsOrderTakeawayStatusChanged</a>
+                    <a href="#order-service-reports" class="toc-h2 toc-link" data-title="reports">reports</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#getreportsbystore" class="toc-h3 toc-link" data-title="GetReportsByStore">GetReportsByStore</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#getreportsbystore-parameters" class="toc-h4 toc-link" data-title="Parameters">Parameters</a>
+                                  </li>
+                                  <li>
+                                    <a href="#getreportsbystore-responses" class="toc-h4 toc-link" data-title="Responses">Responses</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                            <a href="#getreportbyuuid" class="toc-h3 toc-link" data-title="GetReportByUUID">GetReportByUUID</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#getreportbyuuid-parameters" class="toc-h4 toc-link" data-title="Parameters">Parameters</a>
+                                  </li>
+                                  <li>
+                                    <a href="#getreportbyuuid-responses" class="toc-h4 toc-link" data-title="Responses">Responses</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li>
+                            <a href="#createreport" class="toc-h3 toc-link" data-title="CreateReport">CreateReport</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#createreport-parameters" class="toc-h4 toc-link" data-title="Parameters">Parameters</a>
+                                  </li>
+                                  <li>
+                                    <a href="#createreport-responses" class="toc-h4 toc-link" data-title="Responses">Responses</a>
+                                  </li>
+                              </ul>
+                          </li>
+                      </ul>
                   </li>
                   <li>
-                    <a href="#commandsorderremovebundles" class="toc-h2 toc-link" data-title="CommandsOrderRemoveBundles">CommandsOrderRemoveBundles</a>
+                    <a href="#order-service-pusher" class="toc-h2 toc-link" data-title="pusher">pusher</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#get-authorized" class="toc-h3 toc-link" data-title="Get Authorized">Get Authorized</a>
+                              <ul class="toc-list-h4">
+                                  <li>
+                                    <a href="#get-authorized-parameters" class="toc-h4 toc-link" data-title="Parameters">Parameters</a>
+                                  </li>
+                                  <li>
+                                    <a href="#get-authorized-responses" class="toc-h4 toc-link" data-title="Responses">Responses</a>
+                                  </li>
+                              </ul>
+                          </li>
+                      </ul>
                   </li>
                   <li>
-                    <a href="#queriesgetordersbystatuses" class="toc-h2 toc-link" data-title="QueriesGetOrdersByStatuses">QueriesGetOrdersByStatuses</a>
-                  </li>
-                  <li>
-                    <a href="#queriesgethistoryorders" class="toc-h2 toc-link" data-title="QueriesGetHistoryOrders">QueriesGetHistoryOrders</a>
-                  </li>
-                  <li>
-                    <a href="#queriesgetuserorderhistory" class="toc-h2 toc-link" data-title="QueriesGetUserOrderHistory">QueriesGetUserOrderHistory</a>
-                  </li>
-                  <li>
-                    <a href="#queriesgetorder" class="toc-h2 toc-link" data-title="QueriesGetOrder">QueriesGetOrder</a>
-                  </li>
-                  <li>
-                    <a href="#getreportsbystore" class="toc-h2 toc-link" data-title="GetReportsByStore">GetReportsByStore</a>
-                  </li>
-                  <li>
-                    <a href="#getreportbyuuid" class="toc-h2 toc-link" data-title="GetReportByUUID">GetReportByUUID</a>
-                  </li>
-                  <li>
-                    <a href="#createreport" class="toc-h2 toc-link" data-title="CreateReport">CreateReport</a>
-                  </li>
-                  <li>
-                    <a href="#get-authorized" class="toc-h2 toc-link" data-title="Get Authorized">Get Authorized</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#order-schemas" class="toc-h1 toc-link" data-title="Order Schemas">Order Schemas</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#tocSunautorizedexception" class="toc-h2 toc-link" data-title="UnautorizedException">UnautorizedException</a>
-                  </li>
-                  <li>
-                    <a href="#tocSbadrequest" class="toc-h2 toc-link" data-title="BadRequest">BadRequest</a>
-                  </li>
-                  <li>
-                    <a href="#tocSnotfound" class="toc-h2 toc-link" data-title="NotFound">NotFound</a>
-                  </li>
-                  <li>
-                    <a href="#tocSserviceunavailable" class="toc-h2 toc-link" data-title="ServiceUnavailable">ServiceUnavailable</a>
-                  </li>
-                  <li>
-                    <a href="#tocSentityuuid" class="toc-h2 toc-link" data-title="EntityUUID">EntityUUID</a>
-                  </li>
-                  <li>
-                    <a href="#tocSorderuuid" class="toc-h2 toc-link" data-title="OrderUUID">OrderUUID</a>
-                  </li>
-                  <li>
-                    <a href="#tocSorderstatus" class="toc-h2 toc-link" data-title="OrderStatus">OrderStatus</a>
-                  </li>
-                  <li>
-                    <a href="#tocSgeneratereport" class="toc-h2 toc-link" data-title="GenerateReport">GenerateReport</a>
-                  </li>
-                  <li>
-                    <a href="#tocSorderpayment" class="toc-h2 toc-link" data-title="OrderPayment">OrderPayment</a>
-                  </li>
-                  <li>
-                    <a href="#tocSpaymentstatus" class="toc-h2 toc-link" data-title="PaymentStatus">PaymentStatus</a>
-                  </li>
-                  <li>
-                    <a href="#tocSordertakeawayflag" class="toc-h2 toc-link" data-title="OrderTakeawayFlag">OrderTakeawayFlag</a>
-                  </li>
-                  <li>
-                    <a href="#tocSordersendemail" class="toc-h2 toc-link" data-title="OrderSendEmail">OrderSendEmail</a>
-                  </li>
-                  <li>
-                    <a href="#tocSordershistorybody" class="toc-h2 toc-link" data-title="OrdersHistoryBody">OrdersHistoryBody</a>
-                  </li>
-                  <li>
-                    <a href="#tocSuserordershistorybody" class="toc-h2 toc-link" data-title="UserOrdersHistoryBody">UserOrdersHistoryBody</a>
-                  </li>
-                  <li>
-                    <a href="#tocSorder" class="toc-h2 toc-link" data-title="Order">Order</a>
-                  </li>
-                  <li>
-                    <a href="#tocSordercreation" class="toc-h2 toc-link" data-title="OrderCreation">OrderCreation</a>
-                  </li>
-                  <li>
-                    <a href="#tocSorderreport" class="toc-h2 toc-link" data-title="OrderReport">OrderReport</a>
-                  </li>
-                  <li>
-                    <a href="#tocSorderreports" class="toc-h2 toc-link" data-title="OrderReports">OrderReports</a>
-                  </li>
-                  <li>
-                    <a href="#tocSorderbundlespromo" class="toc-h2 toc-link" data-title="OrderBundlesPromo">OrderBundlesPromo</a>
-                  </li>
-                  <li>
-                    <a href="#tocSorderremovebundle" class="toc-h2 toc-link" data-title="OrderRemoveBundle">OrderRemoveBundle</a>
-                  </li>
-                  <li>
-                    <a href="#tocSpusherauthrequest" class="toc-h2 toc-link" data-title="PusherAuthRequest">PusherAuthRequest</a>
-                  </li>
-                  <li>
-                    <a href="#tocSpusherauthresponse" class="toc-h2 toc-link" data-title="PusherAuthResponse">PusherAuthResponse</a>
+                    <a href="#schemas" class="toc-h2 toc-link" data-title="Schemas">Schemas</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#tocSunautorizedexception" class="toc-h3 toc-link" data-title="UnautorizedException">UnautorizedException</a>
+                          </li>
+                          <li>
+                            <a href="#properties" class="toc-h3 toc-link" data-title="Properties">Properties</a>
+                          </li>
+                          <li>
+                            <a href="#tocSbadrequest" class="toc-h3 toc-link" data-title="BadRequest">BadRequest</a>
+                          </li>
+                          <li>
+                            <a href="#properties-2" class="toc-h3 toc-link" data-title="Properties">Properties</a>
+                          </li>
+                          <li>
+                            <a href="#tocSnotfound" class="toc-h3 toc-link" data-title="NotFound">NotFound</a>
+                          </li>
+                          <li>
+                            <a href="#properties-3" class="toc-h3 toc-link" data-title="Properties">Properties</a>
+                          </li>
+                          <li>
+                            <a href="#tocSserviceunavailable" class="toc-h3 toc-link" data-title="ServiceUnavailable">ServiceUnavailable</a>
+                          </li>
+                          <li>
+                            <a href="#properties-4" class="toc-h3 toc-link" data-title="Properties">Properties</a>
+                          </li>
+                          <li>
+                            <a href="#tocSentityuuid" class="toc-h3 toc-link" data-title="EntityUUID">EntityUUID</a>
+                          </li>
+                          <li>
+                            <a href="#properties-5" class="toc-h3 toc-link" data-title="Properties">Properties</a>
+                          </li>
+                          <li>
+                            <a href="#tocSorderuuid" class="toc-h3 toc-link" data-title="OrderUUID">OrderUUID</a>
+                          </li>
+                          <li>
+                            <a href="#properties-6" class="toc-h3 toc-link" data-title="Properties">Properties</a>
+                          </li>
+                          <li>
+                            <a href="#tocSorderstatus" class="toc-h3 toc-link" data-title="OrderStatus">OrderStatus</a>
+                          </li>
+                          <li>
+                            <a href="#properties-7" class="toc-h3 toc-link" data-title="Properties">Properties</a>
+                          </li>
+                          <li>
+                            <a href="#tocSgeneratereport" class="toc-h3 toc-link" data-title="GenerateReport">GenerateReport</a>
+                          </li>
+                          <li>
+                            <a href="#properties-8" class="toc-h3 toc-link" data-title="Properties">Properties</a>
+                          </li>
+                          <li>
+                            <a href="#tocSorderpayment" class="toc-h3 toc-link" data-title="OrderPayment">OrderPayment</a>
+                          </li>
+                          <li>
+                            <a href="#properties-9" class="toc-h3 toc-link" data-title="Properties">Properties</a>
+                          </li>
+                          <li>
+                            <a href="#tocSpaymentstatus" class="toc-h3 toc-link" data-title="PaymentStatus">PaymentStatus</a>
+                          </li>
+                          <li>
+                            <a href="#properties-10" class="toc-h3 toc-link" data-title="Properties">Properties</a>
+                          </li>
+                          <li>
+                            <a href="#tocSordertakeawayflag" class="toc-h3 toc-link" data-title="OrderTakeawayFlag">OrderTakeawayFlag</a>
+                          </li>
+                          <li>
+                            <a href="#properties-11" class="toc-h3 toc-link" data-title="Properties">Properties</a>
+                          </li>
+                          <li>
+                            <a href="#tocSordersendemail" class="toc-h3 toc-link" data-title="OrderSendEmail">OrderSendEmail</a>
+                          </li>
+                          <li>
+                            <a href="#properties-12" class="toc-h3 toc-link" data-title="Properties">Properties</a>
+                          </li>
+                          <li>
+                            <a href="#tocSordershistorybody" class="toc-h3 toc-link" data-title="OrdersHistoryBody">OrdersHistoryBody</a>
+                          </li>
+                          <li>
+                            <a href="#properties-13" class="toc-h3 toc-link" data-title="Properties">Properties</a>
+                          </li>
+                          <li>
+                            <a href="#tocSuserordershistorybody" class="toc-h3 toc-link" data-title="UserOrdersHistoryBody">UserOrdersHistoryBody</a>
+                          </li>
+                          <li>
+                            <a href="#properties-14" class="toc-h3 toc-link" data-title="Properties">Properties</a>
+                          </li>
+                          <li>
+                            <a href="#tocSorder" class="toc-h3 toc-link" data-title="Order">Order</a>
+                          </li>
+                          <li>
+                            <a href="#properties-15" class="toc-h3 toc-link" data-title="Properties">Properties</a>
+                          </li>
+                          <li>
+                            <a href="#tocSordercreation" class="toc-h3 toc-link" data-title="OrderCreation">OrderCreation</a>
+                          </li>
+                          <li>
+                            <a href="#properties-16" class="toc-h3 toc-link" data-title="Properties">Properties</a>
+                          </li>
+                          <li>
+                            <a href="#tocSorderreport" class="toc-h3 toc-link" data-title="OrderReport">OrderReport</a>
+                          </li>
+                          <li>
+                            <a href="#properties-17" class="toc-h3 toc-link" data-title="Properties">Properties</a>
+                          </li>
+                          <li>
+                            <a href="#tocSorderreports" class="toc-h3 toc-link" data-title="OrderReports">OrderReports</a>
+                          </li>
+                          <li>
+                            <a href="#properties-18" class="toc-h3 toc-link" data-title="Properties">Properties</a>
+                          </li>
+                          <li>
+                            <a href="#tocSorderbundlespromo" class="toc-h3 toc-link" data-title="OrderBundlesPromo">OrderBundlesPromo</a>
+                          </li>
+                          <li>
+                            <a href="#properties-19" class="toc-h3 toc-link" data-title="Properties">Properties</a>
+                          </li>
+                          <li>
+                            <a href="#tocSorderremovebundle" class="toc-h3 toc-link" data-title="OrderRemoveBundle">OrderRemoveBundle</a>
+                          </li>
+                          <li>
+                            <a href="#properties-20" class="toc-h3 toc-link" data-title="Properties">Properties</a>
+                          </li>
+                          <li>
+                            <a href="#tocSpusherauthrequest" class="toc-h3 toc-link" data-title="PusherAuthRequest">PusherAuthRequest</a>
+                          </li>
+                          <li>
+                            <a href="#properties-21" class="toc-h3 toc-link" data-title="Properties">Properties</a>
+                          </li>
+                          <li>
+                            <a href="#tocSpusherauthresponse" class="toc-h3 toc-link" data-title="PusherAuthResponse">PusherAuthResponse</a>
+                          </li>
+                          <li>
+                            <a href="#properties-22" class="toc-h3 toc-link" data-title="Properties">Properties</a>
+                          </li>
+                      </ul>
                   </li>
               </ul>
           </li>
@@ -632,6 +875,7 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 
 <p>title: Order service
 language_tabs:
+  - shell: curl
   - javascript: JavaScript
   - javascript--nodejs: Node.JS
   - python: Python
@@ -644,7 +888,7 @@ headingLevel: 2</p>
 
 <hr>
 
-<h1 id="order-service">Order service v0.0.1</h1>
+<h1 id="order-service">Order service</h1>
 
 <blockquote>
 <p>Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.</p>
@@ -655,23 +899,19 @@ headingLevel: 2</p>
 <p>Base URLs:</p>
 
 <p>License: MIT</p>
-<h1 id='authentication'>Authentication</h1>
-<ul>
-<li>API Key (api_key)
 
-<ul>
-<li>Parameter Name: <strong>authorization</strong>, in: header. </li>
-</ul></li>
-</ul>
-
-<h1 id="order-service-healthcheck">Healthcheck</h1>
-<h2 id='get_healthcheck'>GET_healthcheck</h2>
+<h2 id="order-service-healthcheck">Healthcheck</h2>
+<h3 id='get_healthcheck'>GET_healthcheck</h3>
 <p><a id="opIdGET_healthcheck"></a></p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET /healthcheck <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json; charset=utf-8'</span>
+
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json; charset=utf-8'</span>
 
 <span class="p">};</span>
@@ -741,7 +981,7 @@ headingLevel: 2</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 </span></code></pre>
-<h3 id="get_healthcheck-responses">Responses</h3>
+<h4 id="get_healthcheck-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -765,14 +1005,22 @@ headingLevel: 2</p>
 This operation does not require authentication
 </aside>
 
-<h1 id="order-service-order">Order</h1>
-<h2 id='commandsplaceorder'>CommandsPlaceOrder</h2>
+<h2 id="order-service-commands">commands</h2>
+<h3 id='commandsplaceorder'>CommandsPlaceOrder</h3>
 <p><a id="opIdCommandsPlaceOrder"></a></p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST /v1/commands/create <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json; charset=utf-8'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json; charset=utf-8'</span> <span class="se">\</span>
+  -H <span class="s1">'x-requested-from: string'</span> <span class="se">\</span>
+  -H <span class="s1">'store: string'</span> <span class="se">\</span>
+  -H <span class="s1">'authorization: API_KEY'</span>
+
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json; charset=utf-8'</span><span class="p">,</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json; charset=utf-8'</span><span class="p">,</span>
   <span class="s1">'x-requested-from'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
@@ -1368,7 +1616,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="commandsplaceorder-parameters">Parameters</h3>
+<h4 id="commandsplaceorder-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -1714,7 +1962,7 @@ This operation does not require authentication
   </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="commandsplaceorder-responses">Responses</h3>
+<h4 id="commandsplaceorder-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -1760,13 +2008,21 @@ This operation does not require authentication
 To perform this operation, you must be authenticated by means of one of the following methods:
 api_key
 </aside>
-<h2 id='commandssendemailreceipt'>CommandsSendEmailReceipt</h2>
+<h3 id='commandssendemailreceipt'>CommandsSendEmailReceipt</h3>
 <p><a id="opIdCommandsSendEmailReceipt"></a></p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST /v1/commands/email-receipt <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'x-requested-from: string'</span> <span class="se">\</span>
+  -H <span class="s1">'store: string'</span> <span class="se">\</span>
+  -H <span class="s1">'authorization: API_KEY'</span>
+
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-requested-from'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
@@ -1856,7 +2112,7 @@ api_key
   </span><span class="s2">"optIn"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="commandssendemailreceipt-parameters">Parameters</h3>
+<h4 id="commandssendemailreceipt-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -1900,7 +2156,7 @@ api_key
   </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="commandssendemailreceipt-responses">Responses</h3>
+<h4 id="commandssendemailreceipt-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -1946,13 +2202,18 @@ api_key
 To perform this operation, you must be authenticated by means of one of the following methods:
 api_key
 </aside>
-<h2 id='commandscancelorder'>CommandsCancelOrder</h2>
+<h3 id='commandscancelorder'>CommandsCancelOrder</h3>
 <p><a id="opIdCommandsCancelOrder"></a></p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X PUT /v1/commands/cancel/<span class="o">{</span>entityUUID<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'authorization: API_KEY'</span>
+
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'authorization'</span><span class="p">:</span><span class="s1">'API_KEY'</span>
 
@@ -2017,7 +2278,7 @@ api_key
 </code></pre>
 <p><code>PUT /v1/commands/cancel/{entityUUID}</code></p>
 
-<h3 id="commandscancelorder-parameters">Parameters</h3>
+<h4 id="commandscancelorder-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -2046,7 +2307,7 @@ api_key
   </span><span class="s2">"entityUUID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="commandscancelorder-responses">Responses</h3>
+<h4 id="commandscancelorder-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -2092,13 +2353,19 @@ api_key
 To perform this operation, you must be authenticated by means of one of the following methods:
 api_key
 </aside>
-<h2 id='commandsupdateorderstatus'>CommandsUpdateOrderStatus</h2>
+<h3 id='commandsupdateorderstatus'>CommandsUpdateOrderStatus</h3>
 <p><a id="opIdCommandsUpdateOrderStatus"></a></p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X PUT /v1/commands/change-status/<span class="o">{</span>entityUUID<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'authorization: API_KEY'</span>
+
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'authorization'</span><span class="p">:</span><span class="s1">'API_KEY'</span>
@@ -2178,7 +2445,7 @@ api_key
   </span><span class="s2">"orderStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="commandsupdateorderstatus-parameters">Parameters</h3>
+<h4 id="commandsupdateorderstatus-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -2214,7 +2481,7 @@ api_key
   </span><span class="s2">"entityUUID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="commandsupdateorderstatus-responses">Responses</h3>
+<h4 id="commandsupdateorderstatus-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -2260,13 +2527,19 @@ api_key
 To perform this operation, you must be authenticated by means of one of the following methods:
 api_key
 </aside>
-<h2 id='commandsorderpaymentstatus'>CommandsOrderPaymentStatus</h2>
+<h3 id='commandsorderpaymentstatus'>CommandsOrderPaymentStatus</h3>
 <p><a id="opIdCommandsOrderPaymentStatus"></a></p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X PUT /v1/commands/payment-status/<span class="o">{</span>orderUUID<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json; charset=utf-8'</span> <span class="se">\</span>
+  -H <span class="s1">'authorization: API_KEY'</span>
+
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json; charset=utf-8'</span><span class="p">,</span>
   <span class="s1">'authorization'</span><span class="p">:</span><span class="s1">'API_KEY'</span>
@@ -2352,7 +2625,7 @@ api_key
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="commandsorderpaymentstatus-parameters">Parameters</h3>
+<h4 id="commandsorderpaymentstatus-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -2400,7 +2673,7 @@ api_key
   </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="commandsorderpaymentstatus-responses">Responses</h3>
+<h4 id="commandsorderpaymentstatus-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -2446,13 +2719,20 @@ api_key
 To perform this operation, you must be authenticated by means of one of the following methods:
 api_key
 </aside>
-<h2 id='commandsorderpromotupdate'>CommandsOrderPromotUpdate</h2>
+<h3 id='commandsorderpromotupdate'>CommandsOrderPromotUpdate</h3>
 <p><a id="opIdCommandsOrderPromotUpdate"></a></p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X PUT /v1/commands/change-promo/<span class="o">{</span>entityUUID<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'store: string'</span> <span class="se">\</span>
+  -H <span class="s1">'authorization: API_KEY'</span>
+
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'store'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
@@ -2580,7 +2860,7 @@ api_key
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="commandsorderpromotupdate-parameters">Parameters</h3>
+<h4 id="commandsorderpromotupdate-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -2623,7 +2903,7 @@ api_key
   </span><span class="s2">"entityUUID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="commandsorderpromotupdate-responses">Responses</h3>
+<h4 id="commandsorderpromotupdate-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -2669,13 +2949,19 @@ api_key
 To perform this operation, you must be authenticated by means of one of the following methods:
 api_key
 </aside>
-<h2 id='commandsordertakeawaystatuschanged'>CommandsOrderTakeawayStatusChanged</h2>
+<h3 id='commandsordertakeawaystatuschanged'>CommandsOrderTakeawayStatusChanged</h3>
 <p><a id="opIdCommandsOrderTakeawayStatusChanged"></a></p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X PUT /v1/commands/takeaway-status/<span class="o">{</span>entityUUID<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'authorization: API_KEY'</span>
+
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'authorization'</span><span class="p">:</span><span class="s1">'API_KEY'</span>
@@ -2753,7 +3039,7 @@ api_key
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="commandsordertakeawaystatuschanged-parameters">Parameters</h3>
+<h4 id="commandsordertakeawaystatuschanged-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -2789,7 +3075,7 @@ api_key
   </span><span class="s2">"entityUUID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="commandsordertakeawaystatuschanged-responses">Responses</h3>
+<h4 id="commandsordertakeawaystatuschanged-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -2841,13 +3127,19 @@ api_key
 To perform this operation, you must be authenticated by means of one of the following methods:
 api_key
 </aside>
-<h2 id='commandsorderremovebundles'>CommandsOrderRemoveBundles</h2>
+<h3 id='commandsorderremovebundles'>CommandsOrderRemoveBundles</h3>
 <p><a id="opIdCommandsOrderRemoveBundles"></a></p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X PUT /v1/commands/remove-bundles/<span class="o">{</span>orderUUID<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'authorization: API_KEY'</span>
+
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'authorization'</span><span class="p">:</span><span class="s1">'API_KEY'</span>
@@ -2939,7 +3231,7 @@ api_key
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="commandsorderremovebundles-parameters">Parameters</h3>
+<h4 id="commandsorderremovebundles-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -3012,7 +3304,7 @@ api_key
   </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error!"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="commandsorderremovebundles-responses">Responses</h3>
+<h4 id="commandsorderremovebundles-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -3058,13 +3350,21 @@ api_key
 To perform this operation, you must be authenticated by means of one of the following methods:
 api_key
 </aside>
-<h2 id='queriesgetordersbystatuses'>QueriesGetOrdersByStatuses</h2>
+
+<h2 id="order-service-queries">queries</h2>
+<h3 id='queriesgetordersbystatuses'>QueriesGetOrdersByStatuses</h3>
 <p><a id="opIdQueriesGetOrdersByStatuses"></a></p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET /v1/queries/orders?statuses%5B%5D<span class="o">=</span>string <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'store: string'</span> <span class="se">\</span>
+  -H <span class="s1">'authorization: API_KEY'</span>
+
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'store'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'authorization'</span><span class="p">:</span><span class="s1">'API_KEY'</span>
@@ -3138,7 +3438,7 @@ api_key
 
 <p>Get Orders by Statuses</p>
 
-<h3 id="queriesgetordersbystatuses-parameters">Parameters</h3>
+<h4 id="queriesgetordersbystatuses-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -3175,7 +3475,7 @@ api_key
   </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="queriesgetordersbystatuses-responses">Responses</h3>
+<h4 id="queriesgetordersbystatuses-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -3223,13 +3523,19 @@ api_key
 To perform this operation, you must be authenticated by means of one of the following methods:
 api_key
 </aside>
-<h2 id='queriesgethistoryorders'>QueriesGetHistoryOrders</h2>
+<h3 id='queriesgethistoryorders'>QueriesGetHistoryOrders</h3>
 <p><a id="opIdQueriesGetHistoryOrders"></a></p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET /v1/queries/orders/history <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'store: string'</span> <span class="se">\</span>
+  -H <span class="s1">'authorization: API_KEY'</span>
+
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'store'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'authorization'</span><span class="p">:</span><span class="s1">'API_KEY'</span>
@@ -3300,7 +3606,7 @@ api_key
 
 <p>Get all orders in a time range</p>
 
-<h3 id="queriesgethistoryorders-parameters">Parameters</h3>
+<h4 id="queriesgethistoryorders-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -3391,7 +3697,7 @@ api_key
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="queriesgethistoryorders-responses">Responses</h3>
+<h4 id="queriesgethistoryorders-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -3437,13 +3743,18 @@ api_key
 To perform this operation, you must be authenticated by means of one of the following methods:
 api_key
 </aside>
-<h2 id='queriesgetuserorderhistory'>QueriesGetUserOrderHistory</h2>
+<h3 id='queriesgetuserorderhistory'>QueriesGetUserOrderHistory</h3>
 <p><a id="opIdQueriesGetUserOrderHistory"></a></p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET /v1/queries/orders/user-history <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'authorization: API_KEY'</span>
+
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'authorization'</span><span class="p">:</span><span class="s1">'API_KEY'</span>
 
@@ -3510,7 +3821,7 @@ api_key
 
 <p>Get User order history by range of date or filtered by serialNumber</p>
 
-<h3 id="queriesgetuserorderhistory-parameters">Parameters</h3>
+<h4 id="queriesgetuserorderhistory-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -3619,7 +3930,7 @@ api_key
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="queriesgetuserorderhistory-responses">Responses</h3>
+<h4 id="queriesgetuserorderhistory-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -3665,13 +3976,18 @@ api_key
 To perform this operation, you must be authenticated by means of one of the following methods:
 api_key
 </aside>
-<h2 id='queriesgetorder'>QueriesGetOrder</h2>
+<h3 id='queriesgetorder'>QueriesGetOrder</h3>
 <p><a id="opIdQueriesGetOrder"></a></p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET /v1/queries/find/<span class="o">{</span>uuid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json; charset=utf-8'</span> <span class="se">\</span>
+  -H <span class="s1">'authorization: API_KEY'</span>
+
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json; charset=utf-8'</span><span class="p">,</span>
   <span class="s1">'authorization'</span><span class="p">:</span><span class="s1">'API_KEY'</span>
 
@@ -3736,7 +4052,7 @@ api_key
 </code></pre>
 <p><code>GET /v1/queries/find/{uuid}</code></p>
 
-<h3 id="queriesgetorder-parameters">Parameters</h3>
+<h4 id="queriesgetorder-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -4070,7 +4386,7 @@ api_key
   </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="queriesgetorder-responses">Responses</h3>
+<h4 id="queriesgetorder-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -4116,13 +4432,21 @@ api_key
 To perform this operation, you must be authenticated by means of one of the following methods:
 api_key
 </aside>
-<h2 id='getreportsbystore'>GetReportsByStore</h2>
+
+<h2 id="order-service-reports">reports</h2>
+<h3 id='getreportsbystore'>GetReportsByStore</h3>
 <p><a id="opIdGetReportsByStore"></a></p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET /v1/reports <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'store: string'</span> <span class="se">\</span>
+  -H <span class="s1">'authorization: API_KEY'</span>
+
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'store'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'authorization'</span><span class="p">:</span><span class="s1">'API_KEY'</span>
@@ -4193,7 +4517,7 @@ api_key
 
 <p>Get Reports by Store</p>
 
-<h3 id="getreportsbystore-parameters">Parameters</h3>
+<h4 id="getreportsbystore-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -4285,7 +4609,7 @@ api_key
   </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="getreportsbystore-responses">Responses</h3>
+<h4 id="getreportsbystore-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -4331,13 +4655,18 @@ api_key
 To perform this operation, you must be authenticated by means of one of the following methods:
 api_key
 </aside>
-<h2 id='getreportbyuuid'>GetReportByUUID</h2>
+<h3 id='getreportbyuuid'>GetReportByUUID</h3>
 <p><a id="opIdGetReportByUUID"></a></p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET /v1/reports/<span class="o">{</span>uuid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'authorization: API_KEY'</span>
+
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'authorization'</span><span class="p">:</span><span class="s1">'API_KEY'</span>
 
@@ -4404,7 +4733,7 @@ api_key
 
 <p>Get Report by UUID</p>
 
-<h3 id="getreportbyuuid-parameters">Parameters</h3>
+<h4 id="getreportbyuuid-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -4473,7 +4802,7 @@ api_key
   </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="getreportbyuuid-responses">Responses</h3>
+<h4 id="getreportbyuuid-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -4519,13 +4848,20 @@ api_key
 To perform this operation, you must be authenticated by means of one of the following methods:
 api_key
 </aside>
-<h2 id='createreport'>CreateReport</h2>
+<h3 id='createreport'>CreateReport</h3>
 <p><a id="opIdCreateReport"></a></p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST /v1/reports/generate-report <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'store: string'</span> <span class="se">\</span>
+  -H <span class="s1">'authorization: API_KEY'</span>
+
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'store'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
@@ -4609,7 +4945,7 @@ api_key
   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="createreport-parameters">Parameters</h3>
+<h4 id="createreport-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -4685,7 +5021,7 @@ api_key
   </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="createreport-responses">Responses</h3>
+<h4 id="createreport-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -4731,13 +5067,21 @@ api_key
 To perform this operation, you must be authenticated by means of one of the following methods:
 api_key
 </aside>
-<h2 id='get-authorized'>Get Authorized</h2>
+
+<h2 id="order-service-pusher">pusher</h2>
+<h3 id='get-authorized'>Get Authorized</h3>
 <p><a id="opIdGet Authorized"></a></p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST /v1/pusher/auth <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'authorization: API_KEY'</span>
+
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'authorization'</span><span class="p">:</span><span class="s1">'API_KEY'</span>
@@ -4819,7 +5163,7 @@ api_key
   </span><span class="s2">"channel_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-authorized-parameters">Parameters</h3>
+<h4 id="get-authorized-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -4849,7 +5193,7 @@ api_key
   </span><span class="s2">"auth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="get-authorized-responses">Responses</h3>
+<h4 id="get-authorized-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -4895,8 +5239,8 @@ api_key
 To perform this operation, you must be authenticated by means of one of the following methods:
 api_key
 </aside>
-<h1 id='order-schemas'>Order Schemas</h1>
-<h2 id="tocSunautorizedexception">UnautorizedException</h2>
+<h2 id='schemas'>Schemas</h2>
+<h3 id="tocSunautorizedexception">UnautorizedException</h3>
 
 <p><a id="schemaunautorizedexception"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -4930,7 +5274,7 @@ api_key
 </tr>
 </tbody></table>
 
-<h2 id="tocSbadrequest">BadRequest</h2>
+<h3 id="tocSbadrequest">BadRequest</h3>
 
 <p><a id="schemabadrequest"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -4964,7 +5308,7 @@ api_key
 </tr>
 </tbody></table>
 
-<h2 id="tocSnotfound">NotFound</h2>
+<h3 id="tocSnotfound">NotFound</h3>
 
 <p><a id="schemanotfound"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -4998,7 +5342,7 @@ api_key
 </tr>
 </tbody></table>
 
-<h2 id="tocSserviceunavailable">ServiceUnavailable</h2>
+<h3 id="tocSserviceunavailable">ServiceUnavailable</h3>
 
 <p><a id="schemaserviceunavailable"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -5032,7 +5376,7 @@ api_key
 </tr>
 </tbody></table>
 
-<h2 id="tocSentityuuid">EntityUUID</h2>
+<h3 id="tocSentityuuid">EntityUUID</h3>
 
 <p><a id="schemaentityuuid"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -5058,7 +5402,7 @@ api_key
 </tr>
 </tbody></table>
 
-<h2 id="tocSorderuuid">OrderUUID</h2>
+<h3 id="tocSorderuuid">OrderUUID</h3>
 
 <p><a id="schemaorderuuid"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -5084,7 +5428,7 @@ api_key
 </tr>
 </tbody></table>
 
-<h2 id="tocSorderstatus">OrderStatus</h2>
+<h3 id="tocSorderstatus">OrderStatus</h3>
 
 <p><a id="schemaorderstatus"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -5120,7 +5464,7 @@ api_key
 </tr>
 </tbody></table>
 
-<h2 id="tocSgeneratereport">GenerateReport</h2>
+<h3 id="tocSgeneratereport">GenerateReport</h3>
 
 <p><a id="schemageneratereport"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -5146,7 +5490,7 @@ api_key
 </tr>
 </tbody></table>
 
-<h2 id="tocSorderpayment">OrderPayment</h2>
+<h3 id="tocSorderpayment">OrderPayment</h3>
 
 <p><a id="schemaorderpayment"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -5196,7 +5540,7 @@ api_key
 </tr>
 </tbody></table>
 
-<h2 id="tocSpaymentstatus">PaymentStatus</h2>
+<h3 id="tocSpaymentstatus">PaymentStatus</h3>
 
 <p><a id="schemapaymentstatus"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -5254,7 +5598,7 @@ api_key
 </tr>
 </tbody></table>
 
-<h2 id="tocSordertakeawayflag">OrderTakeawayFlag</h2>
+<h3 id="tocSordertakeawayflag">OrderTakeawayFlag</h3>
 
 <p><a id="schemaordertakeawayflag"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -5280,7 +5624,7 @@ api_key
 </tr>
 </tbody></table>
 
-<h2 id="tocSordersendemail">OrderSendEmail</h2>
+<h3 id="tocSordersendemail">OrderSendEmail</h3>
 
 <p><a id="schemaordersendemail"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -5322,7 +5666,7 @@ api_key
 </tr>
 </tbody></table>
 
-<h2 id="tocSordershistorybody">OrdersHistoryBody</h2>
+<h3 id="tocSordershistorybody">OrdersHistoryBody</h3>
 
 <p><a id="schemaordershistorybody"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -5522,7 +5866,7 @@ api_key
 </tr>
 </tbody></table>
 
-<h2 id="tocSuserordershistorybody">UserOrdersHistoryBody</h2>
+<h3 id="tocSuserordershistorybody">UserOrdersHistoryBody</h3>
 
 <p><a id="schemauserordershistorybody"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -5957,7 +6301,7 @@ api_key
 </tr>
 </tbody></table>
 
-<h2 id="tocSorder">Order</h2>
+<h3 id="tocSorder">Order</h3>
 
 <p><a id="schemaorder"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -6826,7 +7170,7 @@ api_key
 </tr>
 </tbody></table>
 
-<h2 id="tocSordercreation">OrderCreation</h2>
+<h3 id="tocSordercreation">OrderCreation</h3>
 
 <p><a id="schemaordercreation"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -7810,7 +8154,7 @@ api_key
 </tr>
 </tbody></table>
 
-<h2 id="tocSorderreport">OrderReport</h2>
+<h3 id="tocSorderreport">OrderReport</h3>
 
 <p><a id="schemaorderreport"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8058,7 +8402,7 @@ api_key
 </tr>
 </tbody></table>
 
-<h2 id="tocSorderreports">OrderReports</h2>
+<h3 id="tocSorderreports">OrderReports</h3>
 
 <p><a id="schemaorderreports"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8161,7 +8505,7 @@ api_key
 </tr>
 </tbody></table>
 
-<h2 id="tocSorderbundlespromo">OrderBundlesPromo</h2>
+<h3 id="tocSorderbundlespromo">OrderBundlesPromo</h3>
 
 <p><a id="schemaorderbundlespromo"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8301,7 +8645,7 @@ api_key
 </tr>
 </tbody></table>
 
-<h2 id="tocSorderremovebundle">OrderRemoveBundle</h2>
+<h3 id="tocSorderremovebundle">OrderRemoveBundle</h3>
 
 <p><a id="schemaorderremovebundle"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8362,7 +8706,7 @@ api_key
 </tr>
 </tbody></table>
 
-<h2 id="tocSpusherauthrequest">PusherAuthRequest</h2>
+<h3 id="tocSpusherauthrequest">PusherAuthRequest</h3>
 
 <p><a id="schemapusherauthrequest"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8396,7 +8740,7 @@ api_key
 </tr>
 </tbody></table>
 
-<h2 id="tocSpusherauthresponse">PusherAuthResponse</h2>
+<h3 id="tocSpusherauthresponse">PusherAuthResponse</h3>
 
 <p><a id="schemapusherauthresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
