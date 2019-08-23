@@ -1,9 +1,10 @@
 ---
 title: Order service
 language_tabs:
-  - ruby: Ruby
-  - python: Python
   - javascript: JavaScript
+  - javascript--nodejs: Node.JS
+  - python: Python
+  - ruby: Ruby
 toc_footers: []
 includes: []
 search: true
@@ -29,41 +30,11 @@ Base URLs:
 
 <h1 id="order-service-healthcheck">Healthcheck</h1>
 
-## Check API healthcheck
+## GET_healthcheck
 
 <a id="opIdGET_healthcheck"></a>
 
 > Code samples
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json; charset=utf-8'
-}
-
-result = RestClient.get '/healthcheck',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json; charset=utf-8'
-}
-
-r = requests.get('/healthcheck', params={
-
-}, headers = headers)
-
-print r.json()
-
-```
 
 ```javascript
 var headers = {
@@ -83,7 +54,61 @@ $.ajax({
 
 ```
 
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
+  'Accept':'application/json; charset=utf-8'
+
+};
+
+fetch('/healthcheck',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json; charset=utf-8'
+}
+
+r = requests.get('/healthcheck', params={
+
+}, headers = headers)
+
+print r.json()
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json; charset=utf-8'
+}
+
+result = RestClient.get '/healthcheck',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
 `GET /healthcheck`
+
+*Check API healthcheck*
 
 > Example responses
 
@@ -93,19 +118,19 @@ $.ajax({
 {}
 ```
 
-<h3 id="check-api-healthcheck-responses">Responses</h3>
+<h3 id="get_healthcheck-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
 
-<h3 id="check-api-healthcheck-responseschema">Response Schema</h3>
+<h3 id="get_healthcheck-responseschema">Response Schema</h3>
 
 <aside class="success">
 This operation does not require authentication
 </aside>
 
-<h1 id="order-service-commands">commands</h1>
+<h1 id="order-service-order">Order</h1>
 
 ## CommandsPlaceOrder
 
@@ -113,23 +138,308 @@ This operation does not require authentication
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```javascript
+var headers = {
+  'Content-Type':'application/json; charset=utf-8',
+  'Accept':'application/json; charset=utf-8',
+  'x-requested-from':'string',
+  'store':'string',
+  'authorization':'API_KEY'
 
-headers = {
-  'Content-Type' => 'application/json; charset=utf-8',
-  'Accept' => 'application/json; charset=utf-8',
-  'x-requested-from' => 'string',
-  'store' => 'string',
-  'authorization' => 'API_KEY'
-}
+};
 
-result = RestClient.post '/v1/commands/create',
-  params: {
-  }, headers: headers
+$.ajax({
+  url: '/v1/commands/create',
+  method: 'post',
 
-p JSON.parse(result)
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "required": [
+    "payment",
+    "user",
+    "bundles"
+  ],
+  "type": "object",
+  "properties": {
+    "payment": {
+      "required": [
+        "price",
+        "totalAmount"
+      ],
+      "type": "object",
+      "properties": {
+        "price": {
+          "type": "number"
+        },
+        "vatAmount": {
+          "type": "number"
+        },
+        "discount": {
+          "type": "number"
+        },
+        "subtotalAmount": {
+          "type": "number"
+        },
+        "totalAmount": {
+          "type": "number"
+        }
+      }
+    },
+    "takeaway": {
+      "type": "boolean"
+    },
+    "isAsap": {
+      "type": "boolean"
+    },
+    "timeSlot": {
+      "properties": {
+        "uuid": {
+          "type": "string"
+        },
+        "slot": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "uuid",
+        "slot"
+      ],
+      "type": "object"
+    },
+    "table": {
+      "type": "string"
+    },
+    "note": {
+      "type": "string"
+    },
+    "user": {
+      "required": [
+        "name",
+        "email",
+        "extUserUUID"
+      ],
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "extUserUUID": {
+          "type": "string"
+        }
+      }
+    },
+    "bundles": {
+      "type": "array",
+      "items": {
+        "required": [
+          "uuid",
+          "basketUUID",
+          "vatAmount",
+          "taxExempt",
+          "vatRateEatIn",
+          "vatRateTakeaway",
+          "menuUUID",
+          "category",
+          "name",
+          "price",
+          "finalPrice",
+          "subtotalAmount",
+          "hasModifiers",
+          "type",
+          "straightToPickup",
+          "isGrouped",
+          "itemTypes"
+        ],
+        "type": "object",
+        "properties": {
+          "uuid": {
+            "type": "string"
+          },
+          "vatAmount": {
+            "type": "number"
+          },
+          "taxExempt": {
+            "type": "number"
+          },
+          "vatRateEatIn": {
+            "type": "number"
+          },
+          "vatRateTakeaway": {
+            "type": "number"
+          },
+          "promotion": {
+            "required": [
+              "uuid",
+              "name",
+              "value",
+              "type"
+            ],
+            "type": "object",
+            "properties": {
+              "uuid": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "value": {
+                "type": "number"
+              },
+              "type": {
+                "type": "string"
+              }
+            }
+          },
+          "basketUUID": {
+            "type": "string"
+          },
+          "menuUUID": {
+            "type": "string"
+          },
+          "category": {
+            "required": [
+              "uuid",
+              "name"
+            ],
+            "type": "object",
+            "properties": {
+              "uuid": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          "name": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          },
+          "priceEatIn": {
+            "type": "number"
+          },
+          "finalPrice": {
+            "type": "number"
+          },
+          "discount": {
+            "type": "number"
+          },
+          "subtotalAmount": {
+            "type": "number"
+          },
+          "totalAmount": {
+            "type": "number"
+          },
+          "hasModifiers": {
+            "type": "boolean"
+          },
+          "hasEatInPrice": {
+            "type": "boolean"
+          },
+          "type": {
+            "type": "string"
+          },
+          "straightToPickup": {
+            "type": "boolean"
+          },
+          "isGrouped": {
+            "type": "boolean"
+          },
+          "itemTypes": {
+            "type": "array",
+            "items": {
+              "required": [
+                "uuid",
+                "name",
+                "ticketGroup",
+                "maxRestriction",
+                "minRestriction",
+                "items"
+              ],
+              "type": "object",
+              "properties": {
+                "uuid": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "kitchenZone": {
+                  "required": [
+                    "uuid",
+                    "name",
+                    "slug",
+                    "sortOrderOnPrint",
+                    "capacity"
+                  ],
+                  "properties": {
+                    "uuid": {},
+                    "name": {},
+                    "slug": {},
+                    "sortOrderOnPrint": {},
+                    "capacity": {}
+                  },
+                  "type": "object"
+                },
+                "ticketGroup": {
+                  "type": "string"
+                },
+                "maxRestriction": {
+                  "type": "integer"
+                },
+                "minRestriction": {
+                  "type": "integer"
+                },
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "required": [],
+                    "type": "object",
+                    "properties": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}';
+const headers = {
+  'Content-Type':'application/json; charset=utf-8',
+  'Accept':'application/json; charset=utf-8',
+  'x-requested-from':'string',
+  'store':'string',
+  'authorization':'API_KEY'
+
+};
+
+fetch('/v1/commands/create',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -151,25 +461,23 @@ print r.json()
 
 ```
 
-```javascript
-var headers = {
-  'Content-Type':'application/json; charset=utf-8',
-  'Accept':'application/json; charset=utf-8',
-  'x-requested-from':'string',
-  'store':'string',
-  'authorization':'API_KEY'
+```ruby
+require 'rest-client'
+require 'json'
 
-};
+headers = {
+  'Content-Type' => 'application/json; charset=utf-8',
+  'Accept' => 'application/json; charset=utf-8',
+  'x-requested-from' => 'string',
+  'store' => 'string',
+  'authorization' => 'API_KEY'
+}
 
-$.ajax({
-  url: '/v1/commands/create',
-  method: 'post',
+result = RestClient.post '/v1/commands/create',
+  params: {
+  }, headers: headers
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
+p JSON.parse(result)
 
 ```
 
@@ -781,23 +1089,55 @@ api_key
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```javascript
+var headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'x-requested-from':'string',
+  'store':'string',
+  'authorization':'API_KEY'
 
-headers = {
-  'Content-Type' => 'application/json',
-  'Accept' => 'application/json',
-  'x-requested-from' => 'string',
-  'store' => 'string',
-  'authorization' => 'API_KEY'
-}
+};
 
-result = RestClient.post '/v1/commands/email-receipt',
-  params: {
-  }, headers: headers
+$.ajax({
+  url: '/v1/commands/email-receipt',
+  method: 'post',
 
-p JSON.parse(result)
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "orderUUID": "string",
+  "email": "string",
+  "optIn": true
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'x-requested-from':'string',
+  'store':'string',
+  'authorization':'API_KEY'
+
+};
+
+fetch('/v1/commands/email-receipt',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -819,25 +1159,23 @@ print r.json()
 
 ```
 
-```javascript
-var headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json',
-  'x-requested-from':'string',
-  'store':'string',
-  'authorization':'API_KEY'
+```ruby
+require 'rest-client'
+require 'json'
 
-};
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json',
+  'x-requested-from' => 'string',
+  'store' => 'string',
+  'authorization' => 'API_KEY'
+}
 
-$.ajax({
-  url: '/v1/commands/email-receipt',
-  method: 'post',
+result = RestClient.post '/v1/commands/email-receipt',
+  params: {
+  }, headers: headers
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
+p JSON.parse(result)
 
 ```
 
@@ -893,20 +1231,45 @@ api_key
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```javascript
+var headers = {
+  'Accept':'application/json',
+  'authorization':'API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'authorization' => 'API_KEY'
-}
+};
 
-result = RestClient.put '/v1/commands/cancel/{entityUUID}',
-  params: {
-  }, headers: headers
+$.ajax({
+  url: '/v1/commands/cancel/{entityUUID}',
+  method: 'put',
 
-p JSON.parse(result)
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
+  'Accept':'application/json',
+  'authorization':'API_KEY'
+
+};
+
+fetch('/v1/commands/cancel/{entityUUID}',
+{
+  method: 'PUT',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -925,22 +1288,20 @@ print r.json()
 
 ```
 
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'authorization':'API_KEY'
+```ruby
+require 'rest-client'
+require 'json'
 
-};
+headers = {
+  'Accept' => 'application/json',
+  'authorization' => 'API_KEY'
+}
 
-$.ajax({
-  url: '/v1/commands/cancel/{entityUUID}',
-  method: 'put',
+result = RestClient.put '/v1/commands/cancel/{entityUUID}',
+  params: {
+  }, headers: headers
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
+p JSON.parse(result)
 
 ```
 
@@ -983,21 +1344,50 @@ api_key
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```javascript
+var headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'authorization':'API_KEY'
 
-headers = {
-  'Content-Type' => 'application/json',
-  'Accept' => 'application/json',
-  'authorization' => 'API_KEY'
-}
+};
 
-result = RestClient.put '/v1/commands/change-status/{entityUUID}',
-  params: {
-  }, headers: headers
+$.ajax({
+  url: '/v1/commands/change-status/{entityUUID}',
+  method: 'put',
 
-p JSON.parse(result)
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "transitionAlias": "string",
+  "orderStatus": "string"
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'authorization':'API_KEY'
+
+};
+
+fetch('/v1/commands/change-status/{entityUUID}',
+{
+  method: 'PUT',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1017,23 +1407,21 @@ print r.json()
 
 ```
 
-```javascript
-var headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json',
-  'authorization':'API_KEY'
+```ruby
+require 'rest-client'
+require 'json'
 
-};
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json',
+  'authorization' => 'API_KEY'
+}
 
-$.ajax({
-  url: '/v1/commands/change-status/{entityUUID}',
-  method: 'put',
+result = RestClient.put '/v1/commands/change-status/{entityUUID}',
+  params: {
+  }, headers: headers
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
+p JSON.parse(result)
 
 ```
 
@@ -1086,21 +1474,53 @@ api_key
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```javascript
+var headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json; charset=utf-8',
+  'authorization':'API_KEY'
 
-headers = {
-  'Content-Type' => 'application/json',
-  'Accept' => 'application/json; charset=utf-8',
-  'authorization' => 'API_KEY'
-}
+};
 
-result = RestClient.put '/v1/commands/payment-status/{orderUUID}',
-  params: {
-  }, headers: headers
+$.ajax({
+  url: '/v1/commands/payment-status/{orderUUID}',
+  method: 'put',
 
-p JSON.parse(result)
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "provider": "string",
+  "currency": "string",
+  "status": "string",
+  "till": "string",
+  "meta": "string"
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json; charset=utf-8',
+  'authorization':'API_KEY'
+
+};
+
+fetch('/v1/commands/payment-status/{orderUUID}',
+{
+  method: 'PUT',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1120,23 +1540,21 @@ print r.json()
 
 ```
 
-```javascript
-var headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json; charset=utf-8',
-  'authorization':'API_KEY'
+```ruby
+require 'rest-client'
+require 'json'
 
-};
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json; charset=utf-8',
+  'authorization' => 'API_KEY'
+}
 
-$.ajax({
-  url: '/v1/commands/payment-status/{orderUUID}',
-  method: 'put',
+result = RestClient.put '/v1/commands/payment-status/{orderUUID}',
+  params: {
+  }, headers: headers
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
+p JSON.parse(result)
 
 ```
 
@@ -1205,22 +1623,74 @@ api_key
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```javascript
+var headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'store':'string',
+  'authorization':'API_KEY'
 
-headers = {
-  'Content-Type' => 'application/json',
-  'Accept' => 'application/json',
-  'store' => 'string',
-  'authorization' => 'API_KEY'
-}
+};
 
-result = RestClient.put '/v1/commands/change-promo/{entityUUID}',
-  params: {
-  }, headers: headers
+$.ajax({
+  url: '/v1/commands/change-promo/{entityUUID}',
+  method: 'put',
 
-p JSON.parse(result)
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "bundles": [
+    {
+      "uuid": "string",
+      "finalPrice": 0,
+      "subtotalAmount": 0,
+      "promotion": {
+        "uuid": "string",
+        "name": "string",
+        "value": 0,
+        "type": "string"
+      },
+      "itemTypes": [
+        {
+          "items": [
+            {
+              "itemUUID": "string",
+              "finalPrice": 0,
+              "subtotalAmount": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'store':'string',
+  'authorization':'API_KEY'
+
+};
+
+fetch('/v1/commands/change-promo/{entityUUID}',
+{
+  method: 'PUT',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1241,24 +1711,22 @@ print r.json()
 
 ```
 
-```javascript
-var headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json',
-  'store':'string',
-  'authorization':'API_KEY'
+```ruby
+require 'rest-client'
+require 'json'
 
-};
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json',
+  'store' => 'string',
+  'authorization' => 'API_KEY'
+}
 
-$.ajax({
-  url: '/v1/commands/change-promo/{entityUUID}',
-  method: 'put',
+result = RestClient.put '/v1/commands/change-promo/{entityUUID}',
+  params: {
+  }, headers: headers
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
+p JSON.parse(result)
 
 ```
 
@@ -1334,21 +1802,49 @@ api_key
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```javascript
+var headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'authorization':'API_KEY'
 
-headers = {
-  'Content-Type' => 'application/json',
-  'Accept' => 'application/json',
-  'authorization' => 'API_KEY'
-}
+};
 
-result = RestClient.put '/v1/commands/takeaway-status/{entityUUID}',
-  params: {
-  }, headers: headers
+$.ajax({
+  url: '/v1/commands/takeaway-status/{entityUUID}',
+  method: 'put',
 
-p JSON.parse(result)
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "status": true
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'authorization':'API_KEY'
+
+};
+
+fetch('/v1/commands/takeaway-status/{entityUUID}',
+{
+  method: 'PUT',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1368,23 +1864,21 @@ print r.json()
 
 ```
 
-```javascript
-var headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json',
-  'authorization':'API_KEY'
+```ruby
+require 'rest-client'
+require 'json'
 
-};
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json',
+  'authorization' => 'API_KEY'
+}
 
-$.ajax({
-  url: '/v1/commands/takeaway-status/{entityUUID}',
-  method: 'put',
+result = RestClient.put '/v1/commands/takeaway-status/{entityUUID}',
+  params: {
+  }, headers: headers
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
+p JSON.parse(result)
 
 ```
 
@@ -1437,21 +1931,56 @@ api_key
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```javascript
+var headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'authorization':'API_KEY'
 
-headers = {
-  'Content-Type' => 'application/json',
-  'Accept' => 'application/json',
-  'authorization' => 'API_KEY'
-}
+};
 
-result = RestClient.put '/v1/commands/remove-bundles/{orderUUID}',
-  params: {
-  }, headers: headers
+$.ajax({
+  url: '/v1/commands/remove-bundles/{orderUUID}',
+  method: 'put',
 
-p JSON.parse(result)
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "basketUUIDs": [
+    "string"
+  ],
+  "payment": {
+    "price": 0,
+    "totalAmount": 0,
+    "subtotalAmount": 0
+  }
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'authorization':'API_KEY'
+
+};
+
+fetch('/v1/commands/remove-bundles/{orderUUID}',
+{
+  method: 'PUT',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1471,23 +2000,21 @@ print r.json()
 
 ```
 
-```javascript
-var headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json',
-  'authorization':'API_KEY'
+```ruby
+require 'rest-client'
+require 'json'
 
-};
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json',
+  'authorization' => 'API_KEY'
+}
 
-$.ajax({
-  url: '/v1/commands/remove-bundles/{orderUUID}',
-  method: 'put',
+result = RestClient.put '/v1/commands/remove-bundles/{orderUUID}',
+  params: {
+  }, headers: headers
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
+p JSON.parse(result)
 
 ```
 
@@ -1581,30 +2108,53 @@ To perform this operation, you must be authenticated by means of one of the foll
 api_key
 </aside>
 
-<h1 id="order-service-queries">queries</h1>
-
 ## QueriesGetOrdersByStatuses
 
 <a id="opIdQueriesGetOrdersByStatuses"></a>
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```javascript
+var headers = {
+  'Accept':'application/json',
+  'store':'string',
+  'authorization':'API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'store' => 'string',
-  'authorization' => 'API_KEY'
-}
+};
 
-result = RestClient.get '/v1/queries/orders',
-  params: {
-  'statuses[]' => 'array[string]'
-}, headers: headers
+$.ajax({
+  url: '/v1/queries/orders',
+  method: 'get',
+  data: '?statuses%5B%5D=string',
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
 
-p JSON.parse(result)
+```
+
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
+  'Accept':'application/json',
+  'store':'string',
+  'authorization':'API_KEY'
+
+};
+
+fetch('/v1/queries/orders?statuses%5B%5D=string',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1626,23 +2176,22 @@ print r.json()
 
 ```
 
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'store':'string',
-  'authorization':'API_KEY'
+```ruby
+require 'rest-client'
+require 'json'
 
-};
+headers = {
+  'Accept' => 'application/json',
+  'store' => 'string',
+  'authorization' => 'API_KEY'
+}
 
-$.ajax({
-  url: '/v1/queries/orders',
-  method: 'get',
-  data: '?statuses%5B%5D=string',
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
+result = RestClient.get '/v1/queries/orders',
+  params: {
+  'statuses[]' => 'array[string]'
+}, headers: headers
+
+p JSON.parse(result)
 
 ```
 
@@ -1691,21 +2240,47 @@ api_key
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```javascript
+var headers = {
+  'Accept':'application/json',
+  'store':'string',
+  'authorization':'API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'store' => 'string',
-  'authorization' => 'API_KEY'
-}
+};
 
-result = RestClient.get '/v1/queries/orders/history',
-  params: {
-  }, headers: headers
+$.ajax({
+  url: '/v1/queries/orders/history',
+  method: 'get',
 
-p JSON.parse(result)
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
+  'Accept':'application/json',
+  'store':'string',
+  'authorization':'API_KEY'
+
+};
+
+fetch('/v1/queries/orders/history',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1725,23 +2300,21 @@ print r.json()
 
 ```
 
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'store':'string',
-  'authorization':'API_KEY'
+```ruby
+require 'rest-client'
+require 'json'
 
-};
+headers = {
+  'Accept' => 'application/json',
+  'store' => 'string',
+  'authorization' => 'API_KEY'
+}
 
-$.ajax({
-  url: '/v1/queries/orders/history',
-  method: 'get',
+result = RestClient.get '/v1/queries/orders/history',
+  params: {
+  }, headers: headers
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
+p JSON.parse(result)
 
 ```
 
@@ -1818,20 +2391,45 @@ api_key
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```javascript
+var headers = {
+  'Accept':'application/json',
+  'authorization':'API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'authorization' => 'API_KEY'
-}
+};
 
-result = RestClient.get '/v1/queries/orders/user-history',
-  params: {
-  }, headers: headers
+$.ajax({
+  url: '/v1/queries/orders/user-history',
+  method: 'get',
 
-p JSON.parse(result)
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
+  'Accept':'application/json',
+  'authorization':'API_KEY'
+
+};
+
+fetch('/v1/queries/orders/user-history',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1850,22 +2448,20 @@ print r.json()
 
 ```
 
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'authorization':'API_KEY'
+```ruby
+require 'rest-client'
+require 'json'
 
-};
+headers = {
+  'Accept' => 'application/json',
+  'authorization' => 'API_KEY'
+}
 
-$.ajax({
-  url: '/v1/queries/orders/user-history',
-  method: 'get',
+result = RestClient.get '/v1/queries/orders/user-history',
+  params: {
+  }, headers: headers
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
+p JSON.parse(result)
 
 ```
 
@@ -1966,20 +2562,45 @@ api_key
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```javascript
+var headers = {
+  'Accept':'application/json; charset=utf-8',
+  'authorization':'API_KEY'
 
-headers = {
-  'Accept' => 'application/json; charset=utf-8',
-  'authorization' => 'API_KEY'
-}
+};
 
-result = RestClient.get '/v1/queries/find/{uuid}',
-  params: {
-  }, headers: headers
+$.ajax({
+  url: '/v1/queries/find/{uuid}',
+  method: 'get',
 
-p JSON.parse(result)
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
+  'Accept':'application/json; charset=utf-8',
+  'authorization':'API_KEY'
+
+};
+
+fetch('/v1/queries/find/{uuid}',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1998,22 +2619,20 @@ print r.json()
 
 ```
 
-```javascript
-var headers = {
-  'Accept':'application/json; charset=utf-8',
-  'authorization':'API_KEY'
+```ruby
+require 'rest-client'
+require 'json'
 
-};
+headers = {
+  'Accept' => 'application/json; charset=utf-8',
+  'authorization' => 'API_KEY'
+}
 
-$.ajax({
-  url: '/v1/queries/find/{uuid}',
-  method: 'get',
+result = RestClient.get '/v1/queries/find/{uuid}',
+  params: {
+  }, headers: headers
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
+p JSON.parse(result)
 
 ```
 
@@ -2356,29 +2975,53 @@ To perform this operation, you must be authenticated by means of one of the foll
 api_key
 </aside>
 
-<h1 id="order-service-reports">reports</h1>
-
 ## GetReportsByStore
 
 <a id="opIdGetReportsByStore"></a>
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```javascript
+var headers = {
+  'Accept':'application/json',
+  'store':'string',
+  'authorization':'API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'store' => 'string',
-  'authorization' => 'API_KEY'
-}
+};
 
-result = RestClient.get '/v1/reports',
-  params: {
-  }, headers: headers
+$.ajax({
+  url: '/v1/reports',
+  method: 'get',
 
-p JSON.parse(result)
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
+  'Accept':'application/json',
+  'store':'string',
+  'authorization':'API_KEY'
+
+};
+
+fetch('/v1/reports',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -2398,23 +3041,21 @@ print r.json()
 
 ```
 
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'store':'string',
-  'authorization':'API_KEY'
+```ruby
+require 'rest-client'
+require 'json'
 
-};
+headers = {
+  'Accept' => 'application/json',
+  'store' => 'string',
+  'authorization' => 'API_KEY'
+}
 
-$.ajax({
-  url: '/v1/reports',
-  method: 'get',
+result = RestClient.get '/v1/reports',
+  params: {
+  }, headers: headers
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
+p JSON.parse(result)
 
 ```
 
@@ -2493,20 +3134,45 @@ api_key
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```javascript
+var headers = {
+  'Accept':'application/json',
+  'authorization':'API_KEY'
 
-headers = {
-  'Accept' => 'application/json',
-  'authorization' => 'API_KEY'
-}
+};
 
-result = RestClient.get '/v1/reports/{uuid}',
-  params: {
-  }, headers: headers
+$.ajax({
+  url: '/v1/reports/{uuid}',
+  method: 'get',
 
-p JSON.parse(result)
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+```javascript--nodejs
+const fetch = require('node-fetch');
+
+const headers = {
+  'Accept':'application/json',
+  'authorization':'API_KEY'
+
+};
+
+fetch('/v1/reports/{uuid}',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -2525,22 +3191,20 @@ print r.json()
 
 ```
 
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'authorization':'API_KEY'
+```ruby
+require 'rest-client'
+require 'json'
 
-};
+headers = {
+  'Accept' => 'application/json',
+  'authorization' => 'API_KEY'
+}
 
-$.ajax({
-  url: '/v1/reports/{uuid}',
-  method: 'get',
+result = RestClient.get '/v1/reports/{uuid}',
+  params: {
+  }, headers: headers
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
+p JSON.parse(result)
 
 ```
 
@@ -2626,22 +3290,51 @@ api_key
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```javascript
+var headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'store':'string',
+  'authorization':'API_KEY'
 
-headers = {
-  'Content-Type' => 'application/json',
-  'Accept' => 'application/json',
-  'store' => 'string',
-  'authorization' => 'API_KEY'
-}
+};
 
-result = RestClient.post '/v1/reports/generate-report',
-  params: {
-  }, headers: headers
+$.ajax({
+  url: '/v1/reports/generate-report',
+  method: 'post',
 
-p JSON.parse(result)
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "type": "string"
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'store':'string',
+  'authorization':'API_KEY'
+
+};
+
+fetch('/v1/reports/generate-report',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -2662,24 +3355,22 @@ print r.json()
 
 ```
 
-```javascript
-var headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json',
-  'store':'string',
-  'authorization':'API_KEY'
+```ruby
+require 'rest-client'
+require 'json'
 
-};
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json',
+  'store' => 'string',
+  'authorization' => 'API_KEY'
+}
 
-$.ajax({
-  url: '/v1/reports/generate-report',
-  method: 'post',
+result = RestClient.post '/v1/reports/generate-report',
+  params: {
+  }, headers: headers
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
+p JSON.parse(result)
 
 ```
 
@@ -2768,29 +3459,56 @@ To perform this operation, you must be authenticated by means of one of the foll
 api_key
 </aside>
 
-<h1 id="order-service-pusher">pusher</h1>
-
 ## Get Authorized
 
 <a id="opIdGet Authorized"></a>
 
 > Code samples
 
-```ruby
-require 'rest-client'
-require 'json'
+```javascript
+var headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'authorization':'API_KEY'
 
-headers = {
-  'Content-Type' => 'application/json',
-  'Accept' => 'application/json',
-  'authorization' => 'API_KEY'
-}
+};
 
-result = RestClient.post '/v1/pusher/auth',
-  params: {
-  }, headers: headers
+$.ajax({
+  url: '/v1/pusher/auth',
+  method: 'post',
 
-p JSON.parse(result)
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+```javascript--nodejs
+const fetch = require('node-fetch');
+const inputBody = '{
+  "socket_id": "string",
+  "channel_name": "string"
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'authorization':'API_KEY'
+
+};
+
+fetch('/v1/pusher/auth',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -2810,23 +3528,21 @@ print r.json()
 
 ```
 
-```javascript
-var headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json',
-  'authorization':'API_KEY'
+```ruby
+require 'rest-client'
+require 'json'
 
-};
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json',
+  'authorization' => 'API_KEY'
+}
 
-$.ajax({
-  url: '/v1/pusher/auth',
-  method: 'post',
+result = RestClient.post '/v1/pusher/auth',
+  params: {
+  }, headers: headers
 
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
+p JSON.parse(result)
 
 ```
 
@@ -2875,7 +3591,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 api_key
 </aside>
 
-# Schemas
+# Order Schemas
 
 <h2 id="tocSunautorizedexception">UnautorizedException</h2>
 

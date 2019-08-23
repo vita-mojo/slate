@@ -2,10 +2,10 @@
 title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
-  - javascript
+  - javascript: JavaScript
+  - javascript--nodejs: Node.JS
+  - python: Python
+  - ruby: Ruby
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
