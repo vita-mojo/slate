@@ -251,13 +251,13 @@
                     <a href="#order-service-commands" class="toc-h2 toc-link" data-title="commands">commands</a>
                       <ul class="toc-list-h3">
                           <li>
-                            <a href="#commandsplaceorder" class="toc-h3 toc-link" data-title="CommandsPlaceOrder">CommandsPlaceOrder</a>
+                            <a href="#place-order" class="toc-h3 toc-link" data-title="Place Order">Place Order</a>
                               <ul class="toc-list-h4">
                                   <li>
-                                    <a href="#commandsplaceorder-parameters" class="toc-h4 toc-link" data-title="Parameters">Parameters</a>
+                                    <a href="#place-order-parameters" class="toc-h4 toc-link" data-title="Parameters">Parameters</a>
                                   </li>
                                   <li>
-                                    <a href="#commandsplaceorder-responses" class="toc-h4 toc-link" data-title="Responses">Responses</a>
+                                    <a href="#place-order-responses" class="toc-h4 toc-link" data-title="Responses">Responses</a>
                                   </li>
                               </ul>
                           </li>
@@ -1484,11 +1484,7 @@ headingLevel: 2</p>
 <p>Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.</p>
 </blockquote>
 
-<p>order-service backend api endpoints documentations</p>
-
-<p>Base URLs:</p>
-
-<p>License: MIT</p>
+<p>This service deals with everythign to do with Orders. It handles, placing and updating orders as well as retrieving and serching for orders.</p>
 
 <h2 id="order-service-healthcheck">Healthcheck</h2>
 <h3 id='get_healthcheck'>GET_healthcheck</h3>
@@ -1562,7 +1558,7 @@ curl -X GET /healthcheck <span class="se">\</span>
 </code></pre>
 <p><code>GET /healthcheck</code></p>
 
-<p><em>Check API healthcheck</em></p>
+<p><em>Check API health</em></p>
 
 <blockquote>
 <p>Example responses</p>
@@ -1596,8 +1592,8 @@ This operation does not require authentication
 </aside>
 
 <h2 id="order-service-commands">commands</h2>
-<h3 id='commandsplaceorder'>CommandsPlaceOrder</h3>
-<p><a id="opIdCommandsPlaceOrder"></a></p>
+<h3 id='place-order'>Place Order</h3>
+<p><a id="opIdPlace Order"></a></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -1607,15 +1603,13 @@ curl -X POST /v1/commands/create <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json; charset=utf-8'</span> <span class="se">\</span>
   -H <span class="s1">'Accept: application/json; charset=utf-8'</span> <span class="se">\</span>
   -H <span class="s1">'x-requested-from: string'</span> <span class="se">\</span>
-  -H <span class="s1">'store: string'</span> <span class="se">\</span>
-  -H <span class="s1">'authorization: API_KEY'</span>
+  -H <span class="s1">'store: string'</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json; charset=utf-8'</span><span class="p">,</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json; charset=utf-8'</span><span class="p">,</span>
   <span class="s1">'x-requested-from'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'store'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'authorization'</span><span class="p">:</span><span class="s1">'API_KEY'</span>
+  <span class="s1">'store'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -1892,8 +1886,7 @@ curl -X POST /v1/commands/create <span class="se">\</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json; charset=utf-8'</span><span class="p">,</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json; charset=utf-8'</span><span class="p">,</span>
   <span class="s1">'x-requested-from'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'store'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'authorization'</span><span class="p">:</span><span class="s1">'API_KEY'</span>
+  <span class="s1">'store'</span><span class="p">:</span><span class="s1">'string'</span>
 
 <span class="p">};</span>
 
@@ -1914,8 +1907,7 @@ curl -X POST /v1/commands/create <span class="se">\</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json; charset=utf-8'</span><span class="p">,</span>
   <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json; charset=utf-8'</span><span class="p">,</span>
   <span class="s">'x-requested-from'</span><span class="p">:</span> <span class="s">'string'</span><span class="p">,</span>
-  <span class="s">'store'</span><span class="p">:</span> <span class="s">'string'</span><span class="p">,</span>
-  <span class="s">'authorization'</span><span class="p">:</span> <span class="s">'API_KEY'</span>
+  <span class="s">'store'</span><span class="p">:</span> <span class="s">'string'</span>
 <span class="p">}</span>
 
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">'/v1/commands/create'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
@@ -1931,8 +1923,7 @@ curl -X POST /v1/commands/create <span class="se">\</span>
   <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json; charset=utf-8'</span><span class="p">,</span>
   <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json; charset=utf-8'</span><span class="p">,</span>
   <span class="s1">'x-requested-from'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'store'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'authorization'</span> <span class="o">=&gt;</span> <span class="s1">'API_KEY'</span>
+  <span class="s1">'store'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span>
 <span class="p">}</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'/v1/commands/create'</span><span class="p">,</span>
@@ -1943,6 +1934,8 @@ curl -X POST /v1/commands/create <span class="se">\</span>
 
 </code></pre>
 <p><code>POST /v1/commands/create</code></p>
+
+<p><em>Use this enpoint to create an order in the system</em></p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -2206,7 +2199,7 @@ curl -X POST /v1/commands/create <span class="se">\</span>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h4 id="commandsplaceorder-parameters">Parameters</h4>
+<h4 id="place-order-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -2552,7 +2545,7 @@ curl -X POST /v1/commands/create <span class="se">\</span>
   </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h4 id="commandsplaceorder-responses">Responses</h4>
+<h4 id="place-order-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -2565,7 +2558,7 @@ curl -X POST /v1/commands/create <span class="se">\</span>
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Response Order entity</td>
+<td>Returns newly created Order entity</td>
 <td><a href="#schemaorder">Order</a></td>
 </tr>
 <tr>
@@ -2594,9 +2587,8 @@ curl -X POST /v1/commands/create <span class="se">\</span>
 </tr>
 </tbody></table>
 
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-api_key
+<aside class="success">
+This operation does not require authentication
 </aside>
 <h3 id='commandssendemailreceipt'>CommandsSendEmailReceipt</h3>
 <p><a id="opIdCommandsSendEmailReceipt"></a></p>
@@ -9387,8 +9379,6 @@ headingLevel: 2</p>
 </blockquote>
 
 <p>The Catalog Service API Documentation</p>
-
-<p>Base URLs:</p>
 
 <h2 id="catalog-service-default">Default</h2>
 <h3 id='get_healthcheck'>GET_healthcheck</h3>
