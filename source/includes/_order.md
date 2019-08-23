@@ -18,11 +18,7 @@ headingLevel: 2
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
-order-service backend api endpoints documentations
-
-Base URLs:
-
- License: MIT
+This service deals with everythign to do with Orders. It handles, placing and updating orders as well as retrieving and serching for orders.
 
 <h2 id="order-service-healthcheck">Healthcheck</h2>
 
@@ -111,7 +107,7 @@ p JSON.parse(result)
 
 `GET /healthcheck`
 
-*Check API healthcheck*
+*Check API health*
 
 > Example responses
 
@@ -135,9 +131,9 @@ This operation does not require authentication
 
 <h2 id="order-service-commands">commands</h2>
 
-### CommandsPlaceOrder
+### Place Order
 
-<a id="opIdCommandsPlaceOrder"></a>
+<a id="opIdPlace Order"></a>
 
 > Code samples
 
@@ -147,8 +143,7 @@ curl -X POST /v1/commands/create \
   -H 'Content-Type: application/json; charset=utf-8' \
   -H 'Accept: application/json; charset=utf-8' \
   -H 'x-requested-from: string' \
-  -H 'store: string' \
-  -H 'authorization: API_KEY'
+  -H 'store: string'
 
 ```
 
@@ -157,8 +152,7 @@ var headers = {
   'Content-Type':'application/json; charset=utf-8',
   'Accept':'application/json; charset=utf-8',
   'x-requested-from':'string',
-  'store':'string',
-  'authorization':'API_KEY'
+  'store':'string'
 
 };
 
@@ -438,8 +432,7 @@ const headers = {
   'Content-Type':'application/json; charset=utf-8',
   'Accept':'application/json; charset=utf-8',
   'x-requested-from':'string',
-  'store':'string',
-  'authorization':'API_KEY'
+  'store':'string'
 
 };
 
@@ -463,8 +456,7 @@ headers = {
   'Content-Type': 'application/json; charset=utf-8',
   'Accept': 'application/json; charset=utf-8',
   'x-requested-from': 'string',
-  'store': 'string',
-  'authorization': 'API_KEY'
+  'store': 'string'
 }
 
 r = requests.post('/v1/commands/create', params={
@@ -483,8 +475,7 @@ headers = {
   'Content-Type' => 'application/json; charset=utf-8',
   'Accept' => 'application/json; charset=utf-8',
   'x-requested-from' => 'string',
-  'store' => 'string',
-  'authorization' => 'API_KEY'
+  'store' => 'string'
 }
 
 result = RestClient.post '/v1/commands/create',
@@ -496,6 +487,8 @@ p JSON.parse(result)
 ```
 
 `POST /v1/commands/create`
+
+*Use this enpoint to create an order in the system*
 
 > Body parameter
 
@@ -760,7 +753,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="commandsplaceorder-parameters">Parameters</h4>
+<h4 id="place-order-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1082,19 +1075,18 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="commandsplaceorder-responses">Responses</h4>
+<h4 id="place-order-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Response Order entity|[Order](#schemaorder)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Returns newly created Order entity|[Order](#schemaorder)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|[BadRequest](#schemabadrequest)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unautorized|[UnautorizedException](#schemaunautorizedexception)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not found|[NotFound](#schemanotfound)|
 |503|[Service Unavailable](https://tools.ietf.org/html/rfc7231#section-6.6.4)|Service unavailable|[ServiceUnavailable](#schemaserviceunavailable)|
 
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-api_key
+<aside class="success">
+This operation does not require authentication
 </aside>
 
 ### CommandsSendEmailReceipt

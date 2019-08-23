@@ -20,8 +20,6 @@ headingLevel: 2
 
 The Catalog Service API Documentation
 
-Base URLs:
-
 <h2 id="catalog-service-default">Default</h2>
 
 ### GET_healthcheck
