@@ -100,9 +100,9 @@ This operation does not require authentication
 
 <h2 id="catalog-service-bundles">bundles</h2>
 
-### POST_bundles-validate
+### Validate Bundles
 
-<a id="opIdPOST_bundles-validate"></a>
+<a id="opIdValidate Bundles"></a>
 
 > Code samples
 
@@ -112,7 +112,8 @@ curl -X POST /bundles/validate \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'store: string' \
-  -H 'tenant: string'
+  -H 'tenant: string' \
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -121,7 +122,8 @@ var headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'store':'string',
-  'tenant':'string'
+  'tenant':'string',
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -209,7 +211,8 @@ const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'store':'string',
-  'tenant':'string'
+  'tenant':'string',
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -233,7 +236,8 @@ headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
   'store': 'string',
-  'tenant': 'string'
+  'tenant': 'string',
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.post('/bundles/validate', params={
@@ -252,7 +256,8 @@ headers = {
   'Content-Type' => 'application/json',
   'Accept' => 'application/json',
   'store' => 'string',
-  'tenant' => 'string'
+  'tenant' => 'string',
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.post '/bundles/validate',
@@ -264,6 +269,8 @@ p JSON.parse(result)
 ```
 
 `POST /bundles/validate`
+
+Deep integrations only! Validates a list of bundles. Checks if bundles are well formed (valid items, options, modifiers). Will also check pricing calculations are correct.
 
 > Body parameter
 
@@ -336,7 +343,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="post_bundles-validate-parameters">Parameters</h4>
+<h4 id="validate-bundles-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -364,7 +371,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="post_bundles-validate-responses">Responses</h4>
+<h4 id="validate-bundles-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -373,13 +380,14 @@ p JSON.parse(result)
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|none|[ForbiddenError](#schemaforbiddenerror)|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|none|[InternalServerError](#schemainternalservererror)|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER STAFF )
 </aside>
 
-### GET_bundles-bundleUUID
+### Get Bundle
 
-<a id="opIdGET_bundles-bundleUUID"></a>
+<a id="opIdGet Bundle"></a>
 
 > Code samples
 
@@ -477,7 +485,9 @@ p JSON.parse(result)
 
 `GET /bundles/{bundleUUID}`
 
-<h4 id="get_bundles-bundleuuid-parameters">Parameters</h4>
+Get Bundle (items or meals) information by UUID. Bundle rules (item types), valid items and modifier, rule prices etc.
+
+<h4 id="get-bundle-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -854,7 +864,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="get_bundles-bundleuuid-responses">Responses</h4>
+<h4 id="get-bundle-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1106,9 +1116,9 @@ This operation does not require authentication
 
 <h2 id="catalog-service-diets">diets</h2>
 
-### GET_diets
+### Get Diets
 
-<a id="opIdGET_diets"></a>
+<a id="opIdGet Diets"></a>
 
 > Code samples
 
@@ -1196,7 +1206,9 @@ p JSON.parse(result)
 
 `GET /diets`
 
-<h4 id="get_diets-parameters">Parameters</h4>
+Get a list of diets described in the system
+
+<h4 id="get-diets-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1231,7 +1243,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="get_diets-responses">Responses</h4>
+<h4 id="get-diets-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1247,9 +1259,9 @@ This operation does not require authentication
 
 <h2 id="catalog-service-management">management</h2>
 
-### GET_management-bundles
+### Get Bundles
 
-<a id="opIdGET_management-bundles"></a>
+<a id="opIdGet Bundles"></a>
 
 > Code samples
 
@@ -1257,14 +1269,14 @@ This operation does not require authentication
 # You can also use wget
 curl -X GET /management/bundles \
   -H 'Accept: application/json' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -1285,7 +1297,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -1307,7 +1319,7 @@ fetch('/management/bundles',
 import requests
 headers = {
   'Accept': 'application/json',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/management/bundles', params={
@@ -1324,7 +1336,7 @@ require 'json'
 
 headers = {
   'Accept' => 'application/json',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/management/bundles',
@@ -1337,7 +1349,9 @@ p JSON.parse(result)
 
 `GET /management/bundles`
 
-<h4 id="get_management-bundles-parameters">Parameters</h4>
+Get a list of Bundles (meals or items) in the system. Bundle is an entity that can be sold on a menu. It can be either a simple Item (can of coke) or a complex Meal comprised of multiple Items sold together, like a build your own sallad for example.
+
+<h4 id="get-bundles-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1385,7 +1399,7 @@ p JSON.parse(result)
 ]
 ```
 
-<h4 id="get_management-bundles-responses">Responses</h4>
+<h4 id="get-bundles-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1395,7 +1409,7 @@ p JSON.parse(result)
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|none|[ForbiddenError](#schemaforbiddenerror)|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|none|[InternalServerError](#schemainternalservererror)|
 
-<h4 id="get_management-bundles-responseschema">Response Schema</h4>
+<h4 id="get-bundles-responseschema">Response Schema</h4>
 
 Status Code **200**
 
@@ -1427,12 +1441,12 @@ Status Code **200**
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER )
 </aside>
 
-### POST_management-bundles
+### Create Bundle
 
-<a id="opIdPOST_management-bundles"></a>
+<a id="opIdCreate Bundle"></a>
 
 > Code samples
 
@@ -1441,7 +1455,7 @@ bearer
 curl -X POST /management/bundles \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -1449,7 +1463,7 @@ curl -X POST /management/bundles \
 var headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -1527,7 +1541,7 @@ const inputBody = '{
 const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -1550,7 +1564,7 @@ import requests
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.post('/management/bundles', params={
@@ -1568,7 +1582,7 @@ require 'json'
 headers = {
   'Content-Type' => 'application/json',
   'Accept' => 'application/json',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.post '/management/bundles',
@@ -1580,6 +1594,8 @@ p JSON.parse(result)
 ```
 
 `POST /management/bundles`
+
+Deep integrations only! Create new Bundles (meal or item).
 
 > Body parameter
 
@@ -1643,7 +1659,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="post_management-bundles-parameters">Parameters</h4>
+<h4 id="create-bundle-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1698,7 +1714,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="post_management-bundles-responses">Responses</h4>
+<h4 id="create-bundle-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1710,7 +1726,7 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR )
 </aside>
 
 ### PATCH_management-bundles-bundleUUID-menus-status
@@ -1724,7 +1740,7 @@ bearer
 curl -X PATCH /management/bundles/{bundleUUID}/menus-status \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -1732,7 +1748,7 @@ curl -X PATCH /management/bundles/{bundleUUID}/menus-status \
 var headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -1756,7 +1772,7 @@ const inputBody = '{
 const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -1779,7 +1795,7 @@ import requests
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.patch('/management/bundles/{bundleUUID}/menus-status', params={
@@ -1797,7 +1813,7 @@ require 'json'
 headers = {
   'Content-Type' => 'application/json',
   'Accept' => 'application/json',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.patch '/management/bundles/{bundleUUID}/menus-status',
@@ -1850,12 +1866,12 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER )
 </aside>
 
-### GET_management-bundles-uuid
+### Get Bundle
 
-<a id="opIdGET_management-bundles-uuid"></a>
+<a id="opIdGet Bundle"></a>
 
 > Code samples
 
@@ -1863,14 +1879,14 @@ bearer
 # You can also use wget
 curl -X GET /management/bundles/{uuid} \
   -H 'Accept: application/json' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -1891,7 +1907,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -1913,7 +1929,7 @@ fetch('/management/bundles/{uuid}',
 import requests
 headers = {
   'Accept': 'application/json',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/management/bundles/{uuid}', params={
@@ -1930,7 +1946,7 @@ require 'json'
 
 headers = {
   'Accept' => 'application/json',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/management/bundles/{uuid}',
@@ -1943,7 +1959,9 @@ p JSON.parse(result)
 
 `GET /management/bundles/{uuid}`
 
-<h4 id="get_management-bundles-uuid-parameters">Parameters</h4>
+Get all Bundle (meal or item) information by UUID. Bundle rules (item types) with containing items, modifier information and pricing.
+
+<h4 id="get-bundle-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2169,7 +2187,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="get_management-bundles-uuid-responses">Responses</h4>
+<h4 id="get-bundle-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2181,12 +2199,12 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER )
 </aside>
 
-### PUT_management-bundles-uuid
+### Update Bundle
 
-<a id="opIdPUT_management-bundles-uuid"></a>
+<a id="opIdUpdate Bundle"></a>
 
 > Code samples
 
@@ -2195,7 +2213,7 @@ bearer
 curl -X PUT /management/bundles/{uuid} \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -2203,7 +2221,7 @@ curl -X PUT /management/bundles/{uuid} \
 var headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -2281,7 +2299,7 @@ const inputBody = '{
 const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -2304,7 +2322,7 @@ import requests
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.put('/management/bundles/{uuid}', params={
@@ -2322,7 +2340,7 @@ require 'json'
 headers = {
   'Content-Type' => 'application/json',
   'Accept' => 'application/json',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.put '/management/bundles/{uuid}',
@@ -2334,6 +2352,8 @@ p JSON.parse(result)
 ```
 
 `PUT /management/bundles/{uuid}`
+
+Deep integrations only! Partial Bundle (meal or item) update.
 
 > Body parameter
 
@@ -2397,7 +2417,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="put_management-bundles-uuid-parameters">Parameters</h4>
+<h4 id="update-bundle-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2415,7 +2435,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="put_management-bundles-uuid-responses">Responses</h4>
+<h4 id="update-bundle-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2426,12 +2446,12 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR )
 </aside>
 
-### GET_management-items
+### Get Items
 
-<a id="opIdGET_management-items"></a>
+<a id="opIdGet Items"></a>
 
 > Code samples
 
@@ -2439,14 +2459,14 @@ bearer
 # You can also use wget
 curl -X GET /management/items \
   -H 'Accept: application/json' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -2467,7 +2487,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -2489,7 +2509,7 @@ fetch('/management/items',
 import requests
 headers = {
   'Accept': 'application/json',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/management/items', params={
@@ -2506,7 +2526,7 @@ require 'json'
 
 headers = {
   'Accept' => 'application/json',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/management/items',
@@ -2519,7 +2539,9 @@ p JSON.parse(result)
 
 `GET /management/items`
 
-<h4 id="get_management-items-parameters">Parameters</h4>
+Get a list of Items in the system. Item is the base entity for describing sold food. It can be a resold packaged item like a can of coke or a comprising element for a Meal or Build your own (like avocado mash, or chicken thighs for example)
+
+<h4 id="get-items-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2663,7 +2685,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="get_management-items-responses">Responses</h4>
+<h4 id="get-items-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2675,12 +2697,12 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER )
 </aside>
 
-### POST_management-items
+### Create Item
 
-<a id="opIdPOST_management-items"></a>
+<a id="opIdCreate Item"></a>
 
 > Code samples
 
@@ -2689,7 +2711,7 @@ bearer
 curl -X POST /management/items \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -2697,7 +2719,7 @@ curl -X POST /management/items \
 var headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -2749,7 +2771,7 @@ const inputBody = '{
 const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -2772,7 +2794,7 @@ import requests
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.post('/management/items', params={
@@ -2790,7 +2812,7 @@ require 'json'
 headers = {
   'Content-Type' => 'application/json',
   'Accept' => 'application/json',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.post '/management/items',
@@ -2802,6 +2824,8 @@ p JSON.parse(result)
 ```
 
 `POST /management/items`
+
+Deep integrations only! Create new Item.
 
 > Body parameter
 
@@ -2839,7 +2863,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="post_management-items-parameters">Parameters</h4>
+<h4 id="create-item-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2853,7 +2877,7 @@ p JSON.parse(result)
 "string"
 ```
 
-<h4 id="post_management-items-responses">Responses</h4>
+<h4 id="create-item-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2865,12 +2889,12 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR )
 </aside>
 
-### GET_management-items-itemUUID
+### Get Item
 
-<a id="opIdGET_management-items-itemUUID"></a>
+<a id="opIdGet Item"></a>
 
 > Code samples
 
@@ -2878,14 +2902,14 @@ bearer
 # You can also use wget
 curl -X GET /management/items/{itemUUID} \
   -H 'Accept: application/json' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -2906,7 +2930,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -2928,7 +2952,7 @@ fetch('/management/items/{itemUUID}',
 import requests
 headers = {
   'Accept': 'application/json',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/management/items/{itemUUID}', params={
@@ -2945,7 +2969,7 @@ require 'json'
 
 headers = {
   'Accept' => 'application/json',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/management/items/{itemUUID}',
@@ -2958,7 +2982,9 @@ p JSON.parse(result)
 
 `GET /management/items/{itemUUID}`
 
-<h4 id="get_management-items-itemuuid-parameters">Parameters</h4>
+Get all Item information by UUID. Modifier, nutrition information and pricing.
+
+<h4 id="get-item-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -3214,7 +3240,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="get_management-items-itemuuid-responses">Responses</h4>
+<h4 id="get-item-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -3226,12 +3252,12 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER )
 </aside>
 
-### PATCH_management-items-itemUUID-menus-status
+### Update Item Menu Status
 
-<a id="opIdPATCH_management-items-itemUUID-menus-status"></a>
+<a id="opIdUpdate Item Menu Status"></a>
 
 > Code samples
 
@@ -3240,7 +3266,7 @@ bearer
 curl -X PATCH /management/items/{itemUUID}/menus-status \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -3248,7 +3274,7 @@ curl -X PATCH /management/items/{itemUUID}/menus-status \
 var headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -3272,7 +3298,7 @@ const inputBody = '{
 const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -3295,7 +3321,7 @@ import requests
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.patch('/management/items/{itemUUID}/menus-status', params={
@@ -3313,7 +3339,7 @@ require 'json'
 headers = {
   'Content-Type' => 'application/json',
   'Accept' => 'application/json',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.patch '/management/items/{itemUUID}/menus-status',
@@ -3326,6 +3352,8 @@ p JSON.parse(result)
 
 `PATCH /management/items/{itemUUID}/menus-status`
 
+Deep integrations only! Update Item status in the menu
+
 > Body parameter
 
 ```json
@@ -3334,7 +3362,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="patch_management-items-itemuuid-menus-status-parameters">Parameters</h4>
+<h4 id="update-item-menu-status-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -3352,7 +3380,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="patch_management-items-itemuuid-menus-status-responses">Responses</h4>
+<h4 id="update-item-menu-status-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -3362,16 +3390,16 @@ p JSON.parse(result)
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|none|[ForbiddenError](#schemaforbiddenerror)|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|none|[InternalServerError](#schemainternalservererror)|
 
-<h4 id="patch_management-items-itemuuid-menus-status-responseschema">Response Schema</h4>
+<h4 id="update-item-menu-status-responseschema">Response Schema</h4>
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER )
 </aside>
 
-### PUT_management-items-uuid
+### Update Item
 
-<a id="opIdPUT_management-items-uuid"></a>
+<a id="opIdUpdate Item"></a>
 
 > Code samples
 
@@ -3380,7 +3408,7 @@ bearer
 curl -X PUT /management/items/{uuid} \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -3388,7 +3416,7 @@ curl -X PUT /management/items/{uuid} \
 var headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -3440,7 +3468,7 @@ const inputBody = '{
 const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -3463,7 +3491,7 @@ import requests
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.put('/management/items/{uuid}', params={
@@ -3481,7 +3509,7 @@ require 'json'
 headers = {
   'Content-Type' => 'application/json',
   'Accept' => 'application/json',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.put '/management/items/{uuid}',
@@ -3493,6 +3521,8 @@ p JSON.parse(result)
 ```
 
 `PUT /management/items/{uuid}`
+
+Deep integrations only! Partial Item update.
 
 > Body parameter
 
@@ -3530,7 +3560,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="put_management-items-uuid-parameters">Parameters</h4>
+<h4 id="update-item-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -3548,7 +3578,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="put_management-items-uuid-responses">Responses</h4>
+<h4 id="update-item-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -3559,12 +3589,12 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR )
 </aside>
 
-### GET_management-kitchen-zones
+### Get Kitchen Zones
 
-<a id="opIdGET_management-kitchen-zones"></a>
+<a id="opIdGet Kitchen Zones"></a>
 
 > Code samples
 
@@ -3572,14 +3602,14 @@ bearer
 # You can also use wget
 curl -X GET /management/kitchen-zones \
   -H 'Accept: application/json' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -3600,7 +3630,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -3622,7 +3652,7 @@ fetch('/management/kitchen-zones',
 import requests
 headers = {
   'Accept': 'application/json',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/management/kitchen-zones', params={
@@ -3639,7 +3669,7 @@ require 'json'
 
 headers = {
   'Accept' => 'application/json',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/management/kitchen-zones',
@@ -3651,6 +3681,8 @@ p JSON.parse(result)
 ```
 
 `GET /management/kitchen-zones`
+
+Get a list of kitchen zones described in the system. These represent sepparate areas in the kitchen. Build tickets and KDS screens will be sepparated into Kitchen Zones.
 
 > Example responses
 
@@ -3672,7 +3704,7 @@ p JSON.parse(result)
 ]
 ```
 
-<h4 id="get_management-kitchen-zones-responses">Responses</h4>
+<h4 id="get-kitchen-zones-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -3682,7 +3714,7 @@ p JSON.parse(result)
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|none|[ForbiddenError](#schemaforbiddenerror)|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|none|[InternalServerError](#schemainternalservererror)|
 
-<h4 id="get_management-kitchen-zones-responseschema">Response Schema</h4>
+<h4 id="get-kitchen-zones-responseschema">Response Schema</h4>
 
 Status Code **200**
 
@@ -3698,12 +3730,12 @@ Status Code **200**
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER )
 </aside>
 
-### GET_management-measurement-units
+### Get Measurment Units
 
-<a id="opIdGET_management-measurement-units"></a>
+<a id="opIdGet Measurment Units"></a>
 
 > Code samples
 
@@ -3711,14 +3743,14 @@ bearer
 # You can also use wget
 curl -X GET /management/measurement-units \
   -H 'Accept: application/json' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -3739,7 +3771,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -3761,7 +3793,7 @@ fetch('/management/measurement-units',
 import requests
 headers = {
   'Accept': 'application/json',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/management/measurement-units', params={
@@ -3778,7 +3810,7 @@ require 'json'
 
 headers = {
   'Accept' => 'application/json',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/management/measurement-units',
@@ -3790,6 +3822,8 @@ p JSON.parse(result)
 ```
 
 `GET /management/measurement-units`
+
+Get a list of measurment units understood by the system.
 
 > Example responses
 
@@ -3810,7 +3844,7 @@ p JSON.parse(result)
 ]
 ```
 
-<h4 id="get_management-measurement-units-responses">Responses</h4>
+<h4 id="get-measurment-units-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -3820,7 +3854,7 @@ p JSON.parse(result)
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|none|[ForbiddenError](#schemaforbiddenerror)|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|none|[InternalServerError](#schemainternalservererror)|
 
-<h4 id="get_management-measurement-units-responseschema">Response Schema</h4>
+<h4 id="get-measurment-units-responseschema">Response Schema</h4>
 
 Status Code **200**
 
@@ -3835,12 +3869,12 @@ Status Code **200**
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER )
 </aside>
 
-### GET_management-menus
+### Get Menus
 
-<a id="opIdGET_management-menus"></a>
+<a id="opIdGet Menus"></a>
 
 > Code samples
 
@@ -3848,14 +3882,14 @@ bearer
 # You can also use wget
 curl -X GET /management/menus \
   -H 'Accept: application/json' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -3876,7 +3910,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -3898,7 +3932,7 @@ fetch('/management/menus',
 import requests
 headers = {
   'Accept': 'application/json',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/management/menus', params={
@@ -3915,7 +3949,7 @@ require 'json'
 
 headers = {
   'Accept' => 'application/json',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/management/menus',
@@ -3928,7 +3962,9 @@ p JSON.parse(result)
 
 `GET /management/menus`
 
-<h4 id="get_management-menus-parameters">Parameters</h4>
+Get a list of menus. A menu is a grouping of Bundles (meals or items) that can be configured to be sold together. It contains pricing information alongside the list of Bundles. One menu can be extended on multiple stores and can be presented in different layouts. Examples of menus can be breakfast menus, lunch menus, Xmas special menus.
+
+<h4 id="get-menus-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -3952,7 +3988,7 @@ p JSON.parse(result)
 ]
 ```
 
-<h4 id="get_management-menus-responses">Responses</h4>
+<h4 id="get-menus-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -3962,7 +3998,7 @@ p JSON.parse(result)
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|none|[ForbiddenError](#schemaforbiddenerror)|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|none|[InternalServerError](#schemainternalservererror)|
 
-<h4 id="get_management-menus-responseschema">Response Schema</h4>
+<h4 id="get-menus-responseschema">Response Schema</h4>
 
 Status Code **200**
 
@@ -3978,12 +4014,12 @@ Status Code **200**
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER )
 </aside>
 
-### POST_management-menus
+### Create Menu
 
-<a id="opIdPOST_management-menus"></a>
+<a id="opIdCreate Menu"></a>
 
 > Code samples
 
@@ -3992,7 +4028,7 @@ bearer
 curl -X POST /management/menus \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -4000,7 +4036,7 @@ curl -X POST /management/menus \
 var headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -4028,7 +4064,7 @@ const inputBody = '{
 const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -4051,7 +4087,7 @@ import requests
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.post('/management/menus', params={
@@ -4069,7 +4105,7 @@ require 'json'
 headers = {
   'Content-Type' => 'application/json',
   'Accept' => 'application/json',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.post '/management/menus',
@@ -4081,6 +4117,8 @@ p JSON.parse(result)
 ```
 
 `POST /management/menus`
+
+Deep integrations only! Create a new Menu.
 
 > Body parameter
 
@@ -4094,7 +4132,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="post_management-menus-parameters">Parameters</h4>
+<h4 id="create-menu-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -4116,7 +4154,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="post_management-menus-responses">Responses</h4>
+<h4 id="create-menu-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -4128,12 +4166,12 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER )
 </aside>
 
-### GET_management-menus-menuUUID
+### Get Menu
 
-<a id="opIdGET_management-menus-menuUUID"></a>
+<a id="opIdGet Menu"></a>
 
 > Code samples
 
@@ -4141,14 +4179,14 @@ bearer
 # You can also use wget
 curl -X GET /management/menus/{menuUUID} \
   -H 'Accept: application/json' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -4169,7 +4207,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -4191,7 +4229,7 @@ fetch('/management/menus/{menuUUID}',
 import requests
 headers = {
   'Accept': 'application/json',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/management/menus/{menuUUID}', params={
@@ -4208,7 +4246,7 @@ require 'json'
 
 headers = {
   'Accept' => 'application/json',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/management/menus/{menuUUID}',
@@ -4221,7 +4259,9 @@ p JSON.parse(result)
 
 `GET /management/menus/{menuUUID}`
 
-<h4 id="get_management-menus-menuuuid-parameters">Parameters</h4>
+Get information about a specific Menu.
+
+<h4 id="get-menu-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -4243,7 +4283,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="get_management-menus-menuuuid-responses">Responses</h4>
+<h4 id="get-menu-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -4255,12 +4295,12 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER )
 </aside>
 
-### PUT_management-menus-menuUUID
+### Update Menu
 
-<a id="opIdPUT_management-menus-menuUUID"></a>
+<a id="opIdUpdate Menu"></a>
 
 > Code samples
 
@@ -4268,16 +4308,14 @@ bearer
 # You can also use wget
 curl -X PUT /management/menus/{menuUUID} \
   -H 'Content-Type: application/json' \
-  -H 'Accept: application/json' \
-  -H 'Authorization: API_KEY'
+  -H 'Accept: application/json'
 
 ```
 
 ```javascript
 var headers = {
   'Content-Type':'application/json',
-  'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Accept':'application/json'
 
 };
 
@@ -4304,8 +4342,7 @@ const inputBody = '{
 }';
 const headers = {
   'Content-Type':'application/json',
-  'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Accept':'application/json'
 
 };
 
@@ -4327,8 +4364,7 @@ fetch('/management/menus/{menuUUID}',
 import requests
 headers = {
   'Content-Type': 'application/json',
-  'Accept': 'application/json',
-  'Authorization': 'API_KEY'
+  'Accept': 'application/json'
 }
 
 r = requests.put('/management/menus/{menuUUID}', params={
@@ -4345,8 +4381,7 @@ require 'json'
 
 headers = {
   'Content-Type' => 'application/json',
-  'Accept' => 'application/json',
-  'Authorization' => 'API_KEY'
+  'Accept' => 'application/json'
 }
 
 result = RestClient.put '/management/menus/{menuUUID}',
@@ -4358,6 +4393,8 @@ p JSON.parse(result)
 ```
 
 `PUT /management/menus/{menuUUID}`
+
+Deep integrations only! Update Menu information.
 
 > Body parameter
 
@@ -4371,7 +4408,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="put_management-menus-menuuuid-parameters">Parameters</h4>
+<h4 id="update-menu-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -4392,7 +4429,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="put_management-menus-menuuuid-responses">Responses</h4>
+<h4 id="update-menu-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -4402,14 +4439,13 @@ p JSON.parse(result)
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|none|[ForbiddenError](#schemaforbiddenerror)|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|none|[InternalServerError](#schemainternalservererror)|
 
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+<aside class="success">
+This operation does not require authentication
 </aside>
 
-### GET_management-modifiers
+### Get Modifiers
 
-<a id="opIdGET_management-modifiers"></a>
+<a id="opIdGet Modifiers"></a>
 
 > Code samples
 
@@ -4417,14 +4453,14 @@ bearer
 # You can also use wget
 curl -X GET /management/modifiers \
   -H 'Accept: application/json' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -4445,7 +4481,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -4467,7 +4503,7 @@ fetch('/management/modifiers',
 import requests
 headers = {
   'Accept': 'application/json',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/management/modifiers', params={
@@ -4484,7 +4520,7 @@ require 'json'
 
 headers = {
   'Accept' => 'application/json',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/management/modifiers',
@@ -4496,6 +4532,8 @@ p JSON.parse(result)
 ```
 
 `GET /management/modifiers`
+
+Get a list of available modifiers in the system.
 
 > Example responses
 
@@ -4546,7 +4584,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="get_management-modifiers-responses">Responses</h4>
+<h4 id="get-modifiers-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -4555,7 +4593,7 @@ p JSON.parse(result)
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|none|[ForbiddenError](#schemaforbiddenerror)|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|none|[InternalServerError](#schemainternalservererror)|
 
-<h4 id="get_management-modifiers-responseschema">Response Schema</h4>
+<h4 id="get-modifiers-responseschema">Response Schema</h4>
 
 Status Code **200**
 
@@ -4570,12 +4608,12 @@ Status Code **200**
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER )
 </aside>
 
-### GET_management-allergens
+### Get Allergens
 
-<a id="opIdGET_management-allergens"></a>
+<a id="opIdGet Allergens"></a>
 
 > Code samples
 
@@ -4584,7 +4622,7 @@ bearer
 curl -X GET /management/allergens \
   -H 'Accept: application/json' \
   -H 'tenant: string' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -4592,7 +4630,7 @@ curl -X GET /management/allergens \
 var headers = {
   'Accept':'application/json',
   'tenant':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -4614,7 +4652,7 @@ const fetch = require('node-fetch');
 const headers = {
   'Accept':'application/json',
   'tenant':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -4637,7 +4675,7 @@ import requests
 headers = {
   'Accept': 'application/json',
   'tenant': 'string',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/management/allergens', params={
@@ -4655,7 +4693,7 @@ require 'json'
 headers = {
   'Accept' => 'application/json',
   'tenant' => 'string',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/management/allergens',
@@ -4668,7 +4706,9 @@ p JSON.parse(result)
 
 `GET /management/allergens`
 
-<h4 id="get_management-allergens-parameters">Parameters</h4>
+Get a list of allergens described in the system.
+
+<h4 id="get-allergens-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -4731,7 +4771,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="get_management-allergens-responses">Responses</h4>
+<h4 id="get-allergens-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -4741,7 +4781,7 @@ p JSON.parse(result)
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|none|[NotFoundError](#schemanotfounderror)|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|none|[InternalServerError](#schemainternalservererror)|
 
-<h4 id="get_management-allergens-responseschema">Response Schema</h4>
+<h4 id="get-allergens-responseschema">Response Schema</h4>
 
 Status Code **200**
 
@@ -4757,12 +4797,12 @@ Status Code **200**
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER )
 </aside>
 
-### GET_management-diets
+### Get Diets
 
-<a id="opIdGET_management-diets"></a>
+<a id="opIdGet Diets"></a>
 
 > Code samples
 
@@ -4771,7 +4811,7 @@ bearer
 curl -X GET /management/diets \
   -H 'Accept: application/json' \
   -H 'tenant: string' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -4779,7 +4819,7 @@ curl -X GET /management/diets \
 var headers = {
   'Accept':'application/json',
   'tenant':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -4801,7 +4841,7 @@ const fetch = require('node-fetch');
 const headers = {
   'Accept':'application/json',
   'tenant':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -4824,7 +4864,7 @@ import requests
 headers = {
   'Accept': 'application/json',
   'tenant': 'string',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/management/diets', params={
@@ -4842,7 +4882,7 @@ require 'json'
 headers = {
   'Accept' => 'application/json',
   'tenant' => 'string',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/management/diets',
@@ -4855,7 +4895,9 @@ p JSON.parse(result)
 
 `GET /management/diets`
 
-<h4 id="get_management-diets-parameters">Parameters</h4>
+Get a list of diets described in the system.
+
+<h4 id="get-diets-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -4918,7 +4960,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="get_management-diets-responses">Responses</h4>
+<h4 id="get-diets-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -4928,7 +4970,7 @@ p JSON.parse(result)
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|none|[NotFoundError](#schemanotfounderror)|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|none|[InternalServerError](#schemainternalservererror)|
 
-<h4 id="get_management-diets-responseschema">Response Schema</h4>
+<h4 id="get-diets-responseschema">Response Schema</h4>
 
 Status Code **200**
 
@@ -4944,12 +4986,12 @@ Status Code **200**
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER )
 </aside>
 
-### GET_management-tags
+### Get Tags
 
-<a id="opIdGET_management-tags"></a>
+<a id="opIdGet Tags"></a>
 
 > Code samples
 
@@ -4957,14 +4999,14 @@ bearer
 # You can also use wget
 curl -X GET /management/tags \
   -H 'Accept: application/json' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -4985,7 +5027,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -5007,7 +5049,7 @@ fetch('/management/tags',
 import requests
 headers = {
   'Accept': 'application/json',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/management/tags', params={
@@ -5024,7 +5066,7 @@ require 'json'
 
 headers = {
   'Accept' => 'application/json',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/management/tags',
@@ -5037,7 +5079,9 @@ p JSON.parse(result)
 
 `GET /management/tags`
 
-<h4 id="get_management-tags-parameters">Parameters</h4>
+Get a list of tags in the system. Tags are used for grouping and searching in the system. Bundles and Items can be tagged.
+
+<h4 id="get-tags-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -5060,7 +5104,7 @@ p JSON.parse(result)
 ]
 ```
 
-<h4 id="get_management-tags-responses">Responses</h4>
+<h4 id="get-tags-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -5070,7 +5114,7 @@ p JSON.parse(result)
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|none|[ForbiddenError](#schemaforbiddenerror)|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|none|[InternalServerError](#schemainternalservererror)|
 
-<h4 id="get_management-tags-responseschema">Response Schema</h4>
+<h4 id="get-tags-responseschema">Response Schema</h4>
 
 Status Code **200**
 
@@ -5083,12 +5127,12 @@ Status Code **200**
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER )
 </aside>
 
-### GET_management-units
+### Get Unites
 
-<a id="opIdGET_management-units"></a>
+<a id="opIdGet Unites"></a>
 
 > Code samples
 
@@ -5096,14 +5140,14 @@ bearer
 # You can also use wget
 curl -X GET /management/units \
   -H 'Accept: application/json' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -5124,7 +5168,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -5146,7 +5190,7 @@ fetch('/management/units',
 import requests
 headers = {
   'Accept': 'application/json',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/management/units', params={
@@ -5163,7 +5207,7 @@ require 'json'
 
 headers = {
   'Accept' => 'application/json',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/management/units',
@@ -5175,6 +5219,8 @@ p JSON.parse(result)
 ```
 
 `GET /management/units`
+
+Get a list of units in the system. Items can be sold in random user definied units. For example pinches, scoops, etc. Underlying these there will be a quantity defined in a mesurmeant unit.
 
 > Example responses
 
@@ -5193,7 +5239,7 @@ p JSON.parse(result)
 ]
 ```
 
-<h4 id="get_management-units-responses">Responses</h4>
+<h4 id="get-unites-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -5203,7 +5249,7 @@ p JSON.parse(result)
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|none|[ForbiddenError](#schemaforbiddenerror)|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|none|[InternalServerError](#schemainternalservererror)|
 
-<h4 id="get_management-units-responseschema">Response Schema</h4>
+<h4 id="get-unites-responseschema">Response Schema</h4>
 
 Status Code **200**
 
@@ -5216,12 +5262,12 @@ Status Code **200**
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER )
 </aside>
 
-### GET_management-layout-type-menus
+### Get Menu Layouts
 
-<a id="opIdGET_management-layout-type-menus"></a>
+<a id="opIdGet Menu Layouts"></a>
 
 > Code samples
 
@@ -5230,7 +5276,7 @@ bearer
 curl -X GET /management/layout/{type}/menus \
   -H 'Accept: application/json' \
   -H 'store: string' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -5238,7 +5284,7 @@ curl -X GET /management/layout/{type}/menus \
 var headers = {
   'Accept':'application/json',
   'store':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -5260,7 +5306,7 @@ const fetch = require('node-fetch');
 const headers = {
   'Accept':'application/json',
   'store':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -5283,7 +5329,7 @@ import requests
 headers = {
   'Accept': 'application/json',
   'store': 'string',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/management/layout/{type}/menus', params={
@@ -5301,7 +5347,7 @@ require 'json'
 headers = {
   'Accept' => 'application/json',
   'store' => 'string',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/management/layout/{type}/menus',
@@ -5314,7 +5360,9 @@ p JSON.parse(result)
 
 `GET /management/layout/{type}/menus`
 
-<h4 id="get_management-layout-type-menus-parameters">Parameters</h4>
+Deep integrations only! Get a list of menu layouts. A menu can have multiple layouts. A layout is a hierarchy of categories grouping the Bundles on the menu. This can be different for POS/Kiosk/Online etc. The Layout routes are ment for creating and updating complex layouts for pos/kiosk/online.
+
+<h4 id="get-menu-layouts-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -5340,7 +5388,7 @@ p JSON.parse(result)
 ]
 ```
 
-<h4 id="get_management-layout-type-menus-responses">Responses</h4>
+<h4 id="get-menu-layouts-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -5350,7 +5398,7 @@ p JSON.parse(result)
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|none|[ForbiddenError](#schemaforbiddenerror)|
 |500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|none|[InternalServerError](#schemainternalservererror)|
 
-<h4 id="get_management-layout-type-menus-responseschema">Response Schema</h4>
+<h4 id="get-menu-layouts-responseschema">Response Schema</h4>
 
 Status Code **200**
 
@@ -5365,12 +5413,12 @@ Status Code **200**
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR )
 </aside>
 
-### PUT_management-layout-type-menus
+### Add Menu Layout Type
 
-<a id="opIdPUT_management-layout-type-menus"></a>
+<a id="opIdAdd Menu Layout Type"></a>
 
 > Code samples
 
@@ -5380,7 +5428,7 @@ curl -X PUT /management/layout/{type}/menus \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'store: string' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -5389,7 +5437,7 @@ var headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'store':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -5412,7 +5460,7 @@ const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'store':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -5436,7 +5484,7 @@ headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
   'store': 'string',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.put('/management/layout/{type}/menus', params={
@@ -5455,7 +5503,7 @@ headers = {
   'Content-Type' => 'application/json',
   'Accept' => 'application/json',
   'store' => 'string',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.put '/management/layout/{type}/menus',
@@ -5468,13 +5516,15 @@ p JSON.parse(result)
 
 `PUT /management/layout/{type}/menus`
 
+Deep integrations only! Add a menu layout type to a menu. A layout type can be POS/Kiosk/Online and specifies what the layout was meant for.
+
 > Body parameter
 
 ```json
 false
 ```
 
-<h4 id="put_management-layout-type-menus-parameters">Parameters</h4>
+<h4 id="add-menu-layout-type-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -5492,7 +5542,7 @@ false
 }
 ```
 
-<h4 id="put_management-layout-type-menus-responses">Responses</h4>
+<h4 id="add-menu-layout-type-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -5504,7 +5554,7 @@ false
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR )
 </aside>
 
 ### GET_management-layout-type-menus-menuUUID-categories
@@ -5518,7 +5568,7 @@ bearer
 curl -X GET /management/layout/{type}/menus/{menuUUID}/categories \
   -H 'Accept: application/json' \
   -H 'store: string' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -5526,7 +5576,7 @@ curl -X GET /management/layout/{type}/menus/{menuUUID}/categories \
 var headers = {
   'Accept':'application/json',
   'store':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -5548,7 +5598,7 @@ const fetch = require('node-fetch');
 const headers = {
   'Accept':'application/json',
   'store':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -5571,7 +5621,7 @@ import requests
 headers = {
   'Accept': 'application/json',
   'store': 'string',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/management/layout/{type}/menus/{menuUUID}/categories', params={
@@ -5589,7 +5639,7 @@ require 'json'
 headers = {
   'Accept' => 'application/json',
   'store' => 'string',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/management/layout/{type}/menus/{menuUUID}/categories',
@@ -5640,12 +5690,12 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR )
 </aside>
 
-### PUT_management-layout-type-menus-menuUUID-categories
+### Add Category to Layout
 
-<a id="opIdPUT_management-layout-type-menus-menuUUID-categories"></a>
+<a id="opIdAdd Category to Layout"></a>
 
 > Code samples
 
@@ -5656,7 +5706,7 @@ curl -X PUT /management/layout/{type}/menus/{menuUUID}/categories \
   -H 'Accept: application/json' \
   -H 'store: string' \
   -H 'tenant: string' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -5666,7 +5716,7 @@ var headers = {
   'Accept':'application/json',
   'store':'string',
   'tenant':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -5690,7 +5740,7 @@ const headers = {
   'Accept':'application/json',
   'store':'string',
   'tenant':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -5715,7 +5765,7 @@ headers = {
   'Accept': 'application/json',
   'store': 'string',
   'tenant': 'string',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.put('/management/layout/{type}/menus/{menuUUID}/categories', params={
@@ -5735,7 +5785,7 @@ headers = {
   'Accept' => 'application/json',
   'store' => 'string',
   'tenant' => 'string',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.put '/management/layout/{type}/menus/{menuUUID}/categories',
@@ -5748,13 +5798,15 @@ p JSON.parse(result)
 
 `PUT /management/layout/{type}/menus/{menuUUID}/categories`
 
+Deep integrations only!
+
 > Body parameter
 
 ```json
 false
 ```
 
-<h4 id="put_management-layout-type-menus-menuuuid-categories-parameters">Parameters</h4>
+<h4 id="add-category-to-layout-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -5780,7 +5832,7 @@ false
 }
 ```
 
-<h4 id="put_management-layout-type-menus-menuuuid-categories-responses">Responses</h4>
+<h4 id="add-category-to-layout-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -5792,12 +5844,12 @@ false
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR )
 </aside>
 
-### GET_management-layout-type-menus-menuUUID-categories-categoryUUID
+### Get Category
 
-<a id="opIdGET_management-layout-type-menus-menuUUID-categories-categoryUUID"></a>
+<a id="opIdGet Category"></a>
 
 > Code samples
 
@@ -5806,7 +5858,7 @@ bearer
 curl -X GET /management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID} \
   -H 'Accept: application/json' \
   -H 'store: string' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -5814,7 +5866,7 @@ curl -X GET /management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}
 var headers = {
   'Accept':'application/json',
   'store':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -5836,7 +5888,7 @@ const fetch = require('node-fetch');
 const headers = {
   'Accept':'application/json',
   'store':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -5859,7 +5911,7 @@ import requests
 headers = {
   'Accept': 'application/json',
   'store': 'string',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}', params={
@@ -5877,7 +5929,7 @@ require 'json'
 headers = {
   'Accept' => 'application/json',
   'store' => 'string',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}',
@@ -5890,7 +5942,9 @@ p JSON.parse(result)
 
 `GET /management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}`
 
-<h4 id="get_management-layout-type-menus-menuuuid-categories-categoryuuid-parameters">Parameters</h4>
+Deep integrations only! Get category Bundles and sub-categories.
+
+<h4 id="get-category-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -5947,7 +6001,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="get_management-layout-type-menus-menuuuid-categories-categoryuuid-responses">Responses</h4>
+<h4 id="get-category-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -5959,12 +6013,12 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR )
 </aside>
 
-### POST_management-layout-type-menus-menuUUID-categories-categoryUUID
+### Create Category
 
-<a id="opIdPOST_management-layout-type-menus-menuUUID-categories-categoryUUID"></a>
+<a id="opIdCreate Category"></a>
 
 > Code samples
 
@@ -5974,7 +6028,7 @@ curl -X POST /management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'store: string' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -5983,7 +6037,7 @@ var headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'store':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -6009,7 +6063,7 @@ const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'store':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -6033,7 +6087,7 @@ headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
   'store': 'string',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.post('/management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}', params={
@@ -6052,7 +6106,7 @@ headers = {
   'Content-Type' => 'application/json',
   'Accept' => 'application/json',
   'store' => 'string',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.post '/management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}',
@@ -6065,6 +6119,8 @@ p JSON.parse(result)
 
 `POST /management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}`
 
+Deep integrations only! Get a new category with a parent.
+
 > Body parameter
 
 ```json
@@ -6074,7 +6130,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="post_management-layout-type-menus-menuuuid-categories-categoryuuid-parameters">Parameters</h4>
+<h4 id="create-category-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -6098,7 +6154,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="post_management-layout-type-menus-menuuuid-categories-categoryuuid-responses">Responses</h4>
+<h4 id="create-category-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -6110,12 +6166,12 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR )
 </aside>
 
-### PUT_management-layout-type-menus-menuUUID-categories-categoryUUID
+### Update Category
 
-<a id="opIdPUT_management-layout-type-menus-menuUUID-categories-categoryUUID"></a>
+<a id="opIdUpdate Category"></a>
 
 > Code samples
 
@@ -6125,7 +6181,7 @@ curl -X PUT /management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'store: string' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -6134,7 +6190,7 @@ var headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'store':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -6160,7 +6216,7 @@ const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'store':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -6184,7 +6240,7 @@ headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
   'store': 'string',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.put('/management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}', params={
@@ -6203,7 +6259,7 @@ headers = {
   'Content-Type' => 'application/json',
   'Accept' => 'application/json',
   'store' => 'string',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.put '/management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}',
@@ -6216,6 +6272,8 @@ p JSON.parse(result)
 
 `PUT /management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}`
 
+Deep integrations only!
+
 > Body parameter
 
 ```json
@@ -6225,7 +6283,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="put_management-layout-type-menus-menuuuid-categories-categoryuuid-parameters">Parameters</h4>
+<h4 id="update-category-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -6249,7 +6307,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="put_management-layout-type-menus-menuuuid-categories-categoryuuid-responses">Responses</h4>
+<h4 id="update-category-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -6261,12 +6319,12 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR )
 </aside>
 
-### DELETE_management-layout-type-menus-menuUUID-categories-categoryUUID
+### Delete Category
 
-<a id="opIdDELETE_management-layout-type-menus-menuUUID-categories-categoryUUID"></a>
+<a id="opIdDelete Category"></a>
 
 > Code samples
 
@@ -6275,7 +6333,7 @@ bearer
 curl -X DELETE /management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID} \
   -H 'Accept: application/json' \
   -H 'store: string' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -6283,7 +6341,7 @@ curl -X DELETE /management/layout/{type}/menus/{menuUUID}/categories/{categoryUU
 var headers = {
   'Accept':'application/json',
   'store':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -6305,7 +6363,7 @@ const fetch = require('node-fetch');
 const headers = {
   'Accept':'application/json',
   'store':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -6328,7 +6386,7 @@ import requests
 headers = {
   'Accept': 'application/json',
   'store': 'string',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.delete('/management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}', params={
@@ -6346,7 +6404,7 @@ require 'json'
 headers = {
   'Accept' => 'application/json',
   'store' => 'string',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.delete '/management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}',
@@ -6359,7 +6417,9 @@ p JSON.parse(result)
 
 `DELETE /management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}`
 
-<h4 id="delete_management-layout-type-menus-menuuuid-categories-categoryuuid-parameters">Parameters</h4>
+Deep integrations only!
+
+<h4 id="delete-category-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -6379,7 +6439,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="delete_management-layout-type-menus-menuuuid-categories-categoryuuid-responses">Responses</h4>
+<h4 id="delete-category-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -6391,7 +6451,7 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR )
 </aside>
 
 ### GET_management-layout-type-menus-menuUUID-categories-categoryUUID-products
@@ -6405,7 +6465,7 @@ bearer
 curl -X GET /management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}/products \
   -H 'Accept: application/json' \
   -H 'store: string' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -6413,7 +6473,7 @@ curl -X GET /management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}
 var headers = {
   'Accept':'application/json',
   'store':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -6435,7 +6495,7 @@ const fetch = require('node-fetch');
 const headers = {
   'Accept':'application/json',
   'store':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -6458,7 +6518,7 @@ import requests
 headers = {
   'Accept': 'application/json',
   'store': 'string',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}/products', params={
@@ -6476,7 +6536,7 @@ require 'json'
 headers = {
   'Accept' => 'application/json',
   'store' => 'string',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}/products',
@@ -6544,12 +6604,12 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR )
 </aside>
 
-### POST_management-layout-type-menus-menuUUID-categories-categoryUUID-products
+### Add Product in Category
 
-<a id="opIdPOST_management-layout-type-menus-menuUUID-categories-categoryUUID-products"></a>
+<a id="opIdAdd Product in Category"></a>
 
 > Code samples
 
@@ -6559,7 +6619,7 @@ curl -X POST /management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'store: string' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -6568,7 +6628,7 @@ var headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'store':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -6598,7 +6658,7 @@ const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'store':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -6622,7 +6682,7 @@ headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
   'store': 'string',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.post('/management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}/products', params={
@@ -6641,7 +6701,7 @@ headers = {
   'Content-Type' => 'application/json',
   'Accept' => 'application/json',
   'store' => 'string',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.post '/management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}/products',
@@ -6653,6 +6713,8 @@ p JSON.parse(result)
 ```
 
 `POST /management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}/products`
+
+Deep integrations only!
 
 > Body parameter
 
@@ -6667,7 +6729,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="post_management-layout-type-menus-menuuuid-categories-categoryuuid-products-parameters">Parameters</h4>
+<h4 id="add-product-in-category-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -6688,7 +6750,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="post_management-layout-type-menus-menuuuid-categories-categoryuuid-products-responses">Responses</h4>
+<h4 id="add-product-in-category-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -6700,12 +6762,12 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR )
 </aside>
 
-### PATCH_management-layout-type-menus-menuUUID-categories-categoryUUID-products-reordering
+### Reorder Bundles in Category
 
-<a id="opIdPATCH_management-layout-type-menus-menuUUID-categories-categoryUUID-products-reordering"></a>
+<a id="opIdReorder Bundles in Category"></a>
 
 > Code samples
 
@@ -6715,7 +6777,7 @@ curl -X PATCH /management/layout/{type}/menus/{menuUUID}/categories/{categoryUUI
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'store: string' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -6724,7 +6786,7 @@ var headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'store':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -6754,7 +6816,7 @@ const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'store':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -6778,7 +6840,7 @@ headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
   'store': 'string',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.patch('/management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}/products/reordering', params={
@@ -6797,7 +6859,7 @@ headers = {
   'Content-Type' => 'application/json',
   'Accept' => 'application/json',
   'store' => 'string',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.patch '/management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}/products/reordering',
@@ -6809,6 +6871,8 @@ p JSON.parse(result)
 ```
 
 `PATCH /management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}/products/reordering`
+
+Deep integrations only!
 
 > Body parameter
 
@@ -6823,7 +6887,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="patch_management-layout-type-menus-menuuuid-categories-categoryuuid-products-reordering-parameters">Parameters</h4>
+<h4 id="reorder-bundles-in-category-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -6844,7 +6908,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="patch_management-layout-type-menus-menuuuid-categories-categoryuuid-products-reordering-responses">Responses</h4>
+<h4 id="reorder-bundles-in-category-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -6856,12 +6920,12 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR )
 </aside>
 
-### DELETE_management-layout-type-menus-menuUUID-categories-categoryUUID-products-bundleUUID
+### Remove Bundles from Category
 
-<a id="opIdDELETE_management-layout-type-menus-menuUUID-categories-categoryUUID-products-bundleUUID"></a>
+<a id="opIdRemove Bundles from Category"></a>
 
 > Code samples
 
@@ -6870,7 +6934,7 @@ bearer
 curl -X DELETE /management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}/products/{bundleUUID} \
   -H 'Accept: application/json' \
   -H 'store: string' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -6878,7 +6942,7 @@ curl -X DELETE /management/layout/{type}/menus/{menuUUID}/categories/{categoryUU
 var headers = {
   'Accept':'application/json',
   'store':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -6900,7 +6964,7 @@ const fetch = require('node-fetch');
 const headers = {
   'Accept':'application/json',
   'store':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -6923,7 +6987,7 @@ import requests
 headers = {
   'Accept': 'application/json',
   'store': 'string',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.delete('/management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}/products/{bundleUUID}', params={
@@ -6941,7 +7005,7 @@ require 'json'
 headers = {
   'Accept' => 'application/json',
   'store' => 'string',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.delete '/management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}/products/{bundleUUID}',
@@ -6954,7 +7018,9 @@ p JSON.parse(result)
 
 `DELETE /management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}/products/{bundleUUID}`
 
-<h4 id="delete_management-layout-type-menus-menuuuid-categories-categoryuuid-products-bundleuuid-parameters">Parameters</h4>
+Deep integrations only!
+
+<h4 id="remove-bundles-from-category-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -6975,7 +7041,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="delete_management-layout-type-menus-menuuuid-categories-categoryuuid-products-bundleuuid-responses">Responses</h4>
+<h4 id="remove-bundles-from-category-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -6987,7 +7053,7 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR )
 </aside>
 
 ### PATCH_management-layout-type-menus-menuUUID-categories-categoryUUID-reordering
@@ -7002,7 +7068,7 @@ curl -X PATCH /management/layout/{type}/menus/{menuUUID}/categories/{categoryUUI
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'store: string' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -7011,7 +7077,7 @@ var headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'store':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -7041,7 +7107,7 @@ const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'store':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -7065,7 +7131,7 @@ headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
   'store': 'string',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.patch('/management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}/reordering', params={
@@ -7084,7 +7150,7 @@ headers = {
   'Content-Type' => 'application/json',
   'Accept' => 'application/json',
   'store' => 'string',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.patch '/management/layout/{type}/menus/{menuUUID}/categories/{categoryUUID}/reordering',
@@ -7143,7 +7209,7 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR )
 </aside>
 
 ### PUT_management-layout-type-menus-menuUUID-categories-fromCategoryUUID-move-toCategoryUUID
@@ -7158,7 +7224,7 @@ curl -X PUT /management/layout/{type}/menus/{menuUUID}/categories/{fromCategoryU
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'store: string' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -7167,7 +7233,7 @@ var headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'store':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -7194,7 +7260,7 @@ const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'store':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -7218,7 +7284,7 @@ headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
   'store': 'string',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.put('/management/layout/{type}/menus/{menuUUID}/categories/{fromCategoryUUID}/move/{toCategoryUUID}', params={
@@ -7237,7 +7303,7 @@ headers = {
   'Content-Type' => 'application/json',
   'Accept' => 'application/json',
   'store' => 'string',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.put '/management/layout/{type}/menus/{menuUUID}/categories/{fromCategoryUUID}/move/{toCategoryUUID}',
@@ -7294,7 +7360,7 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR )
 </aside>
 
 ### PUT_management-layout-type-menus-menuUUID-categories-fromCategoryUUID-products-move-toCategoryUUID
@@ -7309,7 +7375,7 @@ curl -X PUT /management/layout/{type}/menus/{menuUUID}/categories/{fromCategoryU
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'store: string' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -7318,7 +7384,7 @@ var headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'store':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -7348,7 +7414,7 @@ const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'store':'string',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -7372,7 +7438,7 @@ headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
   'store': 'string',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.put('/management/layout/{type}/menus/{menuUUID}/categories/{fromCategoryUUID}/products/move/{toCategoryUUID}', params={
@@ -7391,7 +7457,7 @@ headers = {
   'Content-Type' => 'application/json',
   'Accept' => 'application/json',
   'store' => 'string',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.put '/management/layout/{type}/menus/{menuUUID}/categories/{fromCategoryUUID}/products/move/{toCategoryUUID}',
@@ -7451,14 +7517,14 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR )
 </aside>
 
 <h2 id="catalog-service-menu">menu</h2>
 
-### GET_menu
+### Get Menu
 
-<a id="opIdGET_menu"></a>
+<a id="opIdGet Menu"></a>
 
 > Code samples
 
@@ -7556,7 +7622,9 @@ p JSON.parse(result)
 
 `GET /menu`
 
-<h4 id="get_menu-parameters">Parameters</h4>
+Get a hierarchy of Categories for the given menu. Bundles (meals or items) in each Category are also retrieved.
+
+<h4 id="get-menu-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -7620,7 +7688,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="get_menu-responses">Responses</h4>
+<h4 id="get-menu-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -7635,9 +7703,9 @@ This operation does not require authentication
 
 <h2 id="catalog-service-categories">categories</h2>
 
-### GET_categories-categoryUUID-bundles
+### Get Category Bundles
 
-<a id="opIdGET_categories-categoryUUID-bundles"></a>
+<a id="opIdGet Category Bundles"></a>
 
 > Code samples
 
@@ -7740,7 +7808,9 @@ p JSON.parse(result)
 
 `GET /categories/{categoryUUID}/bundles`
 
-<h4 id="get_categories-categoryuuid-bundles-parameters">Parameters</h4>
+Retrieve all bundles (meals and items) in a given menu category
+
+<h4 id="get-category-bundles-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -8287,7 +8357,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="get_categories-categoryuuid-bundles-responses">Responses</h4>
+<h4 id="get-category-bundles-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -8301,9 +8371,9 @@ p JSON.parse(result)
 This operation does not require authentication
 </aside>
 
-### GET_categories-categoryUUID-breadcrumb
+### Get Category Breadcrumb
 
-<a id="opIdGET_categories-categoryUUID-breadcrumb"></a>
+<a id="opIdGet Category Breadcrumb"></a>
 
 > Code samples
 
@@ -8386,7 +8456,9 @@ p JSON.parse(result)
 
 `GET /categories/{categoryUUID}/breadcrumb`
 
-<h4 id="get_categories-categoryuuid-breadcrumb-parameters">Parameters</h4>
+Deep integrations only! Retrievs breacrumbs information for navigation tree.
+
+<h4 id="get-category-breadcrumb-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -8408,13 +8480,13 @@ p JSON.parse(result)
 ]
 ```
 
-<h4 id="get_categories-categoryuuid-breadcrumb-responses">Responses</h4>
+<h4 id="get-category-breadcrumb-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
 
-<h4 id="get_categories-categoryuuid-breadcrumb-responseschema">Response Schema</h4>
+<h4 id="get-category-breadcrumb-responseschema">Response Schema</h4>
 
 Status Code **200**
 

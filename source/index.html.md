@@ -14,6 +14,7 @@ toc_footers:
 includes:
   - order
   - catalog
+  - payment
 
 search: true
 ---

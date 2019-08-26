@@ -143,7 +143,8 @@ curl -X POST /v1/commands/create \
   -H 'Content-Type: application/json; charset=utf-8' \
   -H 'Accept: application/json; charset=utf-8' \
   -H 'x-requested-from: string' \
-  -H 'store: string'
+  -H 'store: string' \
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -152,7 +153,8 @@ var headers = {
   'Content-Type':'application/json; charset=utf-8',
   'Accept':'application/json; charset=utf-8',
   'x-requested-from':'string',
-  'store':'string'
+  'store':'string',
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -432,7 +434,8 @@ const headers = {
   'Content-Type':'application/json; charset=utf-8',
   'Accept':'application/json; charset=utf-8',
   'x-requested-from':'string',
-  'store':'string'
+  'store':'string',
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -456,7 +459,8 @@ headers = {
   'Content-Type': 'application/json; charset=utf-8',
   'Accept': 'application/json; charset=utf-8',
   'x-requested-from': 'string',
-  'store': 'string'
+  'store': 'string',
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.post('/v1/commands/create', params={
@@ -475,7 +479,8 @@ headers = {
   'Content-Type' => 'application/json; charset=utf-8',
   'Accept' => 'application/json; charset=utf-8',
   'x-requested-from' => 'string',
-  'store' => 'string'
+  'store' => 'string',
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.post '/v1/commands/create',
@@ -488,7 +493,7 @@ p JSON.parse(result)
 
 `POST /v1/commands/create`
 
-*Use this enpoint to create an order in the system*
+Use this enpoint to create an order in the system
 
 > Body parameter
 
@@ -1085,13 +1090,14 @@ p JSON.parse(result)
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not found|[NotFound](#schemanotfound)|
 |503|[Service Unavailable](https://tools.ietf.org/html/rfc7231#section-6.6.4)|Service unavailable|[ServiceUnavailable](#schemaserviceunavailable)|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER STAFF CUSTOMER )
 </aside>
 
-### CommandsSendEmailReceipt
+### Email Receipt
 
-<a id="opIdCommandsSendEmailReceipt"></a>
+<a id="opIdEmail Receipt"></a>
 
 > Code samples
 
@@ -1102,7 +1108,7 @@ curl -X POST /v1/commands/email-receipt \
   -H 'Accept: application/json' \
   -H 'x-requested-from: string' \
   -H 'store: string' \
-  -H 'authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -1112,7 +1118,7 @@ var headers = {
   'Accept':'application/json',
   'x-requested-from':'string',
   'store':'string',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -1140,7 +1146,7 @@ const headers = {
   'Accept':'application/json',
   'x-requested-from':'string',
   'store':'string',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -1165,7 +1171,7 @@ headers = {
   'Accept': 'application/json',
   'x-requested-from': 'string',
   'store': 'string',
-  'authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.post('/v1/commands/email-receipt', params={
@@ -1185,7 +1191,7 @@ headers = {
   'Accept' => 'application/json',
   'x-requested-from' => 'string',
   'store' => 'string',
-  'authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.post '/v1/commands/email-receipt',
@@ -1198,6 +1204,8 @@ p JSON.parse(result)
 
 `POST /v1/commands/email-receipt`
 
+Deep integrations only! Sends email receipt for a given order. You can specify email address.
+
 > Body parameter
 
 ```json
@@ -1208,7 +1216,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="commandssendemailreceipt-parameters">Parameters</h4>
+<h4 id="email-receipt-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1227,7 +1235,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="commandssendemailreceipt-responses">Responses</h4>
+<h4 id="email-receipt-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1239,12 +1247,12 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-api_key
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER STAFF CUSTOMER )
 </aside>
 
-### CommandsCancelOrder
+### Cancel Order
 
-<a id="opIdCommandsCancelOrder"></a>
+<a id="opIdCancel Order"></a>
 
 > Code samples
 
@@ -1252,14 +1260,14 @@ api_key
 # You can also use wget
 curl -X PUT /v1/commands/cancel/{entityUUID} \
   -H 'Accept: application/json' \
-  -H 'authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -1280,7 +1288,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -1302,7 +1310,7 @@ fetch('/v1/commands/cancel/{entityUUID}',
 import requests
 headers = {
   'Accept': 'application/json',
-  'authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.put('/v1/commands/cancel/{entityUUID}', params={
@@ -1319,7 +1327,7 @@ require 'json'
 
 headers = {
   'Accept' => 'application/json',
-  'authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.put '/v1/commands/cancel/{entityUUID}',
@@ -1332,7 +1340,9 @@ p JSON.parse(result)
 
 `PUT /v1/commands/cancel/{entityUUID}`
 
-<h4 id="commandscancelorder-parameters">Parameters</h4>
+Cancels an order unless state > in preparation. Will issue refund where needed.
+
+<h4 id="cancel-order-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1348,7 +1358,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="commandscancelorder-responses">Responses</h4>
+<h4 id="cancel-order-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1360,12 +1370,12 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-api_key
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER STAFF CUSTOMER )
 </aside>
 
-### CommandsUpdateOrderStatus
+### Update Order Status
 
-<a id="opIdCommandsUpdateOrderStatus"></a>
+<a id="opIdUpdate Order Status"></a>
 
 > Code samples
 
@@ -1374,7 +1384,7 @@ api_key
 curl -X PUT /v1/commands/change-status/{entityUUID} \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
-  -H 'authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -1382,7 +1392,7 @@ curl -X PUT /v1/commands/change-status/{entityUUID} \
 var headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -1407,7 +1417,7 @@ const inputBody = '{
 const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -1430,7 +1440,7 @@ import requests
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
-  'authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.put('/v1/commands/change-status/{entityUUID}', params={
@@ -1448,7 +1458,7 @@ require 'json'
 headers = {
   'Content-Type' => 'application/json',
   'Accept' => 'application/json',
-  'authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.put '/v1/commands/change-status/{entityUUID}',
@@ -1461,6 +1471,8 @@ p JSON.parse(result)
 
 `PUT /v1/commands/change-status/{entityUUID}`
 
+Deep integrations only! Will change order status. Only valid order transitions will be honoured.
+
 > Body parameter
 
 ```json
@@ -1470,7 +1482,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="commandsupdateorderstatus-parameters">Parameters</h4>
+<h4 id="update-order-status-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1487,7 +1499,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="commandsupdateorderstatus-responses">Responses</h4>
+<h4 id="update-order-status-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1499,12 +1511,12 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-api_key
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER STAFF SERVICE_ACCOUNT )
 </aside>
 
-### CommandsOrderPaymentStatus
+### Order Payment Status
 
-<a id="opIdCommandsOrderPaymentStatus"></a>
+<a id="opIdOrder Payment Status"></a>
 
 > Code samples
 
@@ -1513,7 +1525,7 @@ api_key
 curl -X PUT /v1/commands/payment-status/{orderUUID} \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json; charset=utf-8' \
-  -H 'authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -1521,7 +1533,7 @@ curl -X PUT /v1/commands/payment-status/{orderUUID} \
 var headers = {
   'Content-Type':'application/json',
   'Accept':'application/json; charset=utf-8',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -1549,7 +1561,7 @@ const inputBody = '{
 const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json; charset=utf-8',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -1572,7 +1584,7 @@ import requests
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json; charset=utf-8',
-  'authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.put('/v1/commands/payment-status/{orderUUID}', params={
@@ -1590,7 +1602,7 @@ require 'json'
 headers = {
   'Content-Type' => 'application/json',
   'Accept' => 'application/json; charset=utf-8',
-  'authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.put '/v1/commands/payment-status/{orderUUID}',
@@ -1602,6 +1614,8 @@ p JSON.parse(result)
 ```
 
 `PUT /v1/commands/payment-status/{orderUUID}`
+
+Deep integrations only! Updates payment status on order.
 
 > Body parameter
 
@@ -1615,7 +1629,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="commandsorderpaymentstatus-parameters">Parameters</h4>
+<h4 id="order-payment-status-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1645,7 +1659,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="commandsorderpaymentstatus-responses">Responses</h4>
+<h4 id="order-payment-status-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1657,12 +1671,12 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-api_key
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER STAFF CUSTOMER )
 </aside>
 
-### CommandsOrderPromotUpdate
+### Order Promo Update
 
-<a id="opIdCommandsOrderPromotUpdate"></a>
+<a id="opIdOrder Promo Update"></a>
 
 > Code samples
 
@@ -1672,7 +1686,7 @@ curl -X PUT /v1/commands/change-promo/{entityUUID} \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'store: string' \
-  -H 'authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -1681,7 +1695,7 @@ var headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'store':'string',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -1729,7 +1743,7 @@ const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'store':'string',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -1753,7 +1767,7 @@ headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
   'store': 'string',
-  'authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.put('/v1/commands/change-promo/{entityUUID}', params={
@@ -1772,7 +1786,7 @@ headers = {
   'Content-Type' => 'application/json',
   'Accept' => 'application/json',
   'store' => 'string',
-  'authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.put '/v1/commands/change-promo/{entityUUID}',
@@ -1784,6 +1798,8 @@ p JSON.parse(result)
 ```
 
 `PUT /v1/commands/change-promo/{entityUUID}`
+
+Deep integrations only! Updates payment status on order.
 
 > Body parameter
 
@@ -1816,7 +1832,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="commandsorderpromotupdate-parameters">Parameters</h4>
+<h4 id="order-promo-update-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1834,7 +1850,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="commandsorderpromotupdate-responses">Responses</h4>
+<h4 id="order-promo-update-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1846,12 +1862,12 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-api_key
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER STAFF CUSTOMER )
 </aside>
 
-### CommandsOrderTakeawayStatusChanged
+### Order Takeaway Status Changed
 
-<a id="opIdCommandsOrderTakeawayStatusChanged"></a>
+<a id="opIdOrder Takeaway Status Changed"></a>
 
 > Code samples
 
@@ -1860,7 +1876,7 @@ api_key
 curl -X PUT /v1/commands/takeaway-status/{entityUUID} \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
-  -H 'authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -1868,7 +1884,7 @@ curl -X PUT /v1/commands/takeaway-status/{entityUUID} \
 var headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -1892,7 +1908,7 @@ const inputBody = '{
 const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -1915,7 +1931,7 @@ import requests
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
-  'authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.put('/v1/commands/takeaway-status/{entityUUID}', params={
@@ -1933,7 +1949,7 @@ require 'json'
 headers = {
   'Content-Type' => 'application/json',
   'Accept' => 'application/json',
-  'authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.put '/v1/commands/takeaway-status/{entityUUID}',
@@ -1946,6 +1962,8 @@ p JSON.parse(result)
 
 `PUT /v1/commands/takeaway-status/{entityUUID}`
 
+Deep integrations only!
+
 > Body parameter
 
 ```json
@@ -1954,7 +1972,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="commandsordertakeawaystatuschanged-parameters">Parameters</h4>
+<h4 id="order-takeaway-status-changed-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1971,7 +1989,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="commandsordertakeawaystatuschanged-responses">Responses</h4>
+<h4 id="order-takeaway-status-changed-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1984,12 +2002,12 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-api_key
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER STAFF CUSTOMER )
 </aside>
 
-### CommandsOrderRemoveBundles
+### Remove Bundles
 
-<a id="opIdCommandsOrderRemoveBundles"></a>
+<a id="opIdRemove Bundles"></a>
 
 > Code samples
 
@@ -1998,7 +2016,7 @@ api_key
 curl -X PUT /v1/commands/remove-bundles/{orderUUID} \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
-  -H 'authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -2006,7 +2024,7 @@ curl -X PUT /v1/commands/remove-bundles/{orderUUID} \
 var headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -2037,7 +2055,7 @@ const inputBody = '{
 const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -2060,7 +2078,7 @@ import requests
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
-  'authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.put('/v1/commands/remove-bundles/{orderUUID}', params={
@@ -2078,7 +2096,7 @@ require 'json'
 headers = {
   'Content-Type' => 'application/json',
   'Accept' => 'application/json',
-  'authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.put '/v1/commands/remove-bundles/{orderUUID}',
@@ -2090,6 +2108,8 @@ p JSON.parse(result)
 ```
 
 `PUT /v1/commands/remove-bundles/{orderUUID}`
+
+Deep integrations only! Remove a bundle (item or meal) from an order. Only works for unpaid orders. Other business rules might apply. For example you can't remove a bundle that's already in preparation.
 
 > Body parameter
 
@@ -2106,7 +2126,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="commandsorderremovebundles-parameters">Parameters</h4>
+<h4 id="remove-bundles-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2164,7 +2184,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="commandsorderremovebundles-responses">Responses</h4>
+<h4 id="remove-bundles-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2176,14 +2196,14 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-api_key
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER STAFF CUSTOMER )
 </aside>
 
 <h2 id="order-service-queries">queries</h2>
 
-### QueriesGetOrdersByStatuses
+### Get Orders by Statuses
 
-<a id="opIdQueriesGetOrdersByStatuses"></a>
+<a id="opIdGet Orders by Statuses"></a>
 
 > Code samples
 
@@ -2192,7 +2212,7 @@ api_key
 curl -X GET /v1/queries/orders?statuses%5B%5D=string \
   -H 'Accept: application/json' \
   -H 'store: string' \
-  -H 'authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -2200,7 +2220,7 @@ curl -X GET /v1/queries/orders?statuses%5B%5D=string \
 var headers = {
   'Accept':'application/json',
   'store':'string',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -2222,7 +2242,7 @@ const fetch = require('node-fetch');
 const headers = {
   'Accept':'application/json',
   'store':'string',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -2245,7 +2265,7 @@ import requests
 headers = {
   'Accept': 'application/json',
   'store': 'string',
-  'authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/v1/queries/orders', params={
@@ -2265,7 +2285,7 @@ require 'json'
 headers = {
   'Accept' => 'application/json',
   'store' => 'string',
-  'authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/v1/queries/orders',
@@ -2279,9 +2299,9 @@ p JSON.parse(result)
 
 `GET /v1/queries/orders`
 
-Get Orders by Statuses
+Return a list of orders in the specified status. Permission filters also apply. For example CUSTOMER will only recieve their own orders. STAFF will only recieve orders on the store that they are assigned to.
 
-<h4 id="queriesgetordersbystatuses-parameters">Parameters</h4>
+<h4 id="get-orders-by-statuses-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2299,7 +2319,7 @@ Get Orders by Statuses
 }
 ```
 
-<h4 id="queriesgetordersbystatuses-responses">Responses</h4>
+<h4 id="get-orders-by-statuses-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2309,16 +2329,16 @@ Get Orders by Statuses
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not found|[NotFound](#schemanotfound)|
 |503|[Service Unavailable](https://tools.ietf.org/html/rfc7231#section-6.6.4)|Service unavailable|[ServiceUnavailable](#schemaserviceunavailable)|
 
-<h4 id="queriesgetordersbystatuses-responseschema">Response Schema</h4>
+<h4 id="get-orders-by-statuses-responseschema">Response Schema</h4>
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-api_key
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER STAFF CUSTOMER )
 </aside>
 
-### QueriesGetHistoryOrders
+### Get History Orders
 
-<a id="opIdQueriesGetHistoryOrders"></a>
+<a id="opIdGet History Orders"></a>
 
 > Code samples
 
@@ -2327,7 +2347,7 @@ api_key
 curl -X GET /v1/queries/orders/history \
   -H 'Accept: application/json' \
   -H 'store: string' \
-  -H 'authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -2335,7 +2355,7 @@ curl -X GET /v1/queries/orders/history \
 var headers = {
   'Accept':'application/json',
   'store':'string',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -2357,7 +2377,7 @@ const fetch = require('node-fetch');
 const headers = {
   'Accept':'application/json',
   'store':'string',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -2380,7 +2400,7 @@ import requests
 headers = {
   'Accept': 'application/json',
   'store': 'string',
-  'authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/v1/queries/orders/history', params={
@@ -2398,7 +2418,7 @@ require 'json'
 headers = {
   'Accept' => 'application/json',
   'store' => 'string',
-  'authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/v1/queries/orders/history',
@@ -2411,9 +2431,9 @@ p JSON.parse(result)
 
 `GET /v1/queries/orders/history`
 
-Get all orders in a time range
+Get all orders in a time range. Permission filters also apply. For example CUSTOMER will only recieve their own orders. STAFF will only recieve orders on the store that they are assigned to.
 
-<h4 id="queriesgethistoryorders-parameters">Parameters</h4>
+<h4 id="get-history-orders-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2461,7 +2481,7 @@ Get all orders in a time range
 }
 ```
 
-<h4 id="queriesgethistoryorders-responses">Responses</h4>
+<h4 id="get-history-orders-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2473,12 +2493,12 @@ Get all orders in a time range
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-api_key
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER STAFF CUSTOMER )
 </aside>
 
-### QueriesGetUserOrderHistory
+### Get User Order History
 
-<a id="opIdQueriesGetUserOrderHistory"></a>
+<a id="opIdGet User Order History"></a>
 
 > Code samples
 
@@ -2486,14 +2506,14 @@ api_key
 # You can also use wget
 curl -X GET /v1/queries/orders/user-history \
   -H 'Accept: application/json' \
-  -H 'authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -2514,7 +2534,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -2536,7 +2556,7 @@ fetch('/v1/queries/orders/user-history',
 import requests
 headers = {
   'Accept': 'application/json',
-  'authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/v1/queries/orders/user-history', params={
@@ -2553,7 +2573,7 @@ require 'json'
 
 headers = {
   'Accept' => 'application/json',
-  'authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/v1/queries/orders/user-history',
@@ -2568,7 +2588,7 @@ p JSON.parse(result)
 
 Get User order history by range of date or filtered by serialNumber
 
-<h4 id="queriesgetuserorderhistory-parameters">Parameters</h4>
+<h4 id="get-user-order-history-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2640,7 +2660,7 @@ Get User order history by range of date or filtered by serialNumber
 }
 ```
 
-<h4 id="queriesgetuserorderhistory-responses">Responses</h4>
+<h4 id="get-user-order-history-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2652,12 +2672,12 @@ Get User order history by range of date or filtered by serialNumber
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-api_key
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER STAFF CUSTOMER )
 </aside>
 
-### QueriesGetOrder
+### Get Order
 
-<a id="opIdQueriesGetOrder"></a>
+<a id="opIdGet Order"></a>
 
 > Code samples
 
@@ -2665,14 +2685,14 @@ api_key
 # You can also use wget
 curl -X GET /v1/queries/find/{uuid} \
   -H 'Accept: application/json; charset=utf-8' \
-  -H 'authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json; charset=utf-8',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -2693,7 +2713,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json; charset=utf-8',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -2715,7 +2735,7 @@ fetch('/v1/queries/find/{uuid}',
 import requests
 headers = {
   'Accept': 'application/json; charset=utf-8',
-  'authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/v1/queries/find/{uuid}', params={
@@ -2732,7 +2752,7 @@ require 'json'
 
 headers = {
   'Accept' => 'application/json; charset=utf-8',
-  'authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/v1/queries/find/{uuid}',
@@ -2745,7 +2765,9 @@ p JSON.parse(result)
 
 `GET /v1/queries/find/{uuid}`
 
-<h4 id="queriesgetorder-parameters">Parameters</h4>
+Retrieve specific order. Permission filters also apply. For example CUSTOMER will only recieve their own orders. STAFF will only recieve orders on the store that they are assigned to.
+
+<h4 id="get-order-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -3067,7 +3089,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="queriesgetorder-responses">Responses</h4>
+<h4 id="get-order-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -3079,14 +3101,14 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-api_key
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER STAFF CUSTOMER )
 </aside>
 
 <h2 id="order-service-reports">reports</h2>
 
-### GetReportsByStore
+### Reports By Store
 
-<a id="opIdGetReportsByStore"></a>
+<a id="opIdReports By Store"></a>
 
 > Code samples
 
@@ -3095,7 +3117,7 @@ api_key
 curl -X GET /v1/reports \
   -H 'Accept: application/json' \
   -H 'store: string' \
-  -H 'authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -3103,7 +3125,7 @@ curl -X GET /v1/reports \
 var headers = {
   'Accept':'application/json',
   'store':'string',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -3125,7 +3147,7 @@ const fetch = require('node-fetch');
 const headers = {
   'Accept':'application/json',
   'store':'string',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -3148,7 +3170,7 @@ import requests
 headers = {
   'Accept': 'application/json',
   'store': 'string',
-  'authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/v1/reports', params={
@@ -3166,7 +3188,7 @@ require 'json'
 headers = {
   'Accept' => 'application/json',
   'store' => 'string',
-  'authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/v1/reports',
@@ -3179,9 +3201,9 @@ p JSON.parse(result)
 
 `GET /v1/reports`
 
-Get Reports by Store
+Get a list of X/Z reports by store
 
-<h4 id="getreportsbystore-parameters">Parameters</h4>
+<h4 id="reports-by-store-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -3231,7 +3253,7 @@ Get Reports by Store
 }
 ```
 
-<h4 id="getreportsbystore-responses">Responses</h4>
+<h4 id="reports-by-store-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -3243,12 +3265,12 @@ Get Reports by Store
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-api_key
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER STAFF )
 </aside>
 
-### GetReportByUUID
+### Get Report By UUID
 
-<a id="opIdGetReportByUUID"></a>
+<a id="opIdGet Report By UUID"></a>
 
 > Code samples
 
@@ -3256,14 +3278,14 @@ api_key
 # You can also use wget
 curl -X GET /v1/reports/{uuid} \
   -H 'Accept: application/json' \
-  -H 'authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -3284,7 +3306,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -3306,7 +3328,7 @@ fetch('/v1/reports/{uuid}',
 import requests
 headers = {
   'Accept': 'application/json',
-  'authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/v1/reports/{uuid}', params={
@@ -3323,7 +3345,7 @@ require 'json'
 
 headers = {
   'Accept' => 'application/json',
-  'authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/v1/reports/{uuid}',
@@ -3336,9 +3358,9 @@ p JSON.parse(result)
 
 `GET /v1/reports/{uuid}`
 
-Get Report by UUID
+Get X/Z Report by UUID
 
-<h4 id="getreportbyuuid-parameters">Parameters</h4>
+<h4 id="get-report-by-uuid-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -3395,7 +3417,7 @@ Get Report by UUID
 }
 ```
 
-<h4 id="getreportbyuuid-responses">Responses</h4>
+<h4 id="get-report-by-uuid-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -3407,12 +3429,12 @@ Get Report by UUID
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-api_key
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER STAFF )
 </aside>
 
-### CreateReport
+### Generate Report
 
-<a id="opIdCreateReport"></a>
+<a id="opIdGenerate Report"></a>
 
 > Code samples
 
@@ -3422,7 +3444,7 @@ curl -X POST /v1/reports/generate-report \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'store: string' \
-  -H 'authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -3431,7 +3453,7 @@ var headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'store':'string',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -3456,7 +3478,7 @@ const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
   'store':'string',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -3480,7 +3502,7 @@ headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
   'store': 'string',
-  'authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.post('/v1/reports/generate-report', params={
@@ -3499,7 +3521,7 @@ headers = {
   'Content-Type' => 'application/json',
   'Accept' => 'application/json',
   'store' => 'string',
-  'authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.post '/v1/reports/generate-report',
@@ -3512,7 +3534,7 @@ p JSON.parse(result)
 
 `POST /v1/reports/generate-report`
 
-create report
+Generate X/Z report for a store
 
 > Body parameter
 
@@ -3522,7 +3544,7 @@ create report
 }
 ```
 
-<h4 id="createreport-parameters">Parameters</h4>
+<h4 id="generate-report-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -3580,7 +3602,7 @@ create report
 }
 ```
 
-<h4 id="createreport-responses">Responses</h4>
+<h4 id="generate-report-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -3592,7 +3614,7 @@ create report
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-api_key
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER STAFF )
 </aside>
 
 <h2 id="order-service-pusher">pusher</h2>
@@ -3608,7 +3630,7 @@ api_key
 curl -X POST /v1/pusher/auth \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
-  -H 'authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -3616,7 +3638,7 @@ curl -X POST /v1/pusher/auth \
 var headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -3641,7 +3663,7 @@ const inputBody = '{
 const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
-  'authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -3664,7 +3686,7 @@ import requests
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
-  'authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.post('/v1/pusher/auth', params={
@@ -3682,7 +3704,7 @@ require 'json'
 headers = {
   'Content-Type' => 'application/json',
   'Accept' => 'application/json',
-  'authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.post '/v1/pusher/auth',
@@ -3694,6 +3716,8 @@ p JSON.parse(result)
 ```
 
 `POST /v1/pusher/auth`
+
+*Deep integrations only! Get authentication tokens required to subscribe to notification channels.*
 
 Pusher authorisation
 
@@ -3735,7 +3759,7 @@ Pusher authorisation
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-api_key
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER STAFF )
 </aside>
 
 ## Schemas
