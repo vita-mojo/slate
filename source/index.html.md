@@ -28,7 +28,7 @@ Welcome to the VMOS API! You can use our API most of the functionality on the VM
 
 In order to gain access to use these apis please email support@vmos.io. We will be able to provide the right credentials and other details required to use the APIs. More information about this in the Authentication section.
 
-Some of the endpoints are marked as `Deep integrations only!`. Your level of access will probably not allow you to use any of those but in debt guides and support can be provided for deep integrations.
+Some of the endpoints are marked as `Deep integrations only!`. Your level of access will probably not allow you to use any of those but in depth guides and support can be provided for deep integrations.
 
 We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
