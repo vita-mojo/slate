@@ -1,19 +1,3 @@
----
-title: Catalog Service
-language_tabs:
-  - shell: curl
-  - javascript: JavaScript
-  - javascript--nodejs: Node.JS
-  - python: Python
-  - ruby: Ruby
-toc_footers: []
-includes: []
-search: true
-highlight_theme: darkula
-headingLevel: 2
-
----
-
 <h1 id="catalog-service">Catalog Service</h1>
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.

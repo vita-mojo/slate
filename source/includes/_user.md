@@ -1,19 +1,3 @@
----
-title: User/Auth Service
-language_tabs:
-  - shell: curl
-  - javascript: JavaScript
-  - javascript--nodejs: Node.JS
-  - python: Python
-  - ruby: Ruby
-toc_footers: []
-includes: []
-search: true
-highlight_theme: darkula
-headingLevel: 2
-
----
-
 <h1 id="user-auth-service">User/Auth Service</h1>
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
@@ -129,11 +113,11 @@ p JSON.parse(result)
 This operation does not require authentication
 </aside>
 
-<h2 id="user-auth-service-v1-auth">v1/auth</h2>
+<h2 id="user-auth-service-auth">auth</h2>
 
-### POST_v1-auth
+### Auth
 
-<a id="opIdPOST_v1-auth"></a>
+<a id="opIdAuth"></a>
 
 > Code samples
 
@@ -168,7 +152,10 @@ $.ajax({
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-const inputBody = '{}';
+const inputBody = '{
+  "email": "string",
+  "password": "string"
+}';
 const headers = {
   'Content-Type':'application/json; charset=utf-8',
   'Accept':'application/json; charset=utf-8',
@@ -226,20 +213,23 @@ p JSON.parse(result)
 
 `POST /v1/auth`
 
-*Get authenticated*
+*Get authenticated. Refresh token is valid indefinitely, should be stored and used to get an access token before each API request. Access token expires in 10 mintues.*
 
 > Body parameter
 
 ```json
-{}
+{
+  "email": "string",
+  "password": "string"
+}
 ```
 
-<h4 id="post_v1-auth-parameters">Parameters</h4>
+<h4 id="auth-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |tenant|header|string|false|Tenant UUID|
-|body|body|object|true|none|
+|body|body|[AuthReq](#schemaauthreq)|true|none|
 
 > Example responses
 
@@ -279,22 +269,20 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="post_v1-auth-responses">Responses</h4>
+<h4 id="auth-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Authentication, token and user data returned|Inline|
+|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Authentication, token and user data returned|[AuthRes](#schemaauthres)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Email or password is not valid|None|
-
-<h4 id="post_v1-auth-responseschema">Response Schema</h4>
 
 <aside class="success">
 This operation does not require authentication
 </aside>
 
-### GET_v1-auth-check
+### Check Token
 
-<a id="opIdGET_v1-auth-check"></a>
+<a id="opIdCheck Token"></a>
 
 > Code samples
 
@@ -302,14 +290,14 @@ This operation does not require authentication
 # You can also use wget
 curl -X GET /v1/auth/check \
   -H 'Accept: application/json; charset=utf-8' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -330,7 +318,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -352,7 +340,7 @@ fetch('/v1/auth/check',
 import requests
 headers = {
   'Accept': 'application/json; charset=utf-8',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/v1/auth/check', params={
@@ -369,7 +357,7 @@ require 'json'
 
 headers = {
   'Accept' => 'application/json; charset=utf-8',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/v1/auth/check',
@@ -382,7 +370,7 @@ p JSON.parse(result)
 
 `GET /v1/auth/check`
 
-*Check Token (is token valid)*
+*Check Token is token valid*
 
 > Example responses
 
@@ -422,23 +410,21 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="get_v1-auth-check-responses">Responses</h4>
+<h4 id="check-token-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[AuthRes](#schemaauthres)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated to perform this action|None|
-
-<h4 id="get_v1-auth-check-responseschema">Response Schema</h4>
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: SUPER_ADMIN ADMINISTRATOR MANAGER STAFF CUSTOMER SERVICE_ACCOUNT SALES_REPORTING ), oauth_2_0
 </aside>
 
-### PUT_v1-auth-refresh-value
+### Refresh Token
 
-<a id="opIdPUT_v1-auth-refresh-value"></a>
+<a id="opIdRefresh Token"></a>
 
 > Code samples
 
@@ -521,9 +507,9 @@ p JSON.parse(result)
 
 `PUT /v1/auth/refresh/{value}`
 
-*Refresh token*
+*Use the Refresh token to get new access token. Access token is valid 10 minutes. You should get a new access token before any API request.*
 
-<h4 id="put_v1-auth-refresh-value-parameters">Parameters</h4>
+<h4 id="refresh-token-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -567,23 +553,23 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="put_v1-auth-refresh-value-responses">Responses</h4>
+<h4 id="refresh-token-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
 
-<h4 id="put_v1-auth-refresh-value-responseschema">Response Schema</h4>
+<h4 id="refresh-token-responseschema">Response Schema</h4>
 
 <aside class="success">
 This operation does not require authentication
 </aside>
 
-<h2 id="user-auth-service-v1-user">v1/user</h2>
+<h2 id="user-auth-service-user">user</h2>
 
-### POST_v1-user
+### Create User
 
-<a id="opIdPOST_v1-user"></a>
+<a id="opIdCreate User"></a>
 
 > Code samples
 
@@ -690,7 +676,7 @@ p JSON.parse(result)
 
 `POST /v1/user`
 
-*Create user*
+*Create a new customer with user and password*
 
 > Body parameter
 
@@ -707,7 +693,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="post_v1-user-parameters">Parameters</h4>
+<h4 id="create-user-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -758,22 +744,22 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="post_v1-user-responses">Responses</h4>
+<h4 id="create-user-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|Inline|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|none|Inline|
 
-<h4 id="post_v1-user-responseschema">Response Schema</h4>
+<h4 id="create-user-responseschema">Response Schema</h4>
 
 <aside class="success">
 This operation does not require authentication
 </aside>
 
-### GET_v1-user-uuid-email
+### Get Profile for Email
 
-<a id="opIdGET_v1-user-uuid-email"></a>
+<a id="opIdGet Profile for Email"></a>
 
 > Code samples
 
@@ -781,14 +767,14 @@ This operation does not require authentication
 # You can also use wget
 curl -X GET /v1/user/{uuid}/email \
   -H 'Accept: application/json; charset=utf-8' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -809,7 +795,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -831,7 +817,7 @@ fetch('/v1/user/{uuid}/email',
 import requests
 headers = {
   'Accept': 'application/json; charset=utf-8',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/v1/user/{uuid}/email', params={
@@ -848,7 +834,7 @@ require 'json'
 
 headers = {
   'Accept' => 'application/json; charset=utf-8',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/v1/user/{uuid}/email',
@@ -861,9 +847,9 @@ p JSON.parse(result)
 
 `GET /v1/user/{uuid}/email`
 
-*Get profile for email*
+*Deep integrations only! Get User profile for sending email. This will include marketing preferrences for the specified user.*
 
-<h4 id="get_v1-user-uuid-email-parameters">Parameters</h4>
+<h4 id="get-profile-for-email-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -890,23 +876,23 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="get_v1-user-uuid-email-responses">Responses</h4>
+<h4 id="get-profile-for-email-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated to perform this action|None|
 
-<h4 id="get_v1-user-uuid-email-responseschema">Response Schema</h4>
+<h4 id="get-profile-for-email-responseschema">Response Schema</h4>
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: SERVICE_ACCOUNT ), oauth_2_0
 </aside>
 
-### GET_v1-user-check-email
+### Check email
 
-<a id="opIdGET_v1-user-check-email"></a>
+<a id="opIdCheck email"></a>
 
 > Code samples
 
@@ -994,9 +980,9 @@ p JSON.parse(result)
 
 `GET /v1/user/check/{email}`
 
-*Check if user exists by a given email*
+*Check if user exists by a given email. This is used for soft login/signup.*
 
-<h4 id="get_v1-user-check-email-parameters">Parameters</h4>
+<h4 id="check-email-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1011,21 +997,21 @@ p JSON.parse(result)
 "{\n   payload: {\n     exists: true\n   }\n}\n"
 ```
 
-<h4 id="get_v1-user-check-email-responses">Responses</h4>
+<h4 id="check-email-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
 
-<h4 id="get_v1-user-check-email-responseschema">Response Schema</h4>
+<h4 id="check-email-responseschema">Response Schema</h4>
 
 <aside class="success">
 This operation does not require authentication
 </aside>
 
-### GET_v1-user-subscriptions
+### Get Subscriptions
 
-<a id="opIdGET_v1-user-subscriptions"></a>
+<a id="opIdGet Subscriptions"></a>
 
 > Code samples
 
@@ -1033,14 +1019,14 @@ This operation does not require authentication
 # You can also use wget
 curl -X GET /v1/user/subscriptions \
   -H 'Accept: application/json; charset=utf-8' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -1061,7 +1047,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -1083,7 +1069,7 @@ fetch('/v1/user/subscriptions',
 import requests
 headers = {
   'Accept': 'application/json; charset=utf-8',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/v1/user/subscriptions', params={
@@ -1100,7 +1086,7 @@ require 'json'
 
 headers = {
   'Accept' => 'application/json; charset=utf-8',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/v1/user/subscriptions',
@@ -1113,7 +1099,7 @@ p JSON.parse(result)
 
 `GET /v1/user/subscriptions`
 
-*Get user subscriptions (email)*
+*Deep integrations only! Get user subscriptions (email) - marketing preferences.*
 
 > Example responses
 
@@ -1130,23 +1116,23 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="get_v1-user-subscriptions-responses">Responses</h4>
+<h4 id="get-subscriptions-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated to perform this action|None|
 
-<h4 id="get_v1-user-subscriptions-responseschema">Response Schema</h4>
+<h4 id="get-subscriptions-responseschema">Response Schema</h4>
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: SERVICE_ACCOUNT CUSTOMER ), oauth_2_0
 </aside>
 
-### PUT_v1-user-subscriptions
+### Update Subscriptions
 
-<a id="opIdPUT_v1-user-subscriptions"></a>
+<a id="opIdUpdate Subscriptions"></a>
 
 > Code samples
 
@@ -1155,7 +1141,7 @@ bearer
 curl -X PUT /v1/user/subscriptions \
   -H 'Content-Type: application/json; charset=utf-8' \
   -H 'Accept: application/json; charset=utf-8' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -1163,7 +1149,7 @@ curl -X PUT /v1/user/subscriptions \
 var headers = {
   'Content-Type':'application/json; charset=utf-8',
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -1189,7 +1175,7 @@ const inputBody = '{
 const headers = {
   'Content-Type':'application/json; charset=utf-8',
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -1212,7 +1198,7 @@ import requests
 headers = {
   'Content-Type': 'application/json; charset=utf-8',
   'Accept': 'application/json; charset=utf-8',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.put('/v1/user/subscriptions', params={
@@ -1230,7 +1216,7 @@ require 'json'
 headers = {
   'Content-Type' => 'application/json; charset=utf-8',
   'Accept' => 'application/json; charset=utf-8',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.put '/v1/user/subscriptions',
@@ -1243,7 +1229,7 @@ p JSON.parse(result)
 
 `PUT /v1/user/subscriptions`
 
-*Update marketing subscription for user*
+*Deep integrations only! Update marketing subscription for user*
 
 > Body parameter
 
@@ -1255,7 +1241,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="put_v1-user-subscriptions-parameters">Parameters</h4>
+<h4 id="update-subscriptions-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1277,7 +1263,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="put_v1-user-subscriptions-responses">Responses</h4>
+<h4 id="update-subscriptions-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1285,18 +1271,16 @@ p JSON.parse(result)
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|none|Inline|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated to perform this action|None|
 
-<h4 id="put_v1-user-subscriptions-responseschema">Response Schema</h4>
+<h4 id="update-subscriptions-responseschema">Response Schema</h4>
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: SERVICE_ACCOUNT CUSTOMER ), oauth_2_0
 </aside>
 
-<h2 id="user-auth-service-v1-user-profile">v1/user/profile</h2>
+### Get Profile
 
-### GET_v1-user-profile
-
-<a id="opIdGET_v1-user-profile"></a>
+<a id="opIdGet Profile"></a>
 
 > Code samples
 
@@ -1304,14 +1288,14 @@ bearer
 # You can also use wget
 curl -X GET /v1/user/profile \
   -H 'Accept: application/json; charset=utf-8' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -1332,7 +1316,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -1354,7 +1338,7 @@ fetch('/v1/user/profile',
 import requests
 headers = {
   'Accept': 'application/json; charset=utf-8',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/v1/user/profile', params={
@@ -1371,7 +1355,7 @@ require 'json'
 
 headers = {
   'Accept' => 'application/json; charset=utf-8',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/v1/user/profile',
@@ -1384,7 +1368,7 @@ p JSON.parse(result)
 
 `GET /v1/user/profile`
 
-*Get profile for user*
+*Get profile for user. This includes user details like diets, allergens etc.*
 
 > Example responses
 
@@ -1430,23 +1414,23 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="get_v1-user-profile-responses">Responses</h4>
+<h4 id="get-profile-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated to perform this action|None|
 
-<h4 id="get_v1-user-profile-responseschema">Response Schema</h4>
+<h4 id="get-profile-responseschema">Response Schema</h4>
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: CUSTOMER ), oauth_2_0
 </aside>
 
-### POST_v1-user-profile-diets
+### Add Diet
 
-<a id="opIdPOST_v1-user-profile-diets"></a>
+<a id="opIdAdd Diet"></a>
 
 > Code samples
 
@@ -1455,7 +1439,7 @@ bearer
 curl -X POST /v1/user/profile/diets \
   -H 'Content-Type: application/json; charset=utf-8' \
   -H 'Accept: application/json; charset=utf-8' \
-  -H 'Authorization: API_KEY'
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -1463,7 +1447,7 @@ curl -X POST /v1/user/profile/diets \
 var headers = {
   'Content-Type':'application/json; charset=utf-8',
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -1488,7 +1472,7 @@ const inputBody = '{
 const headers = {
   'Content-Type':'application/json; charset=utf-8',
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'API_KEY'
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -1511,7 +1495,7 @@ import requests
 headers = {
   'Content-Type': 'application/json; charset=utf-8',
   'Accept': 'application/json; charset=utf-8',
-  'Authorization': 'API_KEY'
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.post('/v1/user/profile/diets', params={
@@ -1529,7 +1513,7 @@ require 'json'
 headers = {
   'Content-Type' => 'application/json; charset=utf-8',
   'Accept' => 'application/json; charset=utf-8',
-  'Authorization' => 'API_KEY'
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.post '/v1/user/profile/diets',
@@ -1553,7 +1537,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="post_v1-user-profile-diets-parameters">Parameters</h4>
+<h4 id="add-diet-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1605,25 +1589,23 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="post_v1-user-profile-diets-responses">Responses</h4>
+<h4 id="add-diet-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|Inline|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated to perform this action|None|
 
-<h4 id="post_v1-user-profile-diets-responseschema">Response Schema</h4>
+<h4 id="add-diet-responseschema">Response Schema</h4>
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: CUSTOMER ), oauth_2_0
 </aside>
 
-<h2 id="user-auth-service-v1-user-password">v1/user/password</h2>
+### Request Reset Password
 
-### POST_v1-user-password-forgotten
-
-<a id="opIdPOST_v1-user-password-forgotten"></a>
+<a id="opIdRequest Reset Password"></a>
 
 > Code samples
 
@@ -1718,7 +1700,7 @@ p JSON.parse(result)
 
 `POST /v1/user/password/forgotten`
 
-*Send Forgotten token link for*
+*Send Forgotten token link for given email*
 
 > Body parameter
 
@@ -1728,7 +1710,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="post_v1-user-password-forgotten-parameters">Parameters</h4>
+<h4 id="request-reset-password-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1746,21 +1728,21 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="post_v1-user-password-forgotten-responses">Responses</h4>
+<h4 id="request-reset-password-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|Inline|
 
-<h4 id="post_v1-user-password-forgotten-responseschema">Response Schema</h4>
+<h4 id="request-reset-password-responseschema">Response Schema</h4>
 
 <aside class="success">
 This operation does not require authentication
 </aside>
 
-### GET_v1-user-password-forgotten-token
+### Check Password Token
 
-<a id="opIdGET_v1-user-password-forgotten-token"></a>
+<a id="opIdCheck Password Token"></a>
 
 > Code samples
 
@@ -1843,9 +1825,9 @@ p JSON.parse(result)
 
 `GET /v1/user/password/forgotten/{token}`
 
-*Check forgotten token*
+*Check forgotten password token*
 
-<h4 id="get_v1-user-password-forgotten-token-parameters">Parameters</h4>
+<h4 id="check-password-token-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1861,21 +1843,21 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="get_v1-user-password-forgotten-token-responses">Responses</h4>
+<h4 id="check-password-token-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
 
-<h4 id="get_v1-user-password-forgotten-token-responseschema">Response Schema</h4>
+<h4 id="check-password-token-responseschema">Response Schema</h4>
 
 <aside class="success">
 This operation does not require authentication
 </aside>
 
-### PATCH_v1-user-password-forgotten-token
+### Reset Password
 
-<a id="opIdPATCH_v1-user-password-forgotten-token"></a>
+<a id="opIdReset Password"></a>
 
 > Code samples
 
@@ -1975,7 +1957,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="patch_v1-user-password-forgotten-token-parameters">Parameters</h4>
+<h4 id="reset-password-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1993,23 +1975,23 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="patch_v1-user-password-forgotten-token-responses">Responses</h4>
+<h4 id="reset-password-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
 
-<h4 id="patch_v1-user-password-forgotten-token-responseschema">Response Schema</h4>
+<h4 id="reset-password-responseschema">Response Schema</h4>
 
 <aside class="success">
 This operation does not require authentication
 </aside>
 
-<h2 id="user-auth-service-v1-management-user">v1/management/user</h2>
+<h2 id="user-auth-service-management">management</h2>
 
-### GET_v1-management-user
+### Get Users
 
-<a id="opIdGET_v1-management-user"></a>
+<a id="opIdGet Users"></a>
 
 > Code samples
 
@@ -2017,14 +1999,16 @@ This operation does not require authentication
 # You can also use wget
 curl -X GET /v1/management/user \
   -H 'Accept: application/json; charset=utf-8' \
-  -H 'Authorization: API_KEY'
+  -H 'tenant: string' \
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'API_KEY'
+  'tenant':'string',
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -2045,7 +2029,8 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'API_KEY'
+  'tenant':'string',
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -2067,7 +2052,8 @@ fetch('/v1/management/user',
 import requests
 headers = {
   'Accept': 'application/json; charset=utf-8',
-  'Authorization': 'API_KEY'
+  'tenant': 'string',
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/v1/management/user', params={
@@ -2084,7 +2070,8 @@ require 'json'
 
 headers = {
   'Accept' => 'application/json; charset=utf-8',
-  'Authorization' => 'API_KEY'
+  'tenant' => 'string',
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/v1/management/user',
@@ -2097,12 +2084,13 @@ p JSON.parse(result)
 
 `GET /v1/management/user`
 
-*Get list of users*
+*Deep integrations only! Get list of users*
 
-<h4 id="get_v1-management-user-parameters">Parameters</h4>
+<h4 id="get-users-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
+|tenant|header|string|true|Tenant UUID|
 |limit|query|number|false|Limit the number of users returned (default 100)|
 |page|query|number|false|Page number (default 1)|
 |status|query|number|false|User status (active = 1, inactive = 0), if not specified all users are returned|
@@ -2153,23 +2141,23 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="get_v1-management-user-responses">Responses</h4>
+<h4 id="get-users-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated to perform this action|None|
 
-<h4 id="get_v1-management-user-responseschema">Response Schema</h4>
+<h4 id="get-users-responseschema">Response Schema</h4>
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER ), oauth_2_0
 </aside>
 
-### POST_v1-management-user
+### Create User
 
-<a id="opIdPOST_v1-management-user"></a>
+<a id="opIdCreate User"></a>
 
 > Code samples
 
@@ -2178,7 +2166,8 @@ bearer
 curl -X POST /v1/management/user \
   -H 'Content-Type: application/json; charset=utf-8' \
   -H 'Accept: application/json; charset=utf-8' \
-  -H 'Authorization: API_KEY'
+  -H 'tenant: string' \
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -2186,7 +2175,8 @@ curl -X POST /v1/management/user \
 var headers = {
   'Content-Type':'application/json; charset=utf-8',
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'API_KEY'
+  'tenant':'string',
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -2221,7 +2211,8 @@ const inputBody = '{
 const headers = {
   'Content-Type':'application/json; charset=utf-8',
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'API_KEY'
+  'tenant':'string',
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -2244,7 +2235,8 @@ import requests
 headers = {
   'Content-Type': 'application/json; charset=utf-8',
   'Accept': 'application/json; charset=utf-8',
-  'Authorization': 'API_KEY'
+  'tenant': 'string',
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.post('/v1/management/user', params={
@@ -2262,7 +2254,8 @@ require 'json'
 headers = {
   'Content-Type' => 'application/json; charset=utf-8',
   'Accept' => 'application/json; charset=utf-8',
-  'Authorization' => 'API_KEY'
+  'tenant' => 'string',
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.post '/v1/management/user',
@@ -2275,7 +2268,7 @@ p JSON.parse(result)
 
 `POST /v1/management/user`
 
-*Create new user*
+*Deep integrations only! Create new user*
 
 > Body parameter
 
@@ -2296,10 +2289,11 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="post_v1-management-user-parameters">Parameters</h4>
+<h4 id="create-user-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
+|tenant|header|string|true|Tenant UUID|
 |body|body|[ManagementCreateUpdate](#schemamanagementcreateupdate)|true|none|
 
 > Example responses
@@ -2326,7 +2320,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="post_v1-management-user-responses">Responses</h4>
+<h4 id="create-user-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2334,16 +2328,16 @@ p JSON.parse(result)
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Body is not valid|None|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated to perform this action|None|
 
-<h4 id="post_v1-management-user-responseschema">Response Schema</h4>
+<h4 id="create-user-responseschema">Response Schema</h4>
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER ), oauth_2_0
 </aside>
 
-### GET_v1-management-user-uuid
+### Get User
 
-<a id="opIdGET_v1-management-user-uuid"></a>
+<a id="opIdGet User"></a>
 
 > Code samples
 
@@ -2351,14 +2345,16 @@ bearer
 # You can also use wget
 curl -X GET /v1/management/user/{uuid} \
   -H 'Accept: application/json; charset=utf-8' \
-  -H 'Authorization: API_KEY'
+  -H 'tenant: string' \
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'API_KEY'
+  'tenant':'string',
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -2379,7 +2375,8 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'API_KEY'
+  'tenant':'string',
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -2401,7 +2398,8 @@ fetch('/v1/management/user/{uuid}',
 import requests
 headers = {
   'Accept': 'application/json; charset=utf-8',
-  'Authorization': 'API_KEY'
+  'tenant': 'string',
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/v1/management/user/{uuid}', params={
@@ -2418,7 +2416,8 @@ require 'json'
 
 headers = {
   'Accept' => 'application/json; charset=utf-8',
-  'Authorization' => 'API_KEY'
+  'tenant' => 'string',
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/v1/management/user/{uuid}',
@@ -2431,12 +2430,13 @@ p JSON.parse(result)
 
 `GET /v1/management/user/{uuid}`
 
-*Get user by UUID*
+*Deep integrations only! Get user by UUID*
 
-<h4 id="get_v1-management-user-uuid-parameters">Parameters</h4>
+<h4 id="get-user-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
+|tenant|header|string|true|Tenant UUID|
 |uuid|path|string|true|none|
 
 > Example responses
@@ -2463,23 +2463,23 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="get_v1-management-user-uuid-responses">Responses</h4>
+<h4 id="get-user-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated to perform this action|None|
 
-<h4 id="get_v1-management-user-uuid-responseschema">Response Schema</h4>
+<h4 id="get-user-responseschema">Response Schema</h4>
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER ), oauth_2_0
 </aside>
 
-### PUT_v1-management-user-uuid
+### Update User
 
-<a id="opIdPUT_v1-management-user-uuid"></a>
+<a id="opIdUpdate User"></a>
 
 > Code samples
 
@@ -2488,7 +2488,8 @@ bearer
 curl -X PUT /v1/management/user/{uuid} \
   -H 'Content-Type: application/json; charset=utf-8' \
   -H 'Accept: application/json; charset=utf-8' \
-  -H 'Authorization: API_KEY'
+  -H 'tenant: string' \
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -2496,7 +2497,8 @@ curl -X PUT /v1/management/user/{uuid} \
 var headers = {
   'Content-Type':'application/json; charset=utf-8',
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'API_KEY'
+  'tenant':'string',
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -2531,7 +2533,8 @@ const inputBody = '{
 const headers = {
   'Content-Type':'application/json; charset=utf-8',
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'API_KEY'
+  'tenant':'string',
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -2554,7 +2557,8 @@ import requests
 headers = {
   'Content-Type': 'application/json; charset=utf-8',
   'Accept': 'application/json; charset=utf-8',
-  'Authorization': 'API_KEY'
+  'tenant': 'string',
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.put('/v1/management/user/{uuid}', params={
@@ -2572,7 +2576,8 @@ require 'json'
 headers = {
   'Content-Type' => 'application/json; charset=utf-8',
   'Accept' => 'application/json; charset=utf-8',
-  'Authorization' => 'API_KEY'
+  'tenant' => 'string',
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.put '/v1/management/user/{uuid}',
@@ -2585,7 +2590,7 @@ p JSON.parse(result)
 
 `PUT /v1/management/user/{uuid}`
 
-*Update user (including profile and role)*
+*Deep integrations only! Update user (including profile and role)*
 
 > Body parameter
 
@@ -2606,10 +2611,11 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="put_v1-management-user-uuid-parameters">Parameters</h4>
+<h4 id="update-user-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
+|tenant|header|string|true|Tenant UUID|
 |body|body|[ManagementCreateUpdate](#schemamanagementcreateupdate)|true|none|
 |uuid|path|string|true|none|
 
@@ -2637,7 +2643,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="put_v1-management-user-uuid-responses">Responses</h4>
+<h4 id="update-user-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2645,18 +2651,16 @@ p JSON.parse(result)
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Body is not valid|None|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated to perform this action|None|
 
-<h4 id="put_v1-management-user-uuid-responseschema">Response Schema</h4>
+<h4 id="update-user-responseschema">Response Schema</h4>
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER ), oauth_2_0
 </aside>
 
-<h2 id="user-auth-service-v1-management-role">v1/management/role</h2>
+### Get Roles
 
-### GET_v1-management-role
-
-<a id="opIdGET_v1-management-role"></a>
+<a id="opIdGet Roles"></a>
 
 > Code samples
 
@@ -2664,14 +2668,16 @@ bearer
 # You can also use wget
 curl -X GET /v1/management/role \
   -H 'Accept: application/json; charset=utf-8' \
-  -H 'Authorization: API_KEY'
+  -H 'tenant: string' \
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'API_KEY'
+  'tenant':'string',
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -2692,7 +2698,8 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'API_KEY'
+  'tenant':'string',
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -2714,7 +2721,8 @@ fetch('/v1/management/role',
 import requests
 headers = {
   'Accept': 'application/json; charset=utf-8',
-  'Authorization': 'API_KEY'
+  'tenant': 'string',
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('/v1/management/role', params={
@@ -2731,7 +2739,8 @@ require 'json'
 
 headers = {
   'Accept' => 'application/json; charset=utf-8',
-  'Authorization' => 'API_KEY'
+  'tenant' => 'string',
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '/v1/management/role',
@@ -2744,7 +2753,13 @@ p JSON.parse(result)
 
 `GET /v1/management/role`
 
-*Get list of roles*
+*Deep integrations only! Get list of roles*
+
+<h4 id="get-roles-parameters">Parameters</h4>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|tenant|header|string|true|Tenant UUID|
 
 > Example responses
 
@@ -2765,18 +2780,18 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="get_v1-management-role-responses">Responses</h4>
+<h4 id="get-roles-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated to perform this action|None|
 
-<h4 id="get_v1-management-role-responseschema">Response Schema</h4>
+<h4 id="get-roles-responseschema">Response Schema</h4>
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-bearer
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER ), oauth_2_0
 </aside>
 
 ## Schemas
@@ -2817,4 +2832,84 @@ bearer
 |email|string|true|none|none|
 |active|boolean|true|none|none|
 |storeUUID|string|false|none|none|
+
+<h3 id="tocSauthreq">AuthReq</h3>
+
+<a id="schemaauthreq"></a>
+
+```json
+{
+  "email": "string",
+  "password": "string"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|email|string|true|none|none|
+|password|string|true|none|none|
+
+<h3 id="tocSauthres">AuthRes</h3>
+
+<a id="schemaauthres"></a>
+
+```json
+{
+  "payload": {
+    "token": {
+      "value": "string",
+      "refresh": "string"
+    },
+    "user": {
+      "uuid": "string",
+      "tenantUUID": "string",
+      "storeUUID": null,
+      "email": "string",
+      "active": true,
+      "createdAt": "string",
+      "updatedAt": "string",
+      "role": {
+        "uuid": "string",
+        "rank": 0,
+        "slug": "string",
+        "displayName": "string",
+        "description": "string",
+        "permissions": [
+          "string"
+        ]
+      }
+    }
+  }
+}
+
+```
+
+*The Root Schema*
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|payload|object|true|none|none|
+|» token|object|true|none|none|
+|»» value|string|true|none|none|
+|»» refresh|string|true|none|none|
+|» user|object|true|none|none|
+|»» uuid|string|true|none|none|
+|»» tenantUUID|string|true|none|none|
+|»» storeUUID|string|true|none|none|
+|»» email|string|true|none|none|
+|»» active|boolean|true|none|none|
+|»» createdAt|string|true|none|none|
+|»» updatedAt|string|true|none|none|
+|»» role|object|true|none|none|
+|»»» uuid|string|true|none|none|
+|»»» rank|number|true|none|none|
+|»»» slug|string|true|none|none|
+|»»» displayName|string|true|none|none|
+|»»» description|string|true|none|none|
+|»»» permissions|[string]|false|none|none|
 
