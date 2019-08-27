@@ -15,6 +15,7 @@ includes:
   - order
   - catalog
   - payment
+  - user
 
 search: true
 ---
