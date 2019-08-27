@@ -1,8 +1,24 @@
+---
+title: User/Auth Service
+language_tabs:
+  - shell: curl
+  - javascript: JavaScript
+  - javascript--nodejs: Node.JS
+  - python: Python
+  - ruby: Ruby
+toc_footers: []
+includes: []
+search: true
+highlight_theme: darkula
+headingLevel: 2
+
+---
+
 <h1 id="user-auth-service">User/Auth Service</h1>
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
-User/Auth Service  Api Doc
+User/Auth Service Api Doc
 
 <h2 id="user-auth-service-healthcheck">Healthcheck</h2>
 
@@ -419,7 +435,7 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-oauth_2_0 ( Scopes: SUPER_ADMIN ADMINISTRATOR MANAGER STAFF CUSTOMER SERVICE_ACCOUNT SALES_REPORTING ), oauth_2_0
+oauth_2_0 ( Scopes: SUPER_ADMIN ADMINISTRATOR MANAGER STAFF CUSTOMER SERVICE_ACCOUNT SALES_REPORTING )
 </aside>
 
 ### Refresh Token
@@ -887,7 +903,7 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-oauth_2_0 ( Scopes: SERVICE_ACCOUNT ), oauth_2_0
+oauth_2_0 ( Scopes: SERVICE_ACCOUNT )
 </aside>
 
 ### Check email
@@ -1127,7 +1143,7 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-oauth_2_0 ( Scopes: SERVICE_ACCOUNT CUSTOMER ), oauth_2_0
+oauth_2_0 ( Scopes: SERVICE_ACCOUNT CUSTOMER )
 </aside>
 
 ### Update Subscriptions
@@ -1275,7 +1291,7 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-oauth_2_0 ( Scopes: SERVICE_ACCOUNT CUSTOMER ), oauth_2_0
+oauth_2_0 ( Scopes: SERVICE_ACCOUNT CUSTOMER )
 </aside>
 
 ### Get Profile
@@ -1425,7 +1441,7 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-oauth_2_0 ( Scopes: CUSTOMER ), oauth_2_0
+oauth_2_0 ( Scopes: CUSTOMER )
 </aside>
 
 ### Add Diet
@@ -1600,7 +1616,7 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-oauth_2_0 ( Scopes: CUSTOMER ), oauth_2_0
+oauth_2_0 ( Scopes: CUSTOMER )
 </aside>
 
 ### Request Reset Password
@@ -2152,7 +2168,7 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER ), oauth_2_0
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER )
 </aside>
 
 ### Create User
@@ -2332,7 +2348,7 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER ), oauth_2_0
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER )
 </aside>
 
 ### Get User
@@ -2474,7 +2490,7 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER ), oauth_2_0
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER )
 </aside>
 
 ### Update User
@@ -2655,7 +2671,7 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER ), oauth_2_0
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER )
 </aside>
 
 ### Get Roles
@@ -2791,7 +2807,7 @@ p JSON.parse(result)
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER ), oauth_2_0
+oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER )
 </aside>
 
 ## Schemas

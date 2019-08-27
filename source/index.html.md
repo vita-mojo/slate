@@ -16,6 +16,8 @@ includes:
   - catalog
   - payment
   - user
+  - tenant
+  - loyalty
 
 search: true
 ---
@@ -30,16 +32,14 @@ Some of the endpoints are marked as `Deep integrations only!`. Your level of acc
 
 We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
-
 # Authentication
 Our Authentication uses Oauth 2 refresh token grant: https://tools.ietf.org/html/rfc6749#section-1.5
 
-In you need to use `POST /v1/auth` to get authenticated. You will get a refresh token that is valid indefinitely. 
+You need to use `POST /v1/auth` to get authenticated. You will get a refresh token that is valid indefinitely. 
 
-Use the refresh token to get an auth token from `PUT /v1/auth/refresh/{value}` before each API calls. 
+Use the refresh token to get an auth token from `PUT /v1/auth/refresh/{value}` before each API call. 
 
-You will also need correct tenant and store UUID for most API calls. You will also need credentials with sufficient permissions for the required operations. Please contact support@vmos.io to get credentials and required UUIDs.
+You will need correct tenant and store UUID for most API calls. You will need credentials with sufficient permissions for the required operations. Please contact support@vmos.io to get credentials and required UUIDs.
 
 ### Auth
 
@@ -139,7 +139,7 @@ p JSON.parse(result)
 
 `POST /v1/auth`
 
-*Get authenticated. Refresh token is valid indefinitely, should be stored and used to get an access token before each API request. Access token expires in 10 mintues.*
+*Get authenticated. Refresh token is valid indefinitely, should be stored and used to get an access token before each API request. Access token expires in 10 minutes.*
 
 > Body parameter
 
@@ -296,7 +296,7 @@ p JSON.parse(result)
 
 `GET /v1/auth/check`
 
-*Check Token is token valid*
+*Check token is valid*
 
 > Example responses
 

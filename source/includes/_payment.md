@@ -1,3 +1,19 @@
+---
+title: Payment Service
+language_tabs:
+  - shell: curl
+  - javascript: JavaScript
+  - javascript--nodejs: Node.JS
+  - python: Python
+  - ruby: Ruby
+toc_footers: []
+includes: []
+search: true
+highlight_theme: darkula
+headingLevel: 2
+
+---
+
 <h1 id="payment-service">Payment Service</h1>
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
@@ -126,7 +142,7 @@ This operation does not require authentication
 curl -X POST /v1/transactions/order \
   -H 'Content-Type: application/json; charset=utf-8' \
   -H 'Accept: application/json; charset=utf-8' \
-  -H 'Authorization: Bearer {access-token}'
+  -H 'Authorization: API_KEY'
 
 ```
 
@@ -134,7 +150,7 @@ curl -X POST /v1/transactions/order \
 var headers = {
   'Content-Type':'application/json; charset=utf-8',
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'Bearer {access-token}'
+  'Authorization':'API_KEY'
 
 };
 
@@ -167,7 +183,7 @@ const inputBody = '{
 const headers = {
   'Content-Type':'application/json; charset=utf-8',
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'Bearer {access-token}'
+  'Authorization':'API_KEY'
 
 };
 
@@ -190,7 +206,7 @@ import requests
 headers = {
   'Content-Type': 'application/json; charset=utf-8',
   'Accept': 'application/json; charset=utf-8',
-  'Authorization': 'Bearer {access-token}'
+  'Authorization': 'API_KEY'
 }
 
 r = requests.post('/v1/transactions/order', params={
@@ -208,7 +224,7 @@ require 'json'
 headers = {
   'Content-Type' => 'application/json; charset=utf-8',
   'Accept' => 'application/json; charset=utf-8',
-  'Authorization' => 'Bearer {access-token}'
+  'Authorization' => 'API_KEY'
 }
 
 result = RestClient.post '/v1/transactions/order',
@@ -283,7 +299,7 @@ Deep integrations only! Register a payment for order
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER STAFF CUSTOMER )
+bearer ( Scopes: ADMINISTRATOR MANAGER STAFF CUSTOMER ), bearer
 </aside>
 
 ### Create Refund
@@ -296,14 +312,14 @@ oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER STAFF CUSTOMER )
 # You can also use wget
 curl -X GET /v1/transactions/order/{uuid} \
   -H 'Accept: application/json; charset=utf-8' \
-  -H 'Authorization: Bearer {access-token}'
+  -H 'Authorization: API_KEY'
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'Bearer {access-token}'
+  'Authorization':'API_KEY'
 
 };
 
@@ -324,7 +340,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'Bearer {access-token}'
+  'Authorization':'API_KEY'
 
 };
 
@@ -346,7 +362,7 @@ fetch('/v1/transactions/order/{uuid}',
 import requests
 headers = {
   'Accept': 'application/json; charset=utf-8',
-  'Authorization': 'Bearer {access-token}'
+  'Authorization': 'API_KEY'
 }
 
 r = requests.get('/v1/transactions/order/{uuid}', params={
@@ -363,7 +379,7 @@ require 'json'
 
 headers = {
   'Accept' => 'application/json; charset=utf-8',
-  'Authorization' => 'Bearer {access-token}'
+  'Authorization' => 'API_KEY'
 }
 
 result = RestClient.get '/v1/transactions/order/{uuid}',
@@ -458,7 +474,7 @@ Get all transactions by order UUID, status and type
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER STAFF CUSTOMER )
+bearer ( Scopes: ADMINISTRATOR MANAGER STAFF CUSTOMER ), bearer
 </aside>
 
 ### Is Refundable
@@ -471,14 +487,14 @@ oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER STAFF CUSTOMER )
 # You can also use wget
 curl -X GET /v1/transactions/order/{uuid}/is-refundable \
   -H 'Accept: application/json; charset=utf-8' \
-  -H 'Authorization: Bearer {access-token}'
+  -H 'Authorization: API_KEY'
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'Bearer {access-token}'
+  'Authorization':'API_KEY'
 
 };
 
@@ -499,7 +515,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'Bearer {access-token}'
+  'Authorization':'API_KEY'
 
 };
 
@@ -521,7 +537,7 @@ fetch('/v1/transactions/order/{uuid}/is-refundable',
 import requests
 headers = {
   'Accept': 'application/json; charset=utf-8',
-  'Authorization': 'Bearer {access-token}'
+  'Authorization': 'API_KEY'
 }
 
 r = requests.get('/v1/transactions/order/{uuid}/is-refundable', params={
@@ -538,7 +554,7 @@ require 'json'
 
 headers = {
   'Accept' => 'application/json; charset=utf-8',
-  'Authorization' => 'Bearer {access-token}'
+  'Authorization' => 'API_KEY'
 }
 
 result = RestClient.get '/v1/transactions/order/{uuid}/is-refundable',
@@ -583,7 +599,7 @@ Check if transaction is refundable
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER STAFF CUSTOMER )
+bearer ( Scopes: ADMINISTRATOR MANAGER STAFF CUSTOMER ), bearer
 </aside>
 
 ### Transaction Details
@@ -596,14 +612,14 @@ oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER STAFF CUSTOMER )
 # You can also use wget
 curl -X GET /v1/transactions/order/{uuid}/details \
   -H 'Accept: application/json; charset=utf-8' \
-  -H 'Authorization: Bearer {access-token}'
+  -H 'Authorization: API_KEY'
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'Bearer {access-token}'
+  'Authorization':'API_KEY'
 
 };
 
@@ -624,7 +640,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'Bearer {access-token}'
+  'Authorization':'API_KEY'
 
 };
 
@@ -646,7 +662,7 @@ fetch('/v1/transactions/order/{uuid}/details',
 import requests
 headers = {
   'Accept': 'application/json; charset=utf-8',
-  'Authorization': 'Bearer {access-token}'
+  'Authorization': 'API_KEY'
 }
 
 r = requests.get('/v1/transactions/order/{uuid}/details', params={
@@ -663,7 +679,7 @@ require 'json'
 
 headers = {
   'Accept' => 'application/json; charset=utf-8',
-  'Authorization' => 'Bearer {access-token}'
+  'Authorization' => 'API_KEY'
 }
 
 result = RestClient.get '/v1/transactions/order/{uuid}/details',
@@ -727,7 +743,7 @@ Get charge transaction details by order
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-oauth_2_0 ( Scopes: ADMINISTRATOR MANAGER STAFF CUSTOMER )
+bearer ( Scopes: ADMINISTRATOR MANAGER STAFF CUSTOMER ), bearer
 </aside>
 
 <h2 id="payment-service-providers">Providers</h2>
@@ -888,13 +904,13 @@ This operation does not require authentication
 ```shell
 # You can also use wget
 curl -X POST /v1/providers/customer \
-  -H 'Authorization: Bearer {access-token}'
+  -H 'Authorization: API_KEY'
 
 ```
 
 ```javascript
 var headers = {
-  'Authorization':'Bearer {access-token}'
+  'Authorization':'API_KEY'
 
 };
 
@@ -914,7 +930,7 @@ $.ajax({
 const fetch = require('node-fetch');
 
 const headers = {
-  'Authorization':'Bearer {access-token}'
+  'Authorization':'API_KEY'
 
 };
 
@@ -935,7 +951,7 @@ fetch('/v1/providers/customer',
 ```python
 import requests
 headers = {
-  'Authorization': 'Bearer {access-token}'
+  'Authorization': 'API_KEY'
 }
 
 r = requests.post('/v1/providers/customer', params={
@@ -951,7 +967,7 @@ require 'rest-client'
 require 'json'
 
 headers = {
-  'Authorization' => 'Bearer {access-token}'
+  'Authorization' => 'API_KEY'
 }
 
 result = RestClient.post '/v1/providers/customer',
@@ -976,7 +992,7 @@ Deep integrations only! Create customer profile for providers
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-oauth_2_0 ( Scopes: CUSTOMER )
+bearer ( Scopes: CUSTOMER )
 </aside>
 
 <h2 id="payment-service-customer-cards">Customer Cards</h2>
@@ -991,14 +1007,14 @@ oauth_2_0 ( Scopes: CUSTOMER )
 # You can also use wget
 curl -X GET /v1/cards \
   -H 'Accept: application/json; charset=utf-8' \
-  -H 'Authorization: Bearer {access-token}'
+  -H 'Authorization: API_KEY'
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'Bearer {access-token}'
+  'Authorization':'API_KEY'
 
 };
 
@@ -1019,7 +1035,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'Bearer {access-token}'
+  'Authorization':'API_KEY'
 
 };
 
@@ -1041,7 +1057,7 @@ fetch('/v1/cards',
 import requests
 headers = {
   'Accept': 'application/json; charset=utf-8',
-  'Authorization': 'Bearer {access-token}'
+  'Authorization': 'API_KEY'
 }
 
 r = requests.get('/v1/cards', params={
@@ -1058,7 +1074,7 @@ require 'json'
 
 headers = {
   'Accept' => 'application/json; charset=utf-8',
-  'Authorization' => 'Bearer {access-token}'
+  'Authorization' => 'API_KEY'
 }
 
 result = RestClient.get '/v1/cards',
@@ -1126,7 +1142,7 @@ Deep integrations only! Get a list of saved cards. These will be card references
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-oauth_2_0 ( Scopes: CUSTOMER )
+bearer ( Scopes: CUSTOMER ), bearer
 </aside>
 
 ### Link Card to Customer
@@ -1140,7 +1156,7 @@ oauth_2_0 ( Scopes: CUSTOMER )
 curl -X POST /v1/cards \
   -H 'Content-Type: application/json; charset=utf-8' \
   -H 'Accept: application/json; charset=utf-8' \
-  -H 'Authorization: Bearer {access-token}'
+  -H 'Authorization: API_KEY'
 
 ```
 
@@ -1148,7 +1164,7 @@ curl -X POST /v1/cards \
 var headers = {
   'Content-Type':'application/json; charset=utf-8',
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'Bearer {access-token}'
+  'Authorization':'API_KEY'
 
 };
 
@@ -1173,7 +1189,7 @@ const inputBody = '{
 const headers = {
   'Content-Type':'application/json; charset=utf-8',
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'Bearer {access-token}'
+  'Authorization':'API_KEY'
 
 };
 
@@ -1196,7 +1212,7 @@ import requests
 headers = {
   'Content-Type': 'application/json; charset=utf-8',
   'Accept': 'application/json; charset=utf-8',
-  'Authorization': 'Bearer {access-token}'
+  'Authorization': 'API_KEY'
 }
 
 r = requests.post('/v1/cards', params={
@@ -1214,7 +1230,7 @@ require 'json'
 headers = {
   'Content-Type' => 'application/json; charset=utf-8',
   'Accept' => 'application/json; charset=utf-8',
-  'Authorization' => 'Bearer {access-token}'
+  'Authorization' => 'API_KEY'
 }
 
 result = RestClient.post '/v1/cards',
@@ -1297,7 +1313,7 @@ Deep integrations only! Links a card token to curent customer.
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-oauth_2_0 ( Scopes: CUSTOMER )
+bearer ( Scopes: CUSTOMER ), bearer
 </aside>
 
 ### Get Card
@@ -1310,14 +1326,14 @@ oauth_2_0 ( Scopes: CUSTOMER )
 # You can also use wget
 curl -X GET /v1/cards/{cardId} \
   -H 'Accept: application/json; charset=utf-8' \
-  -H 'Authorization: Bearer {access-token}'
+  -H 'Authorization: API_KEY'
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'Bearer {access-token}'
+  'Authorization':'API_KEY'
 
 };
 
@@ -1338,7 +1354,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'Bearer {access-token}'
+  'Authorization':'API_KEY'
 
 };
 
@@ -1360,7 +1376,7 @@ fetch('/v1/cards/{cardId}',
 import requests
 headers = {
   'Accept': 'application/json; charset=utf-8',
-  'Authorization': 'Bearer {access-token}'
+  'Authorization': 'API_KEY'
 }
 
 r = requests.get('/v1/cards/{cardId}', params={
@@ -1377,7 +1393,7 @@ require 'json'
 
 headers = {
   'Accept' => 'application/json; charset=utf-8',
-  'Authorization' => 'Bearer {access-token}'
+  'Authorization' => 'API_KEY'
 }
 
 result = RestClient.get '/v1/cards/{cardId}',
@@ -1429,7 +1445,7 @@ Deep integrations only! Get card by id.
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-oauth_2_0 ( Scopes: CUSTOMER )
+bearer ( Scopes: CUSTOMER ), bearer
 </aside>
 
 ### Default Card
@@ -1442,14 +1458,14 @@ oauth_2_0 ( Scopes: CUSTOMER )
 # You can also use wget
 curl -X PATCH /v1/cards/{cardId} \
   -H 'Accept: application/json; charset=utf-8' \
-  -H 'Authorization: Bearer {access-token}'
+  -H 'Authorization: API_KEY'
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'Bearer {access-token}'
+  'Authorization':'API_KEY'
 
 };
 
@@ -1470,7 +1486,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'Bearer {access-token}'
+  'Authorization':'API_KEY'
 
 };
 
@@ -1492,7 +1508,7 @@ fetch('/v1/cards/{cardId}',
 import requests
 headers = {
   'Accept': 'application/json; charset=utf-8',
-  'Authorization': 'Bearer {access-token}'
+  'Authorization': 'API_KEY'
 }
 
 r = requests.patch('/v1/cards/{cardId}', params={
@@ -1509,7 +1525,7 @@ require 'json'
 
 headers = {
   'Accept' => 'application/json; charset=utf-8',
-  'Authorization' => 'Bearer {access-token}'
+  'Authorization' => 'API_KEY'
 }
 
 result = RestClient.patch '/v1/cards/{cardId}',
@@ -1583,7 +1599,7 @@ Deep integrations only! Set customer default card
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-oauth_2_0 ( Scopes: CUSTOMER )
+bearer ( Scopes: CUSTOMER ), bearer
 </aside>
 
 ### Delete Card
@@ -1596,14 +1612,14 @@ oauth_2_0 ( Scopes: CUSTOMER )
 # You can also use wget
 curl -X DELETE /v1/cards/{cardId} \
   -H 'Accept: application/json; charset=utf-8' \
-  -H 'Authorization: Bearer {access-token}'
+  -H 'Authorization: API_KEY'
 
 ```
 
 ```javascript
 var headers = {
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'Bearer {access-token}'
+  'Authorization':'API_KEY'
 
 };
 
@@ -1624,7 +1640,7 @@ const fetch = require('node-fetch');
 
 const headers = {
   'Accept':'application/json; charset=utf-8',
-  'Authorization':'Bearer {access-token}'
+  'Authorization':'API_KEY'
 
 };
 
@@ -1646,7 +1662,7 @@ fetch('/v1/cards/{cardId}',
 import requests
 headers = {
   'Accept': 'application/json; charset=utf-8',
-  'Authorization': 'Bearer {access-token}'
+  'Authorization': 'API_KEY'
 }
 
 r = requests.delete('/v1/cards/{cardId}', params={
@@ -1663,7 +1679,7 @@ require 'json'
 
 headers = {
   'Accept' => 'application/json; charset=utf-8',
-  'Authorization' => 'Bearer {access-token}'
+  'Authorization' => 'API_KEY'
 }
 
 result = RestClient.delete '/v1/cards/{cardId}',
@@ -1737,14 +1753,14 @@ Deep integrations only! Delete customer card
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
-oauth_2_0 ( Scopes: CUSTOMER )
+bearer ( Scopes: CUSTOMER ), bearer
 </aside>
 
 <h2 id="payment-service-webhooks">Webhooks</h2>
 
-### POST_v1-webhooks-stripe-intents-tenant-uuid
+### Stripe Payment Intents Webhook
 
-<a id="opIdPOST_v1-webhooks-stripe-intents-tenant-uuid"></a>
+<a id="opIdStripe Payment Intents Webhook"></a>
 
 > Code samples
 
@@ -1834,13 +1850,15 @@ p JSON.parse(result)
 
 *stripe intents*
 
+Only used by Stripe
+
 > Body parameter
 
 ```json
 "string"
 ```
 
-<h4 id="post_v1-webhooks-stripe-intents-tenant-uuid-parameters">Parameters</h4>
+<h4 id="stripe-payment-intents-webhook-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1872,7 +1890,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="post_v1-webhooks-stripe-intents-tenant-uuid-responses">Responses</h4>
+<h4 id="stripe-payment-intents-webhook-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1884,22 +1902,24 @@ This operation does not require authentication
 
 <h2 id="payment-service-management">Management</h2>
 
-### GET_v1-management-tenants-configs
+### Get Tenant Configs
 
-<a id="opIdGET_v1-management-tenants-configs"></a>
+<a id="opIdGet Tenant Configs"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
 curl -X GET /v1/management/tenants-configs \
-  -H 'Accept: application/json; charset=utf-8'
+  -H 'Accept: application/json; charset=utf-8' \
+  -H 'Authorization: API_KEY'
 
 ```
 
 ```javascript
 var headers = {
-  'Accept':'application/json; charset=utf-8'
+  'Accept':'application/json; charset=utf-8',
+  'Authorization':'API_KEY'
 
 };
 
@@ -1919,7 +1939,8 @@ $.ajax({
 const fetch = require('node-fetch');
 
 const headers = {
-  'Accept':'application/json; charset=utf-8'
+  'Accept':'application/json; charset=utf-8',
+  'Authorization':'API_KEY'
 
 };
 
@@ -1940,7 +1961,8 @@ fetch('/v1/management/tenants-configs',
 ```python
 import requests
 headers = {
-  'Accept': 'application/json; charset=utf-8'
+  'Accept': 'application/json; charset=utf-8',
+  'Authorization': 'API_KEY'
 }
 
 r = requests.get('/v1/management/tenants-configs', params={
@@ -1956,7 +1978,8 @@ require 'rest-client'
 require 'json'
 
 headers = {
-  'Accept' => 'application/json; charset=utf-8'
+  'Accept' => 'application/json; charset=utf-8',
+  'Authorization' => 'API_KEY'
 }
 
 result = RestClient.get '/v1/management/tenants-configs',
@@ -1970,6 +1993,8 @@ p JSON.parse(result)
 `GET /v1/management/tenants-configs`
 
 *Get List of configs for all tenants*
+
+Deep integration only! Get List of configs for all tenants
 
 > Example responses
 
@@ -2047,23 +2072,22 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="get_v1-management-tenants-configs-responses">Responses</h4>
+<h4 id="get-tenant-configs-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[tenantProviderConfigList](#schematenantproviderconfiglist)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated to perform this action|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Not authorized to perform this action|None|
 
-<h4 id="get_v1-management-tenants-configs-responseschema">Response Schema</h4>
-
-<aside class="success">
-This operation does not require authentication
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+bearer ( Scopes: SUPER_ADMIN ), bearer
 </aside>
 
-### POST_v1-management-tenants-configs
+### Create Tenant Config
 
-<a id="opIdPOST_v1-management-tenants-configs"></a>
+<a id="opIdCreate Tenant Config"></a>
 
 > Code samples
 
@@ -2071,14 +2095,16 @@ This operation does not require authentication
 # You can also use wget
 curl -X POST /v1/management/tenants-configs \
   -H 'Content-Type: application/json; charset=utf-8' \
-  -H 'Accept: application/json; charset=utf-8'
+  -H 'Accept: application/json; charset=utf-8' \
+  -H 'Authorization: API_KEY'
 
 ```
 
 ```javascript
 var headers = {
   'Content-Type':'application/json; charset=utf-8',
-  'Accept':'application/json; charset=utf-8'
+  'Accept':'application/json; charset=utf-8',
+  'Authorization':'API_KEY'
 
 };
 
@@ -2109,7 +2135,8 @@ const inputBody = '{
 }';
 const headers = {
   'Content-Type':'application/json; charset=utf-8',
-  'Accept':'application/json; charset=utf-8'
+  'Accept':'application/json; charset=utf-8',
+  'Authorization':'API_KEY'
 
 };
 
@@ -2131,7 +2158,8 @@ fetch('/v1/management/tenants-configs',
 import requests
 headers = {
   'Content-Type': 'application/json; charset=utf-8',
-  'Accept': 'application/json; charset=utf-8'
+  'Accept': 'application/json; charset=utf-8',
+  'Authorization': 'API_KEY'
 }
 
 r = requests.post('/v1/management/tenants-configs', params={
@@ -2148,7 +2176,8 @@ require 'json'
 
 headers = {
   'Content-Type' => 'application/json; charset=utf-8',
-  'Accept' => 'application/json; charset=utf-8'
+  'Accept' => 'application/json; charset=utf-8',
+  'Authorization' => 'API_KEY'
 }
 
 result = RestClient.post '/v1/management/tenants-configs',
@@ -2162,6 +2191,8 @@ p JSON.parse(result)
 `POST /v1/management/tenants-configs`
 
 *Create a tenant config*
+
+Deep integration only! Create a tenant config
 
 > Body parameter
 
@@ -2179,7 +2210,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="post_v1-management-tenants-configs-parameters">Parameters</h4>
+<h4 id="create-tenant-config-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2207,7 +2238,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="post_v1-management-tenants-configs-responses">Responses</h4>
+<h4 id="create-tenant-config-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2215,26 +2246,29 @@ p JSON.parse(result)
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated to perform this action|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Not authorized to perform this action|None|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+bearer ( Scopes: SUPER_ADMIN ), bearer
 </aside>
 
-### GET_v1-management-tenants-configs-uuid
+### Get Tenant Config
 
-<a id="opIdGET_v1-management-tenants-configs-uuid"></a>
+<a id="opIdGet Tenant Config"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
 curl -X GET /v1/management/tenants-configs/{uuid} \
-  -H 'Accept: application/json; charset=utf-8'
+  -H 'Accept: application/json; charset=utf-8' \
+  -H 'Authorization: API_KEY'
 
 ```
 
 ```javascript
 var headers = {
-  'Accept':'application/json; charset=utf-8'
+  'Accept':'application/json; charset=utf-8',
+  'Authorization':'API_KEY'
 
 };
 
@@ -2254,7 +2288,8 @@ $.ajax({
 const fetch = require('node-fetch');
 
 const headers = {
-  'Accept':'application/json; charset=utf-8'
+  'Accept':'application/json; charset=utf-8',
+  'Authorization':'API_KEY'
 
 };
 
@@ -2275,7 +2310,8 @@ fetch('/v1/management/tenants-configs/{uuid}',
 ```python
 import requests
 headers = {
-  'Accept': 'application/json; charset=utf-8'
+  'Accept': 'application/json; charset=utf-8',
+  'Authorization': 'API_KEY'
 }
 
 r = requests.get('/v1/management/tenants-configs/{uuid}', params={
@@ -2291,7 +2327,8 @@ require 'rest-client'
 require 'json'
 
 headers = {
-  'Accept' => 'application/json; charset=utf-8'
+  'Accept' => 'application/json; charset=utf-8',
+  'Authorization' => 'API_KEY'
 }
 
 result = RestClient.get '/v1/management/tenants-configs/{uuid}',
@@ -2306,7 +2343,9 @@ p JSON.parse(result)
 
 *Get One config by uuid*
 
-<h4 id="get_v1-management-tenants-configs-uuid-parameters">Parameters</h4>
+Deep integration only! Get One config by uuid
+
+<h4 id="get-tenant-config-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2334,23 +2373,22 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="get_v1-management-tenants-configs-uuid-responses">Responses</h4>
+<h4 id="get-tenant-config-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[tenantProviderConfig](#schematenantproviderconfig)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated to perform this action|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Not authorized to perform this action|None|
 
-<h4 id="get_v1-management-tenants-configs-uuid-responseschema">Response Schema</h4>
-
-<aside class="success">
-This operation does not require authentication
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+bearer ( Scopes: SUPER_ADMIN ), bearer
 </aside>
 
-### PUT_v1-management-tenants-configs-uuid
+### Update Tenant Config
 
-<a id="opIdPUT_v1-management-tenants-configs-uuid"></a>
+<a id="opIdUpdate Tenant Config"></a>
 
 > Code samples
 
@@ -2358,14 +2396,16 @@ This operation does not require authentication
 # You can also use wget
 curl -X PUT /v1/management/tenants-configs/{uuid} \
   -H 'Content-Type: application/json; charset=utf-8' \
-  -H 'Accept: application/json; charset=utf-8'
+  -H 'Accept: application/json; charset=utf-8' \
+  -H 'Authorization: API_KEY'
 
 ```
 
 ```javascript
 var headers = {
   'Content-Type':'application/json; charset=utf-8',
-  'Accept':'application/json; charset=utf-8'
+  'Accept':'application/json; charset=utf-8',
+  'Authorization':'API_KEY'
 
 };
 
@@ -2393,7 +2433,8 @@ const inputBody = '{
 }';
 const headers = {
   'Content-Type':'application/json; charset=utf-8',
-  'Accept':'application/json; charset=utf-8'
+  'Accept':'application/json; charset=utf-8',
+  'Authorization':'API_KEY'
 
 };
 
@@ -2415,7 +2456,8 @@ fetch('/v1/management/tenants-configs/{uuid}',
 import requests
 headers = {
   'Content-Type': 'application/json; charset=utf-8',
-  'Accept': 'application/json; charset=utf-8'
+  'Accept': 'application/json; charset=utf-8',
+  'Authorization': 'API_KEY'
 }
 
 r = requests.put('/v1/management/tenants-configs/{uuid}', params={
@@ -2432,7 +2474,8 @@ require 'json'
 
 headers = {
   'Content-Type' => 'application/json; charset=utf-8',
-  'Accept' => 'application/json; charset=utf-8'
+  'Accept' => 'application/json; charset=utf-8',
+  'Authorization' => 'API_KEY'
 }
 
 result = RestClient.put '/v1/management/tenants-configs/{uuid}',
@@ -2447,6 +2490,8 @@ p JSON.parse(result)
 
 *Update a tenant config*
 
+Deep integration only! Update a tenant config
+
 > Body parameter
 
 ```json
@@ -2460,7 +2505,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="put_v1-management-tenants-configs-uuid-parameters">Parameters</h4>
+<h4 id="update-tenant-config-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2489,7 +2534,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="put_v1-management-tenants-configs-uuid-responses">Responses</h4>
+<h4 id="update-tenant-config-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2497,15 +2542,16 @@ p JSON.parse(result)
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated to perform this action|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Not authorized to perform this action|None|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+bearer ( Scopes: SUPER_ADMIN ), bearer
 </aside>
 
 <h2 id="payment-service-setup-intents">Setup Intents</h2>
 
-### Setup Stripe Payment Intents description
+### Setup Stripe Payment Intents
 
-<a id="opIdSetup Stripe Payment Intents description"></a>
+<a id="opIdSetup Stripe Payment Intents"></a>
 
 > Code samples
 
@@ -2513,14 +2559,16 @@ This operation does not require authentication
 # You can also use wget
 curl -X POST /v1/setup-intents \
   -H 'Content-Type: application/json; charset=utf-8' \
-  -H 'Accept: application/json; charset=utf-8'
+  -H 'Accept: application/json; charset=utf-8' \
+  -H 'Authorization: API_KEY'
 
 ```
 
 ```javascript
 var headers = {
   'Content-Type':'application/json; charset=utf-8',
-  'Accept':'application/json; charset=utf-8'
+  'Accept':'application/json; charset=utf-8',
+  'Authorization':'API_KEY'
 
 };
 
@@ -2545,7 +2593,8 @@ const inputBody = '{
 }';
 const headers = {
   'Content-Type':'application/json; charset=utf-8',
-  'Accept':'application/json; charset=utf-8'
+  'Accept':'application/json; charset=utf-8',
+  'Authorization':'API_KEY'
 
 };
 
@@ -2567,7 +2616,8 @@ fetch('/v1/setup-intents',
 import requests
 headers = {
   'Content-Type': 'application/json; charset=utf-8',
-  'Accept': 'application/json; charset=utf-8'
+  'Accept': 'application/json; charset=utf-8',
+  'Authorization': 'API_KEY'
 }
 
 r = requests.post('/v1/setup-intents', params={
@@ -2584,7 +2634,8 @@ require 'json'
 
 headers = {
   'Content-Type' => 'application/json; charset=utf-8',
-  'Accept' => 'application/json; charset=utf-8'
+  'Accept' => 'application/json; charset=utf-8',
+  'Authorization' => 'API_KEY'
 }
 
 result = RestClient.post '/v1/setup-intents',
@@ -2599,6 +2650,8 @@ p JSON.parse(result)
 
 *Create a setup intent object*
 
+Deep integrations only! Create Strie Payment Intents required configuration.
+
 > Body parameter
 
 ```json
@@ -2609,7 +2662,7 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="setup-stripe-payment-intents-description-parameters">Parameters</h4>
+<h4 id="setup-stripe-payment-intents-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2628,17 +2681,18 @@ p JSON.parse(result)
 }
 ```
 
-<h4 id="setup-stripe-payment-intents-description-responses">Responses</h4>
+<h4 id="setup-stripe-payment-intents-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|Inline|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Not authenticated to perform this action|None|
 
-<h4 id="setup-stripe-payment-intents-description-responseschema">Response Schema</h4>
+<h4 id="setup-stripe-payment-intents-responseschema">Response Schema</h4>
 
-<aside class="success">
-This operation does not require authentication
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+bearer ( Scopes: SUPER_ADMIN ), bearer
 </aside>
 
 ## Schemas
@@ -3003,6 +3057,47 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |payload|object|true|none|none|
+|» uuid|string|true|none|none|
+|» tenantUUID|string|true|none|none|
+|» apiKey|string|true|none|none|
+|» apiSecret|string|true|none|none|
+|» status|boolean|true|none|none|
+|» isDefault|boolean|true|none|none|
+|» currency|string|true|none|none|
+|» provider|object|true|none|none|
+|»» uuid|string|true|none|none|
+|»» name|string|true|none|none|
+
+<h3 id="tocStenantproviderconfiglist">tenantProviderConfigList</h3>
+
+<a id="schematenantproviderconfiglist"></a>
+
+```json
+{
+  "payload": [
+    {
+      "uuid": "string",
+      "tenantUUID": "string",
+      "apiKey": "string",
+      "apiSecret": "string",
+      "status": true,
+      "isDefault": true,
+      "currency": "string",
+      "provider": {
+        "uuid": "string",
+        "name": "string"
+      }
+    }
+  ]
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|payload|[object]|true|none|none|
 |» uuid|string|true|none|none|
 |» tenantUUID|string|true|none|none|
 |» apiKey|string|true|none|none|
